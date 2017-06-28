@@ -4,14 +4,17 @@
 const int motionPin = D0;
 bool motionState = LOW;
 
-const char* serverAddress = "192.168.1.10";
+IPAddress serverAddress(192,168,1,8);
 const int mqttPort = 1883;
 const int httpPort = 1337;
 
 char moduleName[] = "motionsensor";
 char topic[] = "modules/9";
 
-Ottto ottto(moduleName, serverIp, mqttPort);
+// Ottto ottto(moduleName, serverAddress, mqttPort);
+WiFiManager wifiManager;
+WiFiClient espClient;
+PubSubClient client(espClient);
 
 
 void setup() {
@@ -21,7 +24,7 @@ void setup() {
 
   wifiManager.autoConnect(moduleName);
   client.setServer(serverAddress, mqttPort);
-  client.setCallback(callback);
+  client.setCallback(receive);
 }
 
 
@@ -76,8 +79,7 @@ void connect() {
     Serial.print("Attempting MQTT connection...");
     if (client.connect(moduleName)) {
       Serial.println("connected");
-      registration();
-      client.subscribe("modules/9");
+      client.subscribe(topic);
       publish();
     } else {
       Serial.print("failed, rc=");
@@ -85,18 +87,6 @@ void connect() {
       Serial.println(" try again in 5 seconds");
       delay(5000);
     }
-  }
-}
-
-
-void registration() {
-  StaticJsonBuffer<200> jsonBuffer;
-  JsonObject& json = jsonBuffer.parseObject(message);
-
-  if (!json.success()) {
-    Serial.println("parseObject() failed");
-  } else {
-    // Do something with the message
   }
 }
 
@@ -114,6 +104,5 @@ void publish() {
 
   Serial.print("Sending: ");
   Serial.println(buffer);
-
-  return buffer;
+  client.publish(topic, buffer);
 }
