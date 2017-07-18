@@ -4,7 +4,7 @@
 const int motionPin = D0;
 bool motionState = LOW;
 
-IPAddress serverAddress(192,168,1,8);
+IPAddress serverAddress(192,168,1,200);
 const int mqttPort = 1883;
 const int httpPort = 1337;
 

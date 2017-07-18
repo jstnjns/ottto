@@ -5,7 +5,7 @@
 #define MY9291_DI_PIN 13
 #define MY9291_DCKI_PIN 15
 
-IPAddress serverAddress(192,168,1,8);
+IPAddress serverAddress(192,168,1,200);
 const int mqttPort = 1883;
 const int httpPort = 1337;
 
@@ -22,7 +22,6 @@ PubSubClient client(espClient);
 
 void setup() {
   Serial.begin(115200);
-
 
   setupOTA();
   wifiManager.autoConnect(moduleName);
