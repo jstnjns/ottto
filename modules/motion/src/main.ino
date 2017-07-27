@@ -1,4 +1,10 @@
-#include "Ottto.h"
+#include <functional>
+#include "Arduino.h"
+#include "IPAddress.h"
+#include "ESP8266WiFi.h"
+#include "PubSubClient.h"
+#include "WiFiManager.h"
+#include "ArduinoJson.h"
 
 
 const int motionPin = D0;

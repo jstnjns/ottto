@@ -1,4 +1,11 @@
-#include "Ottto.h"
+#include <functional>
+#include "Arduino.h"
+#include "IPAddress.h"
+#include "ESP8266WiFi.h"
+#include "PubSubClient.h"
+#include "WiFiManager.h"
+#include "ArduinoJson.h"
+
 #include "my9291.h"
 #include "RGBConverter.h"
 
@@ -12,7 +19,6 @@ const int httpPort = 1337;
 char moduleName[] = "lightbulb";
 char topic[] = "modules/16";
 
-// Ottto ottto(moduleName, serverAddress, mqttPort);
 my9291 lights = my9291(MY9291_DI_PIN, MY9291_DCKI_PIN, MY9291_COMMAND_DEFAULT);
 RGBConverter colorConverter;
 WiFiManager wifiManager;
