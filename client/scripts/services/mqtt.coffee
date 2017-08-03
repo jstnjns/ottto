@@ -14,6 +14,7 @@ angular
           @callbacks = {}
 
           @client = $window.mqtt.connect port: 1884
+
           @client.on 'message', (topic, payload) =>
             message = JSON.parse payload.toString()
 
@@ -26,7 +27,7 @@ angular
           @callbacks[topic] = [] unless @callbacks[topic]
           @callbacks[topic].push callback
 
-          @client.subscribe 'modules/9'
+          @client.subscribe topic
 
 
       new MqttService
