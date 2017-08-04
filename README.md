@@ -51,4 +51,4 @@ Modules are based on the ESP8266 chip, specifically the inexpensive NodeMCU boar
 
 #### TODO
 
-* C++ library encapsulating the common interaction between the modules and the server
+* C library encapsulating the common interaction between the modules and the server
