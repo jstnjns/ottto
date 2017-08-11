@@ -1,10 +1,11 @@
-#include <functional>
+#include "functional"
 #include "Arduino.h"
+#include "ArduinoOTA.h"
+#include "ArduinoJson.h"
 #include "IPAddress.h"
 #include "ESP8266WiFi.h"
 #include "PubSubClient.h"
 #include "WiFiManager.h"
-#include "ArduinoJson.h"
 
 #include "my9291.h"
 #include "RGBConverter.h"
@@ -12,7 +13,7 @@
 #define MY9291_DI_PIN 13
 #define MY9291_DCKI_PIN 15
 
-IPAddress serverAddress(192,168,1,200);
+IPAddress serverAddress(10,10,0,1);
 const int mqttPort = 1883;
 const int httpPort = 1337;
 
@@ -29,7 +30,8 @@ PubSubClient client(espClient);
 void setup() {
   Serial.begin(115200);
 
-  setupOTA();
+  // setupOTA();
+  // wifiManager.resetSettings();
   wifiManager.autoConnect(moduleName);
   client.setServer(serverAddress, mqttPort);
   client.setCallback(receive);

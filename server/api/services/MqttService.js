@@ -6,11 +6,6 @@ var mosca = require('mosca'),
         url: 'mongodb://localhost:27017/mqtt',
         pubsubCollection: 'ascoltatori',
         mongo: {}
-      },
-      http: {
-        port: 1884,
-        bundle: true,
-        static: './'
       }
     });
 

@@ -28,7 +28,7 @@
  */
 
 var interfaces = require('os').networkInterfaces(),
-    ethernet = interfaces.en0 || interfaces.eth0,
+    ethernet = interfaces.wlan0 || interfaces.en0 || interfaces.eth0,
     ip = ethernet
       .find(function(interface) { return interface.family == 'IPv4'; })
       .address;

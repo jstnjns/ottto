@@ -10,9 +10,8 @@
 const int motionPin = D0;
 bool motionState = LOW;
 
-IPAddress serverAddress(192,168,1,200);
+IPAddress serverAddress(10,10,0,1);
 const int mqttPort = 1883;
-const int httpPort = 1337;
 
 char moduleName[] = "motionsensor";
 char topic[] = "modules/9";
