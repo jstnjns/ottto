@@ -28,7 +28,7 @@
  */
 
 var interfaces = require('os').networkInterfaces(),
-    ethernet = interfaces.wlan0 || interfaces.en0 || interfaces.eth0,
+    ethernet = interfaces.eth0 || interfaces.en0,
     ip = ethernet
       .find(function(interface) { return interface.family == 'IPv4'; })
       .address;
@@ -41,7 +41,7 @@ module.exports = {
   },
 
   host: ip,
-  port: 1337,
+  port: 80,
 
   /***************************************************************************
    * Your SSL certificate and key, if you want to be able to serve HTTP      *
