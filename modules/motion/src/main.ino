@@ -1,15 +1,15 @@
 #include "Ottto.h"
 
 
-const int motionPin = D0;
-bool motionState = LOW;
-
 otttoConfig config = {
   .name = "motionsensor",
   .topic = "modules/9",
   .host = "10.10.0.1"
 };
 Ottto ottto(config);
+
+const int motionPin = D0;
+bool motionState = LOW;
 
 
 void setup() {
@@ -19,6 +19,20 @@ void setup() {
 
   ottto.begin();
   ottto.subscribe(receive);
+}
+
+
+void receive(char* topic, uint8_t* payload, unsigned int length) {
+  char message[length + 1];
+  for (int i = 0; i < length; i++) {
+    message[i] = (char)payload[i];
+  }
+  message[length] = '\0';
+
+  Serial.print("Received: ");
+  Serial.print(config.topic);
+  Serial.print(": ");
+  Serial.println(message);
 }
 
 
@@ -35,20 +49,6 @@ void loop() {
   }
 
   yield();
-}
-
-
-void receive(char* topic, uint8_t* payload, unsigned int length) {
-  char message[length + 1];
-  for (int i = 0; i < length; i++) {
-    message[i] = (char)payload[i];
-  }
-  message[length] = '\0';
-
-  Serial.print("Received: ");
-  Serial.print(config.topic);
-  Serial.print(": ");
-  Serial.println(message);
 }
 
 
