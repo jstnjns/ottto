@@ -1,0 +1,27 @@
+{
+  "name": "Ottto",
+  "description": "Home Automation",
+  "version": "0.0.1",
+  "authors": [
+    {
+      "name": "Justin Jones",
+      "email": "justinjones53@gmail.com",
+      "maintainer": true
+    }
+  ],
+  "repository": {
+    "url": "https://github.com/jstnjns/ottto.git",
+    "type": "git"
+  },
+  "platforms": [
+    "espressif8266"
+  ],
+  "frameworks": [
+    "arduino"
+  ],
+  "keywords": [
+      "home",
+      "automation",
+      "ottto"
+  ]
+}
