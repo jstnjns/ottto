@@ -21,8 +21,6 @@ const MODULE_DEACTIVATE = 'MODULE_DEACTIVATE'
 // Action Creators
 export const getModules = () => {
   return (dispatch, getState) => {
-    // dispatch(gettingModules())
-
     socket.on('modules', (msg) => {
       switch(msg.verb) {
         case 'updated': dispatch(moduleUpdated(msg.data))
@@ -34,9 +32,6 @@ export const getModules = () => {
       .then( error => dispatch(getModuleError(error)) )
   }
 }
-// export const gettingModules = () => {
-//   return { type: MODULES_GET }
-// }
 export const getModulesSuccess = (modules) => {
   return { type: MODULES_GET_SUCCESS, modules }
 }
@@ -47,16 +42,11 @@ export const getModulesError = (error) => {
 
 export const getModule = (id) => {
   return (dispatch, getState) => {
-    // dispatch(gettingModule())
-
     return socket.get('/api/modules/' + id)
       .then( module => dispatch(getModuleSuccess(module)) )
-      // .catch( error => dispatch(getModuleError(error)) )
+      .catch( error => dispatch(getModuleError(error)) )
   }
 }
-// export const gettingModule = () => {
-//   return { type: MODULE_GET }
-// }
 export const getModuleSuccess = (module) => {
   return { type: MODULE_GET_SUCCESS, module }
 }
@@ -66,16 +56,10 @@ export const getModuleError = (error) => {
 
 export const updateModule = (module) => {
   return (dispatch, getState) => {
-    // dispatch(updatingModule(module))
-
     return socket.put('/api/modules/' + module.id, module)
-      // .then(module => dispatch(moduleUpdated(module)))
       .catch(error => dispatch(moduleUpdateError(error)))
   }
 }
-// export const updatingModule = (module) => {
-//   return { type: MODULE_UPDATE, module }
-// }
 export const moduleUpdated = (module) => {
   // For some reason the response is an array, grab the first item
   return { type: MODULE_UPDATE_SUCCESS, module: module }

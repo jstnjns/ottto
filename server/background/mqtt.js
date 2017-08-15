@@ -3,11 +3,6 @@ MqttService.on('clientConnected', function(client) {
 });
 
 
-// MqttService.subscribe('modules/register/+', function(topic, message) {
-//   console.log('Register:', message.toString());
-// });
-
-
 MqttService.subscribe('modules/+', function(topic, message, client) {
   var body = JSON.parse(message.toString())
 

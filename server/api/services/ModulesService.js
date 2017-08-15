@@ -88,17 +88,17 @@ module.exports = {
         .then(function(module) {
           var simplified = _.pick(module, [ 'id', 'values' ]);
 
-          Modules.publishUpdate(id, simplified, req);
-
           if(req) {
             console.log('Sending:', 'modules/' + id, simplified)
-            MqttService.publish({
-              topic: 'modules/' + id,
-              payload: JSON.stringify(simplified),
-              qos: 0,
-              retain: true
-            });
+            Modules.publishUpdate(id, simplified, req);
+            // MqttService.publish({
+            //   topic: 'modules/' + id,
+            //   payload: JSON.stringify(simplified),
+            //   qos: 0,
+            //   retain: true
+            // });
           }
+
           return module;
         });
 
