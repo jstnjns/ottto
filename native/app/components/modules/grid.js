@@ -14,6 +14,7 @@ import {
 } from 'react-native'
 import { BlurView } from 'react-native-blur'
 import GridView from 'components/grid-view'
+import ModulesGridIcon from './grid/icon'
 
 
 class ModulesGrid extends Component {
@@ -44,45 +45,12 @@ class ModulesGrid extends Component {
   renderModule(module, index) {
     return (
       <View style={styles.gridItem} key={index}>
-        {this.renderIcon(module, index)}
+        <ModulesGridIcon
+          module={module}
+          onPress={this.props.onModulePress}></ModulesGridIcon>
         <Text style={styles.gridItemText}>{module.name}</Text>
       </View>
     )
-  }
-
-
-  renderIcon(module, index) {
-    if(module.icon) {
-      return (
-        <TouchableHighlight
-          key={module.id}
-          onPress={this.iconPress.bind(this, module)}
-          underlayColor='#FFFFFF'
-          style={styles.gridItemIcon}>
-          <View></View>
-        </TouchableHighlight>
-      )
-    } else {
-      return (
-        <TouchableHighlight
-          key={module.id}
-          onLongPress={this.emptyLongPress.bind(this, index)}
-          underlayColor='#FFFFFF'
-          style={styles.gridItemBlank}>
-          <View></View>
-        </TouchableHighlight>
-      )
-    }
-  }
-
-
-  iconPress(module) {
-    this.props.onModulePress(module)
-  }
-
-
-  emptyLongPress() {
-    console.log('show "add module" menu')
   }
 }
 
@@ -98,22 +66,6 @@ const styles = StyleSheet.create({
   gridItem: {
     margin: 5,
     alignItems: 'center',
-  },
-  gridItemIcon: {
-    width: iconDimension,
-    height: iconDimension,
-    backgroundColor: '#007AFF',
-    borderRadius: 14,
-    shadowOffset: { width: 0, height: 3 },
-    shadowRadius: 10,
-    shadowOpacity: 0.03,
-    shadowColor: '#000000',
-  },
-  gridItemBlank: {
-    width: iconDimension,
-    height: iconDimension,
-    backgroundColor: '#EFEFEF',
-    borderRadius: 14
   },
   gridItemText: {
     marginTop: 5,
