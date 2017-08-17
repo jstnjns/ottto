@@ -6,16 +6,13 @@ import {
 } from 'react-native'
 
 
-class Motion extends Component {
+class Thermometer extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={[
-          styles.indicator,
-          this.props.module.values.motion ? styles.active : styles.inactive
-        ]}>
+        <View style={styles.indicator}>
           <Text style={styles.text}>
-            {this.props.module.values.motion ? 'Motion' : 'No Motion'}
+            {this.props.module.values.temperature}&deg;
           </Text>
         </View>
       </View>
@@ -33,17 +30,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     width: 200,
     height: 200,
-    borderRadius: 14,
-  },
-  active: {
-    backgroundColor: '#007AFF',
-  },
-  inactive: {
-    backgroundColor: '#ccc',
+    backgroundColor: '#666',
+    borderRadius: 100,
   },
   text: {
-    color: "#FFF"
+    color: "#FFF",
+    fontSize: 72,
   }
 })
 
-export default Motion
+export default Thermometer

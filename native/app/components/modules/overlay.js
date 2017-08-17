@@ -13,6 +13,7 @@ import {
 } from 'react-native'
 import Light from './overlay/types/light'
 import Motion from './overlay/types/motion'
+import Thermometer from './overlay/types/thermometer'
 
 
 class ModuleOverlay extends Component {
@@ -111,6 +112,12 @@ class ModuleOverlay extends Component {
         break;
       case 'Motion':
         Contents = Motion;
+        break;
+      case 'Thermometer':
+        Contents = Thermometer;
+        break;
+      default:
+        Contents = View
         break;
     }
 
