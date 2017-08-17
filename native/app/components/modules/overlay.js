@@ -103,18 +103,21 @@ class ModuleOverlay extends Component {
 
 
   renderModule(module) {
-    switch (this.props.module.type.id) {
-      case 1:
-        return (
-          <Light module={module}
-            onModuleChange={this.onModuleChange.bind(this)} />
-        )
-      case 2:
-        return (
-          <Motion module={module}
-            onModuleChange={this.onModuleChange.bind(this)} />
-        )
+    let Contents;
+
+    switch (this.props.module.type.name) {
+      case 'Light':
+        Contents = Light;
+        break;
+      case 'Motion':
+        Contents = Motion;
+        break;
     }
+
+    return (
+      <Contents module={module}
+        onModuleChange={this.onModuleChange.bind(this)} />
+    )
   }
 
 
