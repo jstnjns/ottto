@@ -5,8 +5,8 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 import { StyleSheet, View } from 'react-native'
-import ModulesGrid from '../../components/modules/grid'
-import ModulesOverlay from '../../components/modules/overlay'
+import ModulesGrid from 'components/modules/grid'
+import ModulesOverlay from 'components/modules/overlay'
 
 
 class Room extends Component {

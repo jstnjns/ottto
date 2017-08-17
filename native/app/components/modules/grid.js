@@ -3,7 +3,7 @@ import _ from 'lodash'
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { getModule, activateModule } from '../../actions/modules'
+import { getModule, activateModule } from 'actions/modules'
 
 import {
   ListView,
@@ -13,7 +13,7 @@ import {
   View,
 } from 'react-native'
 import { BlurView } from 'react-native-blur'
-import GridView from '../grid-view'
+import GridView from 'components/grid-view'
 
 
 class ModulesGrid extends Component {

@@ -1,5 +1,12 @@
 {
   "presets": [
     "react-native"
+  ],
+  "plugins": [
+    ["module-resolver", {
+      "root": ["./app"],
+      "extensions": [".js", ".ios.js", ".android.js"]
+    }],
+    "transform-decorators-legacy"
   ]
 }
