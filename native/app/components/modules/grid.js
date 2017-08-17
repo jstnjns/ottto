@@ -12,7 +12,6 @@ import {
   TouchableHighlight,
   View,
 } from 'react-native'
-import { BlurView } from 'react-native-blur'
 import GridView from 'components/grid-view'
 import ModulesGridIcon from './grid/icon'
 
@@ -44,39 +43,12 @@ class ModulesGrid extends Component {
 
   renderModule(module, index) {
     return (
-      <View style={styles.gridItem} key={index}>
-        <ModulesGridIcon
-          module={module}
-          onPress={this.props.onModulePress}></ModulesGridIcon>
-        <Text style={styles.gridItemText}>{module.name}</Text>
-      </View>
+      <ModulesGridIcon key={index}
+        module={module}
+        onPress={this.props.onModulePress}></ModulesGridIcon>
     )
   }
 }
-
-
-const iconDimension = 60;
-const styles = StyleSheet.create({
-  blur: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'stretch',
-    backgroundColor: 'transparent',
-  },
-  gridItem: {
-    margin: 5,
-    alignItems: 'center',
-  },
-  gridItemText: {
-    marginTop: 5,
-    width: iconDimension,
-    height: 12,
-    overflow: 'hidden',
-    fontSize: 11,
-    color: '#999999',
-    textAlign: 'center'
-  },
-})
 
 
 export default connect(

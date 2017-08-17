@@ -8,7 +8,7 @@ import {
 } from 'react-native'
 
 
-class MotionModule extends Component {
+class Motion extends Component {
   render() {
     return (
       <View style={styles.container}>
@@ -48,4 +48,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default MotionModule
+export default Motion

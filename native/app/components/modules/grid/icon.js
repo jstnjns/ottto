@@ -4,7 +4,9 @@ import {
   StyleSheet,
   TouchableHighlight,
   View,
+  Text,
 } from 'react-native'
+import Light from './icons/light'
 
 
 class ModulesGridIcon extends Component {
@@ -13,23 +15,29 @@ class ModulesGridIcon extends Component {
 
     if(module.icon) {
       return (
-        <TouchableHighlight
-          key={module.id}
-          onPress={this.props.onPress.bind(this, module)}
-          underlayColor='#FFFFFF'
-          style={styles.gridItemIcon}>
-          <View></View>
-        </TouchableHighlight>
+        <View style={styles.gridItem}>
+          <TouchableHighlight
+            key={module.id}
+            onPress={this.props.onPress.bind(this, module)}
+            underlayColor='#FFFFFF'
+            style={styles.gridItemIcon}>
+            <View />
+          </TouchableHighlight>
+          <Text style={styles.gridItemText}>{module.name}</Text>
+        </View>
       )
     } else {
       return (
-        <TouchableHighlight
-          key={module.id}
-          onLongPress={console.log('show "add module" menu')}
-          underlayColor='#FFFFFF'
-          style={styles.gridItemBlank}>
-          <View></View>
-        </TouchableHighlight>
+        <View style={styles.gridItem}>
+          <TouchableHighlight
+            key={module.id}
+            onLongPress={console.log('show "add module" menu')}
+            underlayColor='#FFFFFF'
+            style={styles.gridItemBlank}>
+            <View />
+          </TouchableHighlight>
+          <Text style={styles.gridItemText}>{module.name}</Text>
+        </View>
       )
     }
   }
@@ -51,6 +59,15 @@ const styles = {
     shadowRadius: 10,
     shadowOpacity: 0.03,
     shadowColor: '#000000',
+  },
+  gridItemText: {
+    marginTop: 5,
+    width: iconDimension,
+    height: 12,
+    overflow: 'hidden',
+    fontSize: 11,
+    color: '#999999',
+    textAlign: 'center'
   },
   gridItemBlank: {
     width: iconDimension,
