@@ -11,8 +11,8 @@ import {
   TouchableHighlight,
   View,
 } from 'react-native'
-import Light from './types/light'
-import Motion from './types/motion'
+import Light from './overlay/types/light'
+import Motion from './overlay/types/motion'
 
 
 class ModuleOverlay extends Component {
