@@ -2,11 +2,7 @@ angular
   .module 'OtttoApp'
   .service 'Model', [
     '$sails'
-    'mqtt'
-    (
-      $sails
-      mqtt
-    ) ->
+    ($sails) ->
 
       class Model
 
@@ -24,7 +20,7 @@ angular
         constructor: (attributes) ->
           @$_reset attributes
 
-          mqtt.subscribe "#{@$resource}/#{@$attributes.id}", @$_respond
+          $sails.on @$resource, @$_respond
 
 
         $create: =>
@@ -87,6 +83,11 @@ angular
 
 
         $_respond: (message) =>
-          @$_reset message
+          return unless message.id is @$attributes.id
+
+          switch message.verb
+            when 'updated' then @$_reset message.data
+            when 'destroyed' then console.log 'delete'
+
 
   ]

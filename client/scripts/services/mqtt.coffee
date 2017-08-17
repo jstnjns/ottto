@@ -13,7 +13,7 @@ angular
         constructor: ->
           @callbacks = {}
 
-          @client = $window.mqtt.connect()
+          @client = $window.mqtt.connect port: 1884
 
           @client.on 'message', (topic, payload) =>
             message = JSON.parse payload.toString()
