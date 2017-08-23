@@ -13,9 +13,9 @@ bool motionState = LOW;
 
 
 void setup() {
-  pinMode(motionPin, INPUT);
-
   Serial.begin(115200);
+
+  pinMode(motionPin, INPUT);
 
   ottto.begin();
   ottto.subscribe(receive);

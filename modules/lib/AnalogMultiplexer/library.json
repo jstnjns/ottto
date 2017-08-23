@@ -1,0 +1,21 @@
+{
+  "name": "AnalogMultiplexer",
+  "description": "Library for Arduino in order to use Analog Multiplexer / DeMultiplexers easily",
+  "version": "0.0.1",
+  "authors": [],
+  "repository": {
+    "url": "https://github.com/ajfisher/arduino-analog-multiplexer.git",
+    "type": "git"
+  },
+  "platforms": [
+    "espressif8266"
+  ],
+  "frameworks": [
+    "arduino"
+  ],
+  "keywords": [
+      "analog",
+      "multiplexer",
+      "demultiplexer"
+  ]
+}
