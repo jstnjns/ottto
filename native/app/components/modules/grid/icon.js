@@ -23,7 +23,11 @@ class ModulesGridIcon extends Component {
             style={styles.gridItemIcon}>
             <View />
           </TouchableHighlight>
-          <Text style={styles.gridItemText}>{module.name}</Text>
+          <Text style={styles.gridItemText}
+            numberOfLines={1}
+            adjustsFontSizeToFit={true}>
+            {module.name}
+          </Text>
         </View>
       )
     } else {
@@ -45,7 +49,7 @@ class ModulesGridIcon extends Component {
 
 
 const iconDimension = 60;
-const styles = {
+const styles = StyleSheet.create({
   gridItem: {
     margin: 5,
     alignItems: 'center',
@@ -63,7 +67,7 @@ const styles = {
   gridItemText: {
     marginTop: 5,
     width: iconDimension,
-    height: 12,
+    height: 14,
     overflow: 'hidden',
     fontSize: 11,
     color: '#999999',
@@ -75,7 +79,7 @@ const styles = {
     backgroundColor: '#EFEFEF',
     borderRadius: 14
   },
-}
+})
 
 
 export default ModulesGridIcon
