@@ -35,7 +35,7 @@ class ModulesGridIcon extends Component {
         <View style={styles.gridItem}>
           <TouchableHighlight
             key={module.id}
-            onLongPress={console.log('show "add module" menu')}
+            onLongPress={this.onEmptyPress.bind(this)}
             underlayColor='#FFFFFF'
             style={styles.gridItemBlank}>
             <View />
@@ -44,6 +44,10 @@ class ModulesGridIcon extends Component {
         </View>
       )
     }
+  }
+
+  onEmptyPress() {
+    console.log('show "add module" menu')
   }
 }
 
