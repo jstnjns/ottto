@@ -11,9 +11,11 @@ import {
   TouchableHighlight,
   View,
 } from 'react-native'
+
 import Light from './overlay/types/light'
 import Motion from './overlay/types/motion'
 import Thermometer from './overlay/types/thermometer'
+import Camera from './overlay/types/camera'
 
 
 class ModuleOverlay extends Component {
@@ -115,6 +117,9 @@ class ModuleOverlay extends Component {
         break;
       case 'Thermometer':
         Contents = Thermometer;
+        break;
+      case 'Camera':
+        Contents = Camera;
         break;
       default:
         Contents = View
