@@ -44,17 +44,8 @@ void Ottto::loop() {
     while (!this->_client.connected()) {
       Serial.print("Attempting MQTT connection...");
        if (this->_client.connect(this->_config.name)) {
-          Serial.println("connected");
-
-          StaticJsonBuffer<200> jsonBuffer;
-          JsonObject& json = jsonBuffer.createObject();
-          json["chip"] = ESP.getChipId();
-          json["ip"] = WiFi.localIP().toString();
-          json["type"] = "motion";
-
-          char buffer[json.measureLength() + 1];
-          json.printTo(buffer, sizeof(buffer));
-
+          Serial.print("connected...");
+          Serial.println(this->_config.topic);
           this->_client.subscribe(this->_config.topic);
         } else {
           Serial.print("failed, rc=");

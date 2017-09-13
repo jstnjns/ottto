@@ -8,7 +8,7 @@
 
 otttoConfig config = {
   .name = "lightbulb",
-  .topic = "modules/16",
+  .topic = "modules/17",
   .host = "10.10.0.1"
 };
 Ottto ottto(config);
@@ -20,13 +20,19 @@ RGBConverter colorConverter;
 void setup() {
   Serial.begin(115200);
 
+  setColor("#ffffff");
+  setPower(true);
+
   ottto.begin();
   ottto.subscribe(receive);
 
+
   setPower(false);
-  delay(100);
+  delay(200);
   setPower(true);
-  delay(100);
+  delay(200);
+  setPower(false);
+  delay(200);
   setPower(true);
 }
 
