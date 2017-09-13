@@ -1,16 +1,34 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { createStore, applyMiddleware } from 'redux'
+import { Provider } from 'react-redux'
+import thunk from 'redux-thunk'
+import { createLogger } from 'redux-logger'
+import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 
-import { createStore } from 'redux'
+import reducers from './app/app-actions'
 
 import App from './app/app'
-import AppReducers from './app/app-actions'
+import Rooms from './rooms/rooms'
+import Room from './rooms/room'
+import Settings from './settings/settings'
 
 
-const store = createStore(AppReducers)
+const logger = createLogger()
+const middleware = applyMiddleware(logger, thunk)
+const store = createStore(reducers, middleware)
 
 
 ReactDOM.render(
-  <App store={store} />,
+  <Provider store={store}>
+    <Router history={browserHistory}>
+      <Route path="/" component={App}>
+        <IndexRoute component={Rooms} />
+        <Route path="rooms/:id" component={Room} />
+
+        <Route path="settings" component={Settings} />
+      </Route>
+    </Router>
+  </Provider>,
   document.getElementById('root')
 )

@@ -1,18 +1,19 @@
 import React from 'react'
-import { Provider } from 'react-redux'
-import { Router, Route, browserHistory } from 'react-router'
+import { Link } from 'react-router'
 
-import RoomsContainer from '../rooms/rooms-container'
-import SettingsContainer from '../settings/settings-container'
+import './app.css'
 
-
-export default ({ store }) => (
-  <Provider store={store}>
-    <Router history={browserHistory}>
+export default function App({ children }) {
+  return (
+    <div>
+      <header>
+        <Link to="/">Rooms</Link>
+        {" "}
+        <Link to="/settings">Settings</Link>
+      </header>
       <div>
-        <Route exact path="/" component={RoomsContainer} />
-        <Route path="/settings" component={SettingsContainer} />
+        {children}
       </div>
-    </Router>
-  </Provider>
-)
+    </div>
+  )
+}
