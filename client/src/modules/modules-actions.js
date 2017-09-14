@@ -1,11 +1,9 @@
-import _ from 'lodash'
 import socket from '../socket'
 
 
 // Action Types
 const MODULE_GET = 'MODULE_GET'
 const MODULE_GET_SUCCESS = 'MODULE_GET_SUCCESS'
-const MODULE_GET_ERROR = 'MODULE_GET_ERROR'
 
 
 // Action Creators

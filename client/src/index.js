@@ -8,11 +8,11 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 
 import reducers from './app/app-actions'
 
-import App from './app/app'
-import Rooms from './rooms/rooms'
-import Room from './rooms/room'
-import Module from './modules/module'
-import Settings from './settings/settings'
+import AppContainer from './app/app-container'
+import RoomsContainer from './rooms/rooms-container'
+import RoomContainer from './rooms/room-container'
+import ModuleContainer from './modules/module-container'
+import SettingsContainer from './settings/settings-container'
 
 
 const logger = createLogger()
@@ -23,13 +23,13 @@ const store = createStore(reducers, middleware)
 ReactDOM.render(
   <Provider store={store}>
     <Router history={browserHistory}>
-      <Route path="/" component={App}>
-        <IndexRoute component={Rooms} />
-        <Route path="rooms/:id" component={Room} />
+      <Route path="/" component={AppContainer}>
+        <IndexRoute component={RoomsContainer} />
+        <Route path="rooms/:id" component={RoomContainer} />
 
-        <Route path="modules/:id" component={Module} />
+        <Route path="modules/:id" component={ModuleContainer} />
 
-        <Route path="settings" component={Settings} />
+        <Route path="settings" component={SettingsContainer} />
       </Route>
     </Router>
   </Provider>,
