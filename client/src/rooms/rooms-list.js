@@ -13,11 +13,12 @@ class RoomsList extends Component {
 
   renderRoom(room, key) {
     return (
-      <div className="rooms-list-item" key={key}>
-        <Link to={`/rooms/${room.id}`}>{room.name}</Link>
-      </div>
+      <Link to={`/rooms/${room.id}`} key={key}>
+        {room.name}
+      </Link>
     )
   }
 }
+
 
 export default RoomsList

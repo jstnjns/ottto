@@ -11,13 +11,14 @@ class ModulesList extends Component {
     )
   }
 
-  renderRoom(room, key) {
+  renderRoom(module, key) {
     return (
-      <div className="modules-list-item" key={key}>
-        <div>{room.name}</div>
-      </div>
+      <Link to={`/modules/${module.id}`} key={key}>
+        {module.name}
+      </Link>
     )
   }
 }
+
 
 export default ModulesList

@@ -11,6 +11,7 @@ import reducers from './app/app-actions'
 import App from './app/app'
 import Rooms from './rooms/rooms'
 import Room from './rooms/room'
+import Module from './modules/module'
 import Settings from './settings/settings'
 
 
@@ -25,6 +26,8 @@ ReactDOM.render(
       <Route path="/" component={App}>
         <IndexRoute component={Rooms} />
         <Route path="rooms/:id" component={Room} />
+
+        <Route path="modules/:id" component={Module} />
 
         <Route path="settings" component={Settings} />
       </Route>

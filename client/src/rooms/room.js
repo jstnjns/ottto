@@ -5,17 +5,17 @@ import { connect } from 'react-redux'
 import { getRoom } from './rooms-actions'
 import ModulesList from '../modules/modules-list'
 
-class Rooms extends Component {
+class Room extends Component {
   componentWillMount() {
     this.props.getRoom(this.props.params.id)
   }
 
   render() {
-    let room = this.props.room
+    let { room } = this.props
 
-    if(room) {
+    if (room) {
       return (
-        <div className="rooms">
+        <div className="room">
           <h1>{room.name}</h1>
 
           <ModulesList modules={room.modules} />
@@ -23,9 +23,7 @@ class Rooms extends Component {
       )
     } else {
       return (
-        <div className="rooms">
-          <h1>Loading...</h1>
-        </div>
+        <h1>Loading...</h1>
       )
     }
   }
@@ -35,4 +33,4 @@ class Rooms extends Component {
 export default connect(
   (state, props) => ({ room: state.rooms.entities[props.params.id] }),
   (dispatch) => bindActionCreators({ getRoom }, dispatch)
-)(Rooms)
+)(Room)

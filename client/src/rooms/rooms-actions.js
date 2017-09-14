@@ -43,7 +43,6 @@ const gettingRoom = () => {
   return { type: ROOM_GET }
 }
 const getRoomSuccess = (room) => {
-  console.log('success', room)
   return { type: ROOM_GET_SUCCESS, room }
 }
 const getRoomError = (error) => {
