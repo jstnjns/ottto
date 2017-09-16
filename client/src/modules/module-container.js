@@ -1,8 +1,11 @@
+import _ from 'lodash'
+
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
-import { getModule } from './modules-actions'
+import { getModule, updateModule } from './modules-actions'
+import Attribute from './attribute'
 
 class Module extends Component {
   componentWillMount() {
@@ -10,12 +13,22 @@ class Module extends Component {
   }
 
   render() {
-    let { module } = this.props
+    let { module, updateModule } = this.props
 
     if (module) {
       return (
         <div className="module">
           <h1>{module.name}</h1>
+
+          {module.type.attributes.map((attribute, key) => {
+            return (
+              <Attribute key={key}
+                module={module}
+                attribute={attribute}
+                value={module.values[attribute.name]}
+                onChange={this.onAttributeChange(attribute).bind(this)}/>
+            )
+          })}
         </div>
       )
     } else {
@@ -24,10 +37,19 @@ class Module extends Component {
       )
     }
   }
+
+  onAttributeChange(attribute) {
+    return (value) => {
+      let module = _.clone(this.props.module)
+      module.values[attribute.name] = value
+
+      this.props.updateModule(module)
+    }
+  }
 }
 
 
 export default connect(
   (state, props) => ({ module: state.modules.entities[props.params.id] }),
-  (dispatch) => bindActionCreators({ getModule }, dispatch)
+  (dispatch) => bindActionCreators({ getModule, updateModule }, dispatch)
 )(Module)
