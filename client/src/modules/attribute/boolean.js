@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Form } from 'semantic-ui-react'
 
 
 class BooleanAttribute extends Component {
@@ -14,9 +15,11 @@ class BooleanAttribute extends Component {
     let { attribute } = this.props
 
     return (
-      <input type="checkbox" name={attribute.name}
-        checked={this.state.value}
-        onChange={this.onChange.bind(this) }/>
+      <div>
+        <input type="checkbox" name={attribute.name}
+          checked={this.state.value}
+          onChange={this.onChange.bind(this)} />
+      </div>
     )
   }
 

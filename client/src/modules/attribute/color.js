@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Form } from 'semantic-ui-react'
 
 import ct from 'color-temperature'
 
@@ -29,10 +30,11 @@ class ColorAttribute extends Component {
 
     return (
       <div>
-        <input type="color" value={value}
+        <Form.Input type="color" value={value}
           onChange={this.onChange.bind(this)} />
         {value}
-        <a onClick={() => this.setState({ tab: 'temperature' })}>Temperature</a>
+        <Form.Button size="mini" content="Temperature" color="red" compact
+          onClick={() => this.setState({ tab: 'temperature' })} />
       </div>
     )
   }
@@ -42,13 +44,15 @@ class ColorAttribute extends Component {
 
     return (
       <div>
-        <input type="color" value={value} />
-        <input type="range" value={temperature}
+        <Form.Input type="color" value={value} />
+        <Form.Input type="range" value={temperature}
           min="4500"
           max="8500"
           onChange={this.onTemperatureChange.bind(this)} />
         {temperature} / {value}
-        <a onClick={() => this.setState({ tab: 'color' })}>Color</a>
+        <Form.Button onClick={() => this.setState({ tab: 'color' })}>
+          Color
+        </Form.Button>
       </div>
     )
   }

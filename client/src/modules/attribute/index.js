@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Form } from 'semantic-ui-react'
 
 import BooleanAttribute from './boolean'
 import ColorAttribute from './color'
@@ -23,15 +24,12 @@ class Attribute extends Component {
     }
 
     return (
-      <div>
+      <Form.Field>
         <label htmlFor={attribute.name}>
           {attribute.label}
         </label>
-        <div>
-          <Contents {...this.props}
-            onChange={this.props.onChange} />
-        </div>
-      </div>
+        <Contents {...this.props} onChange={this.props.onChange} />
+      </Form.Field>
     )
   }
 }

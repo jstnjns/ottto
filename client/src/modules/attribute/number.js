@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Form } from 'semantic-ui-react'
 
 
 class NumberAttribute extends Component {
@@ -15,7 +16,7 @@ class NumberAttribute extends Component {
 
     return (
       <div>
-        <input type="range" name={attribute.name}
+        <Form.Input type="range" name={attribute.name}
           value={this.state.value}
           min={attribute.min}
           max={attribute.max}

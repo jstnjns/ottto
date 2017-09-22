@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
+import { Segment, Header } from 'semantic-ui-react'
 
 
 class ModulesList extends Component {
@@ -13,9 +14,11 @@ class ModulesList extends Component {
 
   renderRoom(module, key) {
     return (
-      <Link to={`/modules/${module.id}`} key={key}>
+      <Segment key={key} circular
+        style={{ width: 100, height: 100 }}
+        as={Link} to={`/modules/${module.id}`}>
         {module.name}
-      </Link>
+      </Segment>
     )
   }
 }
