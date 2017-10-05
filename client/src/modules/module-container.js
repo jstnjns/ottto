@@ -3,6 +3,7 @@ import _ from 'lodash'
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import { Link } from 'react-router'
 
 import { getModule, updateModule } from './modules-actions'
 import Attribute from './attribute'
@@ -18,6 +19,10 @@ class Module extends Component {
     if (module) {
       return (
         <div className="module">
+          <Link to={`/rooms/${module.group.id}`}>
+            &lt; {module.group.name}
+          </Link>
+
           <h1>{module.name}</h1>
 
           {module.type.attributes.map((attribute, key) => {

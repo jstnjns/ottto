@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
+import { Grid } from 'semantic-ui-react'
 
 
 class RoomsList extends Component {
@@ -13,9 +14,11 @@ class RoomsList extends Component {
 
   renderRoom(room, key) {
     return (
-      <Link to={`/rooms/${room.id}`} key={key}>
-        {room.name}
-      </Link>
+      <div key={key}>
+        <Link to={`/rooms/${room.id}`}>
+          {room.name}
+        </Link>
+      </div>
     )
   }
 }

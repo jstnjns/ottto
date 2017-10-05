@@ -1,24 +1,28 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
-import { Segment, Header } from 'semantic-ui-react'
+import { Card } from 'semantic-ui-react'
 
 
 class ModulesList extends Component {
   render() {
     return (
-      <div className="modules-list">
+      <Card.Group itemsPerRow={6}>
         {this.props.modules.map(this.renderRoom.bind(this))}
-      </div>
+      </Card.Group>
     )
   }
 
   renderRoom(module, key) {
     return (
-      <Segment key={key} circular
-        style={{ width: 100, height: 100 }}
-        as={Link} to={`/modules/${module.id}`}>
-        {module.name}
-      </Segment>
+      <Card key={key}
+        as={Link}
+        to={`/modules/${module.id}`}>
+        <Card.Content>
+          <Card.Header>
+            {module.name}
+          </Card.Header>
+        </Card.Content>
+      </Card>
     )
   }
 }
