@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Form } from 'semantic-ui-react'
+import { Form, Icon } from 'semantic-ui-react'
 
 import ct from 'color-temperature'
 
@@ -30,9 +30,10 @@ class ColorAttribute extends Component {
 
     return (
       <div>
-        <Form.Input type="color" value={value}
+        <Form.Input type="text" value={value}
+          icon={{ name: 'stop', style: { color: value }}}
+          iconPosition='left'
           onChange={this.onChange.bind(this)} />
-        {value}
         <Form.Button size="mini"
           onClick={() => this.setState({ tab: 'temperature' })}>
           Temperature

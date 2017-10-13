@@ -4,6 +4,7 @@ import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
+import { Form, Grid } from 'semantic-ui-react'
 
 import { getModule, updateModule } from './modules-actions'
 import Attribute from './attribute'
@@ -25,15 +26,21 @@ class Module extends Component {
 
           <h1>{module.name}</h1>
 
-          {module.type.attributes.map((attribute, key) => {
-            return (
-              <Attribute key={key}
-                module={module}
-                attribute={attribute}
-                value={module.values[attribute.name]}
-                onChange={this.onAttributeChange(attribute).bind(this)}/>
-            )
-          })}
+          <Form>
+            <Grid>
+              {module.type.attributes.map((attribute, key) => {
+                return (
+                  <Grid.Column key={key} width={4}>
+                    <Attribute
+                      module={module}
+                      attribute={attribute}
+                      value={module.values[attribute.name]}
+                      onChange={this.onAttributeChange(attribute).bind(this)}/>
+                  </Grid.Column>
+                )
+              })}
+            </Grid>
+          </Form>
         </div>
       )
     } else {

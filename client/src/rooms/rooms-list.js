@@ -1,24 +1,28 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
-import { Grid } from 'semantic-ui-react'
+import { Card } from 'semantic-ui-react'
 
 
 class RoomsList extends Component {
   render() {
     return (
-      <div className="rooms-list">
+      <Card.Group itemsPerRow={4}>
         {this.props.rooms.map(this.renderRoom.bind(this))}
-      </div>
+      </Card.Group>
     )
   }
 
   renderRoom(room, key) {
     return (
-      <div key={key}>
-        <Link to={`/rooms/${room.id}`}>
-          {room.name}
-        </Link>
-      </div>
+      <Card key={key}
+        as={Link}
+        to={`/rooms/${room.id}`}>
+        <Card.Content>
+          <Card.Header>
+            {room.name}
+          </Card.Header>
+        </Card.Content>
+      </Card>
     )
   }
 }

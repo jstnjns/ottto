@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Form } from 'semantic-ui-react'
+import { Radio } from 'semantic-ui-react'
 
 
 class BooleanAttribute extends Component {
@@ -15,16 +15,14 @@ class BooleanAttribute extends Component {
     let { attribute } = this.props
 
     return (
-      <div>
-        <input type="checkbox" name={attribute.name}
-          checked={this.state.value}
-          onChange={this.onChange.bind(this)} />
-      </div>
+      <Radio toggle type="checkbox" size="large"
+        checked={this.state.value}
+        onChange={this.onChange.bind(this)} />
     )
   }
 
-  onChange(event) {
-    let value = event.target.checked
+  onChange(event, data) {
+    let value = data.checked
 
     this.setState({ value })
     this.props.onChange(value)

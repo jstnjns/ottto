@@ -17,6 +17,10 @@ class Room extends Component {
     if (room) {
       return (
         <div className="room">
+          <Link to="/">
+            &lt; Rooms
+          </Link>
+
           <h1>{room.name}</h1>
 
           <ModulesList modules={room.modules} />
