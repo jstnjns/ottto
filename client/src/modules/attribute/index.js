@@ -24,12 +24,8 @@ class Attribute extends Component {
     }
 
     return (
-      <Form.Field>
-        <label htmlFor={attribute.name}>
-          {attribute.label}
-        </label>
-        <Contents {...this.props} onChange={this.props.onChange} />
-      </Form.Field>
+      <Contents {...this.props}
+        onChange={this.props.onChange} />
     )
   }
 }

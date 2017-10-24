@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { Form, Icon } from 'semantic-ui-react'
+import Button from 'material-ui/Button'
+import TextField from 'material-ui/TextField'
 
 import ct from 'color-temperature'
 
@@ -26,36 +27,41 @@ class ColorAttribute extends Component {
   }
 
   renderColor() {
+    let { attribute } = this.props
     let { value } = this.state
 
     return (
       <div>
-        <Form.Input type="text" value={value}
-          icon={{ name: 'stop', style: { color: value }}}
-          iconPosition='left'
+        <TextField
+          label={attribute.label}
+          value={value}
           onChange={this.onChange.bind(this)} />
-        <Form.Button size="mini"
+
+        <Button
           onClick={() => this.setState({ tab: 'temperature' })}>
           Temperature
-        </Form.Button>
+        </Button>
       </div>
     )
   }
 
   renderTemperature() {
+    let { attribute } = this.props
     let { temperature, value } = this.state
 
     return (
       <div>
-        <Form.Input type="range" value={temperature}
+        <TextField type="range"
+          label={attribute.label}
+          value={temperature}
           min="4500"
           max="8500"
           onChange={this.onTemperatureChange.bind(this)} />
-        {temperature}
-        <Form.Button size="mini"
+
+        <Button
           onClick={() => this.setState({ tab: 'color' })}>
           Color
-        </Form.Button>
+        </Button>
       </div>
     )
   }

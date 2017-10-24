@@ -9,7 +9,6 @@ import { withStyles } from 'material-ui/styles';
 import AppBar from 'material-ui/AppBar'
 import Toolbar from 'material-ui/Toolbar'
 import IconButton from 'material-ui/IconButton'
-import Paper from 'material-ui/Paper'
 import Typography from 'material-ui/Typography'
 import ChevronLeft from 'material-ui-icons/ChevronLeft'
 
@@ -42,13 +41,14 @@ class Module extends Component {
 
           {module.type.attributes.map((attribute, key) => {
             return (
-              <Paper key={key}>
+              <div key={key}
+                style={{ margin: 10, padding: 10 }}>
                 <Attribute
                   module={module}
                   attribute={attribute}
                   value={module.values[attribute.name]}
                   onChange={this.onAttributeChange(attribute).bind(this)}/>
-              </Paper>
+              </div>
             )
           })}
         </div>

@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
-import { Radio } from 'semantic-ui-react'
+
+import { FormGroup, FormLabel, FormControlLabel } from 'material-ui/Form'
+import Switch from 'material-ui/Switch'
 
 
 class BooleanAttribute extends Component {
@@ -15,14 +17,22 @@ class BooleanAttribute extends Component {
     let { attribute } = this.props
 
     return (
-      <Radio toggle type="checkbox" size="large"
-        checked={this.state.value}
-        onChange={this.onChange.bind(this)} />
+      <FormGroup>
+        <FormLabel>{attribute.label}</FormLabel>
+        <FormControlLabel
+          control={
+            <Switch
+              checked={this.state.value}
+              onChange={this.onChange.bind(this)} />
+          }
+          label={attribute.options[1].label}
+        />
+      </FormGroup>
     )
   }
 
-  onChange(event, data) {
-    let value = data.checked
+  onChange(event, checked) {
+    let value = checked
 
     this.setState({ value })
     this.props.onChange(value)

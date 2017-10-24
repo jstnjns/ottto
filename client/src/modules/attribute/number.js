@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Form, Button } from 'semantic-ui-react'
+import TextField from 'material-ui/TextField'
 
 
 class NumberAttribute extends Component {
@@ -16,7 +16,8 @@ class NumberAttribute extends Component {
 
     return (
       <div>
-        <Form.Input type="number" name={attribute.name}
+        <TextField type="number"
+          label={attribute.label}
           value={this.state.value}
           min={attribute.min}
           max={attribute.max}
