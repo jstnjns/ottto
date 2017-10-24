@@ -1,28 +1,31 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
-import { Card } from 'semantic-ui-react'
+import Grid from 'material-ui/Grid'
+import Paper from 'material-ui/Paper'
+import Typography from 'material-ui/Typography'
 
 
 class ModulesList extends Component {
   render() {
     return (
-      <Card.Group itemsPerRow={4}>
+      <Grid container spacing={16}
+        style={{ padding: 16 }}>
         {this.props.modules.map(this.renderRoom.bind(this))}
-      </Card.Group>
+      </Grid>
     )
   }
 
   renderRoom(module, key) {
     return (
-      <Card key={key}
-        as={Link}
-        to={`/modules/${module.id}`}>
-        <Card.Content>
-          <Card.Header>
-            {module.name}
-          </Card.Header>
-        </Card.Content>
-      </Card>
+      <Grid item key={key} xs={3}>
+        <Link to={`/modules/${module.id}`}>
+          <Paper style={{ height: 80 }}>
+          </Paper>
+            <Typography type="caption">
+              {module.name}
+            </Typography>
+        </Link>
+      </Grid>
     )
   }
 }

@@ -1,42 +1,47 @@
 import React from 'react'
 import { Link } from 'react-router'
-import { Container, Menu, Icon } from 'semantic-ui-react'
+import { Icon } from 'semantic-ui-react'
+import Paper from 'material-ui/Paper'
+import BottomNavigation, { BottomNavigationButton } from 'material-ui/BottomNavigation'
+import Tabs, { Tab } from 'material-ui/Tabs';
+
+import styles from './app.css'
+
 
 export default function App({ children }) {
   return (
-    <Container>
-      <Menu secondary pointing>
-        <Menu.Item as={Link}
-          name="rooms"
-          to="/">
-          <Icon name="grid layout" />
-          Rooms
-        </Menu.Item>
+    <div>
+      <Paper>
+        <BottomNavigation showLabels value={2}
+          style={{ position: 'fixed', left: 0, right: 0, bottom: 0 }}>
+          <BottomNavigationButton
+            component={Link} to="/users"
+            label="Users">
+          </BottomNavigationButton>
 
-        <Menu.Item as={Link}
-          name="scenes"
-          to="/scenes">
-          <Icon name="tasks" />
-          Scenes
-        </Menu.Item>
+          <BottomNavigationButton
+            component={Link} to="/rules"
+            label="Rules">
+          </BottomNavigationButton>
 
-        <Menu.Item as={Link}
-          name="rules"
-          to="/rules">
-          <Icon name="puzzle" />
-          Rules
-        </Menu.Item>
+          <BottomNavigationButton
+            component={Link} to="/"
+            label="Rooms">
+          </BottomNavigationButton>
 
-        <Menu.Item as={Link}
-          name="settings"
-          to="/settings"
-          position="right">
-          <Icon name="setting" />
-          Settings
-        </Menu.Item>
-      </Menu>
+          <BottomNavigationButton
+            component={Link} to="/scenes"
+            label="Scenes">
+          </BottomNavigationButton>
+
+          <BottomNavigationButton
+            component={Link} to="/settings"
+            label="Settings">
+          </BottomNavigationButton>
+        </BottomNavigation>
+      </Paper>
 
       {children}
-    </Container>
+    </div>
   )
 }

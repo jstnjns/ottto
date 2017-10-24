@@ -4,7 +4,14 @@ import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
-import { Form, Grid } from 'semantic-ui-react'
+
+import { withStyles } from 'material-ui/styles';
+import AppBar from 'material-ui/AppBar'
+import Toolbar from 'material-ui/Toolbar'
+import IconButton from 'material-ui/IconButton'
+import Paper from 'material-ui/Paper'
+import Typography from 'material-ui/Typography'
+import ChevronLeft from 'material-ui-icons/ChevronLeft'
 
 import { getModule, updateModule } from './modules-actions'
 import Attribute from './attribute'
@@ -20,27 +27,30 @@ class Module extends Component {
     if (module) {
       return (
         <div className="module">
-          <Link to={`/rooms/${module.group.id}`}>
-            &lt; {module.group.name}
-          </Link>
+          <AppBar position="static">
+            <Toolbar>
+              <IconButton
+                component={Link} to={`/rooms/${module.group.id}`}
+                color="contrast">
+                <ChevronLeft />
+              </IconButton>
+              <Typography type="title" color="inherit">
+                {module.name}
+              </Typography>
+            </Toolbar>
+          </AppBar>
 
-          <h1>{module.name}</h1>
-
-          <Form>
-            <Grid>
-              {module.type.attributes.map((attribute, key) => {
-                return (
-                  <Grid.Column key={key} width={4}>
-                    <Attribute
-                      module={module}
-                      attribute={attribute}
-                      value={module.values[attribute.name]}
-                      onChange={this.onAttributeChange(attribute).bind(this)}/>
-                  </Grid.Column>
-                )
-              })}
-            </Grid>
-          </Form>
+          {module.type.attributes.map((attribute, key) => {
+            return (
+              <Paper key={key}>
+                <Attribute
+                  module={module}
+                  attribute={attribute}
+                  value={module.values[attribute.name]}
+                  onChange={this.onAttributeChange(attribute).bind(this)}/>
+              </Paper>
+            )
+          })}
         </div>
       )
     } else {

@@ -3,6 +3,12 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
 
+import AppBar from 'material-ui/AppBar'
+import Toolbar from 'material-ui/Toolbar'
+import IconButton from 'material-ui/IconButton'
+import Typography from 'material-ui/Typography'
+import ChevronLeft from 'material-ui-icons/ChevronLeft'
+
 import { getRoom } from './rooms-actions'
 import ModulesList from '../modules/modules-list'
 
@@ -17,11 +23,18 @@ class Room extends Component {
     if (room) {
       return (
         <div className="room">
-          <Link to="/">
-            &lt; Rooms
-          </Link>
-
-          <h1>{room.name}</h1>
+          <AppBar position="static">
+            <Toolbar>
+              <IconButton
+                component={Link} to="/"
+                color="contrast">
+                <ChevronLeft />
+              </IconButton>
+              <Typography type="title" color="inherit">
+                {room.name}
+              </Typography>
+            </Toolbar>
+          </AppBar>
 
           <ModulesList modules={room.modules} />
         </div>
