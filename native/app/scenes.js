@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
 import { Text, AlertIOS } from 'react-native';
-import { Router, Scene, Actions, Modal } from 'react-native-router-flux';
+import { Router, Scene, Actions, Lightbox } from 'react-native-router-flux';
 
-import ScenesScene from './containers/scenes';
-import Rules from './containers/rules';
+import ScenesContainer from './containers/scenes';
+import RulesContainer from './containers/rules';
 
-import Rooms from './containers/rooms';
-import RoomsAdd from './containers/rooms/add';
-import RoomsDetail from './containers/rooms/detail';
-// import RoomsMenu from './containers/rooms/menu';
+import RoomsContainer from './containers/rooms';
+import RoomsAddContainer from './containers/rooms/add';
+import RoomsDetailContainer from './containers/rooms/detail';
 
-import Modules from './containers/modules';
-import Settings from './containers/settings';
+import ModulesContainer from './containers/modules';
+import SettingsContainer from './containers/settings';
 
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -22,16 +21,16 @@ class Scenes extends Component {
   render() {
     return (
       <Router>
-        <Scene key="modal" component={Modal}>
-          <Scene key="root" tabs>
+        <Lightbox key="modal">
+          <Scene key="root" tabs={true}>
             <Scene key="scenes"
-              component={ScenesScene}
+              component={ScenesContainer}
               title="Scenes"
               icon={this.renderTab}
             />
 
             <Scene key="rules"
-              component={Rules}
+              component={RulesContainer}
               title="Rules"
               icon={this.renderTab}
             />
@@ -42,14 +41,14 @@ class Scenes extends Component {
               initial>
 
               <Scene key="rooms"
-                component={Rooms}
+                component={RoomsContainer}
                 title="Rooms"
                 rightTitle="Add"
                 onRight={() => { Actions.roomsAdd() }}
               />
 
               <Scene key="room"
-                component={RoomsDetail}
+                component={RoomsDetailContainer}
                 title="Room"
                 rightTitle="Edit"
                 onRight={() => { alert('edit') }}
@@ -57,25 +56,25 @@ class Scenes extends Component {
             </Scene>
 
             <Scene key="modules"
-              component={Modules}
+              component={ModulesContainer}
               title="Modules"
               icon={this.renderTab}
             />
 
             <Scene key="settings"
-              component={Settings}
+              component={SettingsContainer}
               title="Settings"
               icon={this.renderTab}
             />
           </Scene>
 
           <Scene key="roomsAdd"
-            component={RoomsAdd}
+            component={RoomsAddContainer}
             title="Add Room"
             leftTitle="Cancel"
             onLeft={Actions.rooms}
           />
-        </Scene>
+        </Lightbox>
       </Router>
     )
   }

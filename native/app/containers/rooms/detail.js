@@ -42,7 +42,7 @@ class Room extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 85,
+    paddingTop: 20,
   }
 })
 

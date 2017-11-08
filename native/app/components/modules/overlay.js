@@ -31,20 +31,7 @@ class ModuleOverlay extends Component {
 
 
   componentWillReceiveProps() {
-    Animated.parallel([
-      Animated.timing(
-        this.state.containerBottom,
-        { toValue: 0, duration: 300 }
-      ),
-      Animated.timing(
-        this.state.containerOpacity,
-        { toValue: 1, duration: 300 }
-      ),
-      Animated.timing(
-        this.state.blurOpacity,
-        { toValue: 0.5, duration: 300 }
-      ),
-    ]).start()
+    this.open()
   }
 
 
@@ -143,18 +130,36 @@ class ModuleOverlay extends Component {
   }
 
 
+  open() {
+    Animated.parallel([
+      Animated.spring(
+        this.state.containerBottom,
+        { toValue: 0, duration: 300 }
+      ),
+      Animated.spring(
+        this.state.containerOpacity,
+        { toValue: 1, duration: 300 }
+      ),
+      Animated.spring(
+        this.state.blurOpacity,
+        { toValue: 0.5, duration: 300 }
+      ),
+    ]).start()
+  }
+
+
   close() {
     Animated
       .parallel([
-        Animated.timing(
+        Animated.spring(
           this.state.containerBottom,
           { toValue: -50, duration: 300 },
         ),
-        Animated.timing(
+        Animated.spring(
           this.state.containerOpacity,
           { toValue: 0, duration: 300 },
         ),
-        Animated.timing(
+        Animated.spring(
           this.state.blurOpacity,
           { toValue: 0, duration: 300 },
         ),
