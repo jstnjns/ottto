@@ -83,6 +83,7 @@ class Rooms extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#FBFBFB',
   },
   listTextContainer: {
     flexDirection: 'row',
