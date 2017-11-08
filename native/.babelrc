@@ -5,8 +5,11 @@
   "plugins": [
     ["module-resolver", {
       "root": ["./app"],
+      "alias": {
+        "components": "./app/components",
+        "containers": "./app/containers"
+      },
       "extensions": [".js", ".ios.js", ".android.js"]
-    }],
-    "transform-decorators-legacy"
+    }]
   ]
 }

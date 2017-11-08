@@ -1,7 +1,6 @@
 package com.ottto;
 
 import android.app.Application;
-import android.util.Log;
 
 import com.facebook.react.ReactApplication;
 import com.brentvatne.react.ReactVideoPackage;
@@ -22,7 +21,7 @@ public class MainApplication extends Application implements ReactApplication {
 
   private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
     @Override
-    protected boolean getUseDeveloperSupport() {
+    public boolean getUseDeveloperSupport() {
       return BuildConfig.DEBUG;
     }
 
@@ -36,6 +35,11 @@ public class MainApplication extends Application implements ReactApplication {
             new BlurViewPackage(),
             new VectorIconsPackage()
       );
+    }
+
+    @Override
+    protected String getJSMainModuleName() {
+      return "index";
     }
   };
 
