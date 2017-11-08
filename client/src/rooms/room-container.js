@@ -1,49 +1,20 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { Link } from 'react-router'
-
-import AppBar from 'material-ui/AppBar'
-import Toolbar from 'material-ui/Toolbar'
-import IconButton from 'material-ui/IconButton'
-import Typography from 'material-ui/Typography'
-import ChevronLeft from 'material-ui-icons/ChevronLeft'
-
 import { getRoom } from './rooms-actions'
-import ModulesList from '../modules/modules-list'
 
-class Room extends Component {
+import Room from './room-component'
+
+
+class RoomContainer extends Component {
   componentWillMount() {
     this.props.getRoom(this.props.params.id)
   }
 
   render() {
-    let { room } = this.props
-
-    if (room) {
-      return (
-        <div className="room">
-          <AppBar position="static">
-            <Toolbar>
-              <IconButton
-                component={Link} to="/"
-                color="contrast">
-                <ChevronLeft />
-              </IconButton>
-              <Typography type="title" color="inherit">
-                {room.name}
-              </Typography>
-            </Toolbar>
-          </AppBar>
-
-          <ModulesList modules={room.modules} />
-        </div>
-      )
-    } else {
-      return (
-        <h1>Loading...</h1>
-      )
-    }
+    return (
+      <Room room={this.props.room} />
+    )
   }
 }
 
@@ -51,4 +22,4 @@ class Room extends Component {
 export default connect(
   (state, props) => ({ room: state.rooms.entities[props.params.id] }),
   (dispatch) => bindActionCreators({ getRoom }, dispatch)
-)(Room)
+)(RoomContainer)

@@ -37,7 +37,7 @@ class ColorAttribute extends Component {
           value={value}
           onChange={this.onChange.bind(this)} />
 
-        <Button
+        <Button raised
           onClick={() => this.setState({ tab: 'temperature' })}>
           Temperature
         </Button>
@@ -58,7 +58,7 @@ class ColorAttribute extends Component {
           max="8500"
           onChange={this.onTemperatureChange.bind(this)} />
 
-        <Button
+        <Button raised
           onClick={() => this.setState({ tab: 'color' })}>
           Color
         </Button>
