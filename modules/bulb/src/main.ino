@@ -8,7 +8,7 @@
 
 otttoConfig config = {
   .name = "lightbulb",
-  .topic = "modules/16",
+  .topic = "modules/17",
   .host = "10.10.0.1"
 };
 Ottto ottto(config);
