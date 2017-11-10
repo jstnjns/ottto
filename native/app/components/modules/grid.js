@@ -5,8 +5,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { getModule, activateModule } from 'actions/modules'
 
-import { ListView, StyleSheet, Text, TouchableHighlight, View } from 'react-native'
-import GridView from 'components/grid-view'
+import { ScrollView, StyleSheet, Text, TouchableHighlight, View } from 'react-native'
 import ModulesGridIcon from './grid/icon'
 
 
@@ -24,12 +23,8 @@ class ModulesGrid extends Component {
     const items = _.concat(modules, blanks)
 
     return (
-      <View style={styles.container}>
-        <GridView
-          items={items}
-          itemsPerRow={4}
-          renderItem={this.renderModule.bind(this)}>
-        </GridView>
+      <View style={styles.content}>
+        {items.map(this.renderModule.bind(this))}
       </View>
     )
   }
@@ -46,10 +41,12 @@ class ModulesGrid extends Component {
 
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    // backgroundColor: 'green',
-  }
+  content: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    paddingVertical: 20,
+  },
 })
 
 
