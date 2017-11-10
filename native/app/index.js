@@ -8,7 +8,7 @@ import thunk from 'redux-thunk'
 import reducers from './reducers'
 
 const logger = createLogger()
-const middleware = applyMiddleware(logger, thunk)
+const middleware = applyMiddleware(thunk, logger)
 const store = createStore(reducers, middleware)
 
 

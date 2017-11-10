@@ -21,13 +21,14 @@ class Rooms extends Component {
       <FlatList style={styles.container}
         contentContainerStyle={styles.list}
         data={this.props.rooms}
-        renderItem={this.renderRoom.bind(this) }/>
+        renderItem={this.renderRoom.bind(this)}
+        keyExtractor={(item, index) => index}/>
     )
   }
 
   renderRoom({ item }) {
     return (
-      <TouchableHighlight key={item.id}
+      <TouchableHighlight
         onPress={this.roomPress.bind(this, item)}
         underlayColor='#eee'>
         <View>

@@ -13,13 +13,9 @@ class ModulesGrid extends Component {
   render() {
     const count = 20
     const modules = this.props.modules.map((module) => {
-      return {
-        ...module,
-        icon: true
-      }
+      return { ...module, icon: true }
     })
-    const blank = { name: '', icon: false }
-    const blanks = _.fill(Array(count - modules.length), blank)
+    const blanks = _.fill(Array(count - modules.length), undefined)
     const items = _.concat(modules, blanks)
 
     return (

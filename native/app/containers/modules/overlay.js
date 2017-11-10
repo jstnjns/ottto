@@ -35,6 +35,8 @@ class ModuleOverlay extends Component {
 
 
   render() {
+    console.log(updateModule)
+    
     return (
       <Modal ref="modal"
         style={styles.modal}
@@ -88,7 +90,7 @@ class ModuleOverlay extends Component {
 
     return (
       <Contents module={module}
-        onModuleChange={this.onModuleChange && this.onModuleChange.bind(this)} />
+        onModuleChange={this.onModuleChange.bind(this)} />
     )
   }
 
@@ -145,5 +147,3 @@ export default connect(
   }),
   (dispatch) => ( bindActionCreators({ updateModule }, dispatch) )
 )(ModuleOverlay)
-
-// export default ModuleOverlay

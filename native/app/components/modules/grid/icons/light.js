@@ -9,31 +9,17 @@ import {
 
 class Light extends Component {
   render() {
+    const { module, style } = this.props
+
     return (
-      <TouchableHighlight
-        key={module.id}
-        onPress={this.props.onPress.bind(this, module)}
+      <TouchableHighlight key={module.id}
+        style={[style, { backgroundColor: module.values.color }]}
         underlayColor='#FFFFFF'
-        style={styles.icon}>
-        <View></View>
+        onPress={this.props.onPress.bind(this, module)}>
+        <View />
       </TouchableHighlight>
     )
   }
-}
-
-
-const iconDimension = 60;
-const styles = {
-  icon: {
-    width: iconDimension,
-    height: iconDimension,
-    backgroundColor: '#007AFF',
-    borderRadius: 14,
-    shadowOffset: { width: 0, height: 3 },
-    shadowRadius: 10,
-    shadowOpacity: 0.03,
-    shadowColor: '#000000',
-  },
 }
 
 

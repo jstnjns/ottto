@@ -2,7 +2,7 @@ import socket from '../socket'
 import _ from 'lodash'
 
 // Action Types
-// const MODULES_GET = 'MODULES_GET'
+const MODULES_GET = 'MODULES_GET'
 const MODULES_GET_SUCCESS = 'MODULES_GET_SUCCESS'
 const MODULES_GET_ERROR = 'MODULES_GET_ERROR'
 
@@ -56,24 +56,21 @@ export const getModuleError = (error) => {
 
 export const updateModule = (module) => {
   return (dispatch, getState) => {
-    return socket.put('/api/modules/' + module.id, module)
+    dispatch(updatingModule(module))
+
+    socket.put('/api/modules/' + module.id, module)
+      .then(module => dispatch(moduleUpdated(module)))
       .catch(error => dispatch(moduleUpdateError(error)))
   }
 }
-export const moduleUpdated = (module) => {
-  // For some reason the response is an array, grab the first item
-  return { type: MODULE_UPDATE_SUCCESS, module: module }
+const updatingModule = (module) => {
+  return { type: MODULE_UPDATE, module }
 }
-export const moduleUpdateError = (error) => {
+const moduleUpdated = (module) => {
+  return { type: MODULE_UPDATE_SUCCESS, module }
+}
+const moduleUpdateError = (error) => {
   return { type: MODULE_UPDATE_ERROR, error }
-}
-
-export const activateModule = (module_id) => {
-  return { type: MODULE_ACTIVATE, module_id }
-}
-
-export const deactivateModule = () => {
-  return { type: MODULE_DEACTIVATE }
 }
 
 
@@ -85,11 +82,6 @@ const defaultState = {
 
 const modulesReducer = (state = {}, action) => {
   switch(action.type) {
-    // case MODULES_GET:
-    //   return {
-    //     ...state,
-    //   }
-
     case MODULES_GET_SUCCESS:
       return {
         ...state,
@@ -98,11 +90,6 @@ const modulesReducer = (state = {}, action) => {
           ..._.keyBy(action.modules, 'id'),
         }
       }
-
-    // case MODULE_GET:
-    //   return {
-    //     ...state,
-    //   }
 
     case MODULE_GET_SUCCESS:
       return {
@@ -118,11 +105,7 @@ const modulesReducer = (state = {}, action) => {
         ...state,
       }
 
-    // case MODULE_UPDATE:
-    //   return {
-    //     ...state,
-    //   }
-
+    case MODULE_UPDATE:
     case MODULE_UPDATE_SUCCESS:
       return {
         ...state,

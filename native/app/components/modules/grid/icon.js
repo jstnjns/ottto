@@ -1,28 +1,19 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 
-import {
-  StyleSheet,
-  TouchableHighlight,
-  View,
-  Text,
-} from 'react-native'
-import Light from './icons/light'
+import { StyleSheet, TouchableHighlight, View, Text } from 'react-native'
+import LightIcon from './icons/light'
 
 
 class ModulesGridIcon extends Component {
   render() {
-    let module = this.props.module;
+    let { module } = this.props;
 
-    if(module.icon) {
+    if(module) {
       return (
         <View style={styles.gridItem}>
-          <TouchableHighlight
-            key={module.id}
-            onPress={this.props.onPress.bind(this, module)}
-            underlayColor='#FFFFFF'
-            style={styles.gridItemIcon}>
-            <View />
-          </TouchableHighlight>
+          {this.renderIcon.bind(this)(module)}
           <Text style={styles.gridItemText}
             numberOfLines={1}
             adjustsFontSizeToFit={true}>
@@ -34,7 +25,6 @@ class ModulesGridIcon extends Component {
       return (
         <View style={styles.gridItem}>
           <TouchableHighlight
-            key={module.id}
             underlayColor='#FFFFFF'
             style={styles.gridItemBlank}>
             <View />
@@ -42,9 +32,27 @@ class ModulesGridIcon extends Component {
           <Text style={styles.gridItemText}
             numberOfLines={1}
             adjustsFontSizeToFit={true}>
-            None
           </Text>
         </View>
+      )
+    }
+  }
+
+  renderIcon(module) {
+    if(module.type.name == 'Light') {
+      return (
+        <LightIcon module={module}
+          style={styles.gridItemIcon}
+          onPress={this.props.onPress.bind(this, module)} />
+      )
+    } else {
+      return (
+        <TouchableHighlight
+          onPress={this.props.onPress.bind(this, module)}
+          underlayColor='#FFFFFF'
+          style={styles.gridItemIcon}>
+          <View />
+        </TouchableHighlight>
       )
     }
   }
@@ -62,7 +70,7 @@ const styles = StyleSheet.create({
   gridItemIcon: {
     width: iconDimension,
     height: iconDimension,
-    backgroundColor: '#007AFF',
+    backgroundColor: 'white',
     borderRadius: 14,
     shadowOffset: { width: 0, height: 3 },
     shadowRadius: 10,
@@ -87,4 +95,8 @@ const styles = StyleSheet.create({
 })
 
 
-export default ModulesGridIcon
+export default connect(
+  (state, props) => ({
+    module: props.module ? state.modules.entities[props.module.id] : null
+  })
+)(ModulesGridIcon)
