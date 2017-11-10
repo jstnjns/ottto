@@ -35,19 +35,18 @@ class ModulesGridIcon extends Component {
         <View style={styles.gridItem}>
           <TouchableHighlight
             key={module.id}
-            onLongPress={this.onEmptyPress.bind(this)}
             underlayColor='#FFFFFF'
             style={styles.gridItemBlank}>
             <View />
           </TouchableHighlight>
-          <Text style={styles.gridItemText}>{module.name}</Text>
+          <Text style={styles.gridItemText}
+            numberOfLines={1}
+            adjustsFontSizeToFit={true}>
+            None
+          </Text>
         </View>
       )
     }
-  }
-
-  onEmptyPress() {
-    console.log('show "add module" menu')
   }
 }
 
@@ -55,7 +54,9 @@ class ModulesGridIcon extends Component {
 const iconDimension = 60;
 const styles = StyleSheet.create({
   gridItem: {
-    margin: 5,
+    marginBottom: 7,
+    marginLeft: 11,
+    marginRight: 11,
     alignItems: 'center',
   },
   gridItemIcon: {
@@ -69,9 +70,9 @@ const styles = StyleSheet.create({
     shadowColor: '#000000',
   },
   gridItemText: {
-    marginTop: 5,
+    marginTop: 2,
     width: iconDimension,
-    height: 14,
+    height: 13,
     overflow: 'hidden',
     fontSize: 11,
     color: '#999999',

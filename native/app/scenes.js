@@ -52,6 +52,7 @@ class Scenes extends Component {
               <Scene key="rooms"
                 initial={true}
                 component={RoomsContainer}
+                navTransparent
                 title="Rooms"
                 rightTitle="Add"
                 onRight={() => { Actions.addRoom({ test: 'yep' }) }}
@@ -59,6 +60,7 @@ class Scenes extends Component {
 
               <Scene key="room"
                 component={RoomsDetailContainer}
+                navTransparent
                 title="Room"
                 rightTitle="Edit"
                 onRight={() => { alert('edit') }}
@@ -102,6 +104,8 @@ class Scenes extends Component {
 
 const styles = StyleSheet.create({
   tabBar: {
+    backgroundColor: 'white',
+    borderTopWidth: 0,
   }
 })
 

@@ -34,7 +34,7 @@ class Rooms extends Component {
     })
 
     return (
-      <ListView
+      <ListView contentContainerStyle={styles.list}
         renderRow={this.renderRoom.bind(this)}
         dataSource={dataSource.cloneWithRows(rooms)}
         enableEmptySections={true}>
@@ -52,11 +52,6 @@ class Rooms extends Component {
         <View>
           <View style={styles.listTextContainer}>
             <Text style={styles.listText}>{room.name}</Text>
-            {/* <TouchableHighlight style={styles.listDelete}
-              onPress={this.deletePress.bind(this, room)}>
-              <Icon style={styles.listItemDelete}
-                name="times-circle-o" size={24} />
-            </TouchableHighlight> */}
           </View>
           <View style={styles.listSeparator}></View>
         </View>
@@ -83,7 +78,11 @@ class Rooms extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FBFBFB',
+    backgroundColor: '#F9F9F9',
+  },
+  list: {
+    flex: 1,
+    justifyContent: 'center',
   },
   listTextContainer: {
     flexDirection: 'row',
@@ -102,6 +101,7 @@ const styles = StyleSheet.create({
   },
   listText: {
     flex: 1,
+    fontSize: 17,
   },
   listItemDelete: {
     color: '#c00',

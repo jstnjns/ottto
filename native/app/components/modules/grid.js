@@ -5,20 +5,14 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { getModule, activateModule } from 'actions/modules'
 
-import {
-  ListView,
-  StyleSheet,
-  Text,
-  TouchableHighlight,
-  View,
-} from 'react-native'
+import { ListView, StyleSheet, Text, TouchableHighlight, View } from 'react-native'
 import GridView from 'components/grid-view'
 import ModulesGridIcon from './grid/icon'
 
 
 class ModulesGrid extends Component {
   render() {
-    const count = 24
+    const count = 20
     const modules = this.props.modules.map((module) => {
       return {
         ...module,
@@ -30,7 +24,7 @@ class ModulesGrid extends Component {
     const items = _.concat(modules, blanks)
 
     return (
-      <View style={{flex: 1}}>
+      <View style={styles.container}>
         <GridView
           items={items}
           itemsPerRow={4}
@@ -49,6 +43,14 @@ class ModulesGrid extends Component {
     )
   }
 }
+
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    // backgroundColor: 'green',
+  }
+})
 
 
 export default connect(

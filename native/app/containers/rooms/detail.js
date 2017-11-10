@@ -36,8 +36,10 @@ class Room extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 20,
-    backgroundColor: '#FBFBFB',
+    // flexDirection: 'column',
+    // justifyContent: 'flex-end',
+    // paddingTop: 20,
+    backgroundColor: '#F9F9F9',
   }
 })
 

@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
-import {
-  StyleSheet,
-  ListView,
-  View
-} from 'react-native';
+import { StyleSheet, ListView, View } from 'react-native';
 
 
 class GridView extends Component {
@@ -37,9 +33,9 @@ class GridView extends Component {
 
     return (
       <ListView {...this.props}
+        style={styles.container}
         renderRow={this.renderGroup.bind(this)}
-        dataSource={dataSource.cloneWithRows(groups)}
-        contentContainerStyle={styles.grid}>
+        dataSource={dataSource.cloneWithRows(groups)}>
       </ListView>
     )
   }
@@ -60,10 +56,14 @@ class GridView extends Component {
 
 
 const styles = StyleSheet.create({
+  container: {
+    paddingTop: 100,
+    // backgroundColor: 'red',
+  },
   row: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between'
+    justifyContent: 'center',
   },
   spacer: {
     width: 0,
