@@ -7,7 +7,7 @@ import { getRooms } from '../../actions/rooms'
 import { getModules } from '../../actions/modules'
 import { Actions } from 'react-native-router-flux'
 
-import { ListView, TouchableHighlight, Text, View, StyleSheet } from 'react-native'
+import { FlatList, ListView, TouchableHighlight, Text, View, StyleSheet } from 'react-native'
 
 
 class Rooms extends Component {
@@ -17,54 +17,26 @@ class Rooms extends Component {
   }
 
   render() {
-    const renderContent = this.props.rooms.length
-      ? this.renderRooms
-      : this.renderNone
-
     return (
-      <View style={styles.container}>
-        {renderContent.bind(this, this.props.rooms)()}
-      </View>
+      <FlatList style={styles.container}
+        contentContainerStyle={styles.list}
+        data={this.props.rooms}
+        renderItem={this.renderRoom.bind(this) }/>
     )
   }
 
-  renderRooms(rooms) {
-    var dataSource = new ListView.DataSource({
-      rowHasChanged: (a, b) => a !== b
-    })
-
+  renderRoom({ item }) {
     return (
-      <ListView contentContainerStyle={styles.list}
-        renderRow={this.renderRoom.bind(this)}
-        dataSource={dataSource.cloneWithRows(rooms)}
-        enableEmptySections={true}>
-      </ListView>
-    )
-  }
-
-
-  renderRoom(room) {
-    return (
-      <TouchableHighlight
-        key={room.id}
-        onPress={this.roomPress.bind(this, room)}
+      <TouchableHighlight key={item.id}
+        onPress={this.roomPress.bind(this, item)}
         underlayColor='#eee'>
         <View>
           <View style={styles.listTextContainer}>
-            <Text style={styles.listText}>{room.name}</Text>
+            <Text style={styles.listText}>{item.name}</Text>
           </View>
           <View style={styles.listSeparator}></View>
         </View>
       </TouchableHighlight>
-    )
-  }
-
-
-  renderNone() {
-    return (
-      <View style={styles.emptyContainer}>
-        <Text>You have no rooms...</Text>
-      </View>
     )
   }
 
