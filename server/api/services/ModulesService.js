@@ -91,12 +91,12 @@ module.exports = {
           if(req) {
             console.log('Sending:', 'modules/' + id, simplified)
             Modules.publishUpdate(id, simplified, req);
-            // MqttService.publish({
-            //   topic: 'modules/' + id,
-            //   payload: JSON.stringify(simplified),
-            //   qos: 0,
-            //   retain: true
-            // });
+            MqttService.publish({
+              topic: 'modules/' + id,
+              payload: JSON.stringify(simplified),
+              qos: 0,
+              retain: true
+            });
           }
 
           return module;
