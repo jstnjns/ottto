@@ -35,8 +35,6 @@ class ModuleOverlay extends Component {
 
 
   render() {
-    console.log(updateModule)
-    
     return (
       <Modal ref="modal"
         style={styles.modal}
