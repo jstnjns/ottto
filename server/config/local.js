@@ -42,7 +42,7 @@ module.exports = {
 
   // host: ip,
   host: 'localhost',
-  port: 3000,
+  port: 1337,
 
   /***************************************************************************
    * Your SSL certificate and key, if you want to be able to serve HTTP      *

@@ -3,8 +3,8 @@ import sailsIO from 'sails.io.js'
 import Promise from 'bluebird'
 
 const io = sailsIO(socketIO)
-// io.sails.url = 'http://ottto.local:3000'
-io.sails.url = 'http://localhost:3000'
+// io.sails.url = 'http://ottto.local:1337'
+io.sails.url = 'http://localhost:1337'
 io.sails.useCORSRouteToGetCookie = false
 
 class Socket {
