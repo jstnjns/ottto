@@ -40,7 +40,8 @@ module.exports = {
     public: '../.tmp/public/'
   },
 
-  host: ip,
+  // host: ip,
+  host: 'localhost',
   port: 3000,
 
   /***************************************************************************
