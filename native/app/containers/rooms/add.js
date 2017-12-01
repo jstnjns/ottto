@@ -8,23 +8,19 @@ class RoomsAdd extends Component {
     this.refs.modal.open()
   }
 
-  close() {
-    this.refs.modal.close()
+  render() {
+    return (
+      <Modal ref="modal"
+        position={'center'}
+        onClosed={this.onClose}
+        style={styles.modal}>
+        <Text>Add Room</Text>
+      </Modal>
+    )
   }
 
   onClose() {
     Actions.pop()
-  }
-
-  render() {
-    return (
-      <Modal ref="modal"
-        position="center"
-        onClosed={this.onClose}
-        style={styles.modal}>
-        <Text onPress={this.close}>Add Room</Text>
-      </Modal>
-    )
   }
 }
 

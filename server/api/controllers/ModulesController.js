@@ -9,13 +9,14 @@ module.exports = {
 
   update: function(req, res) {
 
+    console.log('Receiving:', req.body);
+
     ModulesService
       .update(req.param('id'), req.body, req)
       .catch(res.badRequest);
 
     return Modules
       .find(req.param('id'))
-      .populateAll()
       .then(res.ok)
       .catch(res.badRequest);
 

@@ -1,55 +1,66 @@
 import React, { Component } from 'react';
-import { Text, AlertIOS } from 'react-native';
-import { Router, Scene, Actions, Modal } from 'react-native-router-flux';
-
-import ScenesScene from './containers/scenes';
-import Rules from './containers/rules';
-
-import Rooms from './containers/rooms';
-import RoomsAdd from './containers/rooms/add';
-import RoomsDetail from './containers/rooms/detail';
-// import RoomsMenu from './containers/rooms/menu';
-
-import Modules from './containers/modules';
-import Settings from './containers/settings';
-
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { addRoom } from './actions/rooms'
+
+import { StyleSheet } from 'react-native'
+import Icon from 'react-native-vector-icons/FontAwesome'
+
+import { Router, Scene, Tabs, Actions, Lightbox } from 'react-native-router-flux';
+
+import ScenesContainer from './containers/scenes';
+import RulesContainer from './containers/rules';
+
+import RoomsContainer from './containers/rooms/index';
+import RoomsAddContainer from './containers/rooms/add';
+import RoomsDetailContainer from './containers/rooms/detail';
+
+import ModulesContainer from './containers/modules/index';
+import ModulesOverlayContainer from './containers/modules/overlay';
+
+import SettingsContainer from './containers/settings';
+
 
 
 class Scenes extends Component {
   render() {
     return (
       <Router>
-        <Scene key="modal" component={Modal}>
-          <Scene key="root" tabs>
+        <Lightbox>
+          <Tabs key="root"
+            tabBarStyle={styles.tabBar}
+            activeTintColor={'#157EFB'}>
             <Scene key="scenes"
-              component={ScenesScene}
+              component={ScenesContainer}
               title="Scenes"
-              icon={this.renderTab}
+              icon={this.renderIcon}
+              iconName="picture-o"
             />
 
             <Scene key="rules"
-              component={Rules}
+              component={RulesContainer}
               title="Rules"
-              icon={this.renderTab}
+              icon={this.renderIcon}
+              iconName="sliders"
             />
 
             <Scene key="roomsScene"
               title="Rooms"
-              icon={this.renderTab}
-              initial>
-
+              icon={this.renderIcon}
+              iconName="home"
+              initial={true}>
               <Scene key="rooms"
-                component={Rooms}
+                initial={true}
+                component={RoomsContainer}
+                navTransparent
                 title="Rooms"
                 rightTitle="Add"
-                onRight={() => { Actions.roomsAdd() }}
+                onRight={() => { Actions.addRoom({ test: 'yep' }) }}
               />
 
               <Scene key="room"
-                component={RoomsDetail}
+                component={RoomsDetailContainer}
+                navTransparent
                 title="Room"
                 rightTitle="Edit"
                 onRight={() => { alert('edit') }}
@@ -57,35 +68,46 @@ class Scenes extends Component {
             </Scene>
 
             <Scene key="modules"
-              component={Modules}
+              component={ModulesContainer}
               title="Modules"
-              icon={this.renderTab}
+              icon={this.renderIcon}
+              iconName="th"
             />
 
             <Scene key="settings"
-              component={Settings}
+              component={SettingsContainer}
               title="Settings"
-              icon={this.renderTab}
+              icon={this.renderIcon}
+              iconName="cog"
             />
-          </Scene>
+          </Tabs>
 
-          <Scene key="roomsAdd"
-            component={RoomsAdd}
-            title="Add Room"
-            leftTitle="Cancel"
-            onLeft={Actions.rooms}
-          />
-        </Scene>
+
+          <Scene key="showModule"
+            component={ModulesOverlayContainer} />
+
+          <Scene key="addRoom"
+            component={RoomsAddContainer} />
+        </Lightbox>
       </Router>
     )
   }
 
-  renderTab({selected, title}) {
+  renderIcon(scene) {
     return (
-      <Text>{title}</Text>
+      <Icon name={scene.iconName} size={20}
+        color={scene.focused ? scene.activeTintColor : scene.tintColor} />
     )
   }
 }
+
+
+const styles = StyleSheet.create({
+  tabBar: {
+    backgroundColor: 'white',
+    borderTopWidth: 0,
+  }
+})
 
 
 export default connect(

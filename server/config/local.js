@@ -40,8 +40,9 @@ module.exports = {
     public: '../.tmp/public/'
   },
 
-  host: ip,
-  port: 80,
+  // host: ip,
+  host: 'localhost',
+  port: 3000,
 
   /***************************************************************************
    * Your SSL certificate and key, if you want to be able to serve HTTP      *
