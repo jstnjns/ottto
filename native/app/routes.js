@@ -22,7 +22,7 @@ import SettingsContainer from './containers/settings';
 
 
 
-class Scenes extends Component {
+class Routes extends Component {
   render() {
     return (
       <Router>
@@ -113,4 +113,4 @@ const styles = StyleSheet.create({
 export default connect(
   (state) => ( {} ),
   (dispatch) => ( bindActionCreators({ addRoom }, dispatch) )
-)(Scenes)
+)(Routes)

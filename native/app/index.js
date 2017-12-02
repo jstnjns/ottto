@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Scenes from './scenes'
+import Routes from './routes'
 
 import { applyMiddleware, createStore } from 'redux'
 import { Provider } from 'react-redux'
@@ -16,7 +16,7 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <Scenes />
+        <Routes />
       </Provider>
     )
   }
