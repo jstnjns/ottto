@@ -8478,6 +8478,33 @@
         "createdAt": "2017-08-06T19:44:41.391Z",
         "updatedAt": "2017-08-06T19:44:41.391Z",
         "id": 942
+      },
+      {
+        "module": 16,
+        "attribute": "power",
+        "previous": "false",
+        "value": "true",
+        "createdAt": "2017-12-01T07:52:13.447Z",
+        "updatedAt": "2017-12-01T07:52:13.447Z",
+        "id": 943
+      },
+      {
+        "module": 16,
+        "attribute": "level",
+        "previous": "71",
+        "value": "92",
+        "createdAt": "2017-12-01T07:52:22.474Z",
+        "updatedAt": "2017-12-01T07:52:22.474Z",
+        "id": 944
+      },
+      {
+        "module": 16,
+        "attribute": "level",
+        "previous": "92",
+        "value": "100",
+        "createdAt": "2017-12-01T07:52:22.721Z",
+        "updatedAt": "2017-12-01T07:52:22.721Z",
+        "id": 945
       }
     ],
     "modulegroups": [
@@ -8883,10 +8910,10 @@
         "group": 7,
         "id": 16,
         "createdAt": "2014-10-05T07:40:20.834Z",
-        "updatedAt": "2017-08-06T19:44:41.367Z",
+        "updatedAt": "2017-12-01T07:52:22.735Z",
         "values": {
-          "power": false,
-          "level": "71",
+          "power": true,
+          "level": 100,
           "color": "#ff8000"
         },
         "chip": "8395441",
@@ -9190,7 +9217,7 @@
   },
   "counters": {
     "moduleevents": {
-      "id": 942
+      "id": 945
     },
     "modulegroups": {
       "id": 7

@@ -1,38 +1,30 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
-import Grid from 'material-ui/Grid'
-import Paper from 'material-ui/Paper'
-import Typography from 'material-ui/Typography'
-import FiberManualRecord from 'material-ui-icons/FiberManualRecord'
+import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
+import Avatar from 'material-ui/Avatar'
+import LightbulbOutline from 'material-ui-icons/LightbulbOutline'
 
 
 class ModulesList extends Component {
   render() {
     return (
-      <Grid style={{ padding: 16 }}
-        spacing={16}
-        justify="center"
-        container>
+      <List>
         {this.props.modules.map(this.renderRoom.bind(this))}
-      </Grid>
+      </List>
     )
   }
 
   renderRoom(module, key) {
     return (
-      <Grid item key={key} xs={3} sm={2}>
-        <Link to={`/modules/${module.id}`}
-          style={{ textDecoration: 'none', textAlign: 'center' }}>
-          <Typography align="center">
-            <FiberManualRecord style={{ fill: '#CCCCCC', width: 72, height: 72 }} />
-          </Typography>
-
-          <Typography type="caption"
-            align="center">
-            {module.name}
-          </Typography>
-        </Link>
-      </Grid>
+      <ListItem key={key} button
+        component={Link} to={`/modules/${module.id}`}>
+        <ListItemIcon>
+          <Avatar>
+            <LightbulbOutline style={{ fill: '#FFFFFF', width: 24, height: 24 }} />
+          </Avatar>
+        </ListItemIcon>
+        <ListItemText primary={module.name} secondary={JSON.stringify(module.values)} />
+      </ListItem>
     )
   }
 }

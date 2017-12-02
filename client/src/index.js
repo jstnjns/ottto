@@ -16,7 +16,7 @@ import SettingsContainer from './settings/settings-container'
 
 
 const logger = createLogger()
-const middleware = applyMiddleware(logger, thunk)
+const middleware = applyMiddleware(thunk, logger)
 const store = createStore(reducers, middleware)
 
 

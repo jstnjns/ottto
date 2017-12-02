@@ -1,9 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router'
-import { Icon } from 'semantic-ui-react'
 import Paper from 'material-ui/Paper'
 import BottomNavigation, { BottomNavigationButton } from 'material-ui/BottomNavigation'
-import Tabs, { Tab } from 'material-ui/Tabs';
 
 import styles from './app.css'
 
