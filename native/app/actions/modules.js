@@ -1,7 +1,7 @@
 import socket from '../socket'
 import _ from 'lodash'
 
-// Action Types
+// TYPES
 const MODULES_GET = 'MODULES_GET'
 const MODULES_GET_SUCCESS = 'MODULES_GET_SUCCESS'
 const MODULES_GET_ERROR = 'MODULES_GET_ERROR'
@@ -14,16 +14,13 @@ const MODULE_UPDATE = 'MODULE_UPDATE'
 const MODULE_UPDATE_SUCCESS = 'MODULE_UPDATE_SUCCESS'
 const MODULE_UPDATE_ERROR = 'MODULE_UPDATE_ERROR'
 
-const MODULE_ACTIVATE = 'MODULE_ACTIVATE'
-const MODULE_DEACTIVATE = 'MODULE_DEACTIVATE'
 
-
-// Action Creators
+// CREATORS
 export const getModules = () => {
   return (dispatch, getState) => {
     socket.on('modules', (msg) => {
       switch(msg.verb) {
-        case 'updated': dispatch(moduleUpdated(msg.data))
+        case 'updated': dispatch(updateModuleSuccess(msg.data))
       }
     })
 
@@ -59,28 +56,28 @@ export const updateModule = (module) => {
     dispatch(updatingModule(module))
 
     socket.put('/api/modules/' + module.id, module)
-      .then(module => dispatch(moduleUpdated(module)))
-      .catch(error => dispatch(moduleUpdateError(error)))
+      .then(module => dispatch(updateModuleSuccess(module)))
+      .catch(error => dispatch(updateModuleError(error)))
   }
 }
 const updatingModule = (module) => {
   return { type: MODULE_UPDATE, module }
 }
-const moduleUpdated = (module) => {
+const updateModuleSuccess = (module) => {
   return { type: MODULE_UPDATE_SUCCESS, module }
 }
-const moduleUpdateError = (error) => {
+const updateModuleError = (error) => {
   return { type: MODULE_UPDATE_ERROR, error }
 }
 
 
-// Reducers
-const defaultState = {
-  entities: [],
+// REDUCERS
+const initialState = {
+  entities: {},
   active: null
 }
 
-const modulesReducer = (state = {}, action) => {
+const modulesReducer = (state = initialState, action) => {
   switch(action.type) {
     case MODULES_GET_SUCCESS:
       return {
@@ -121,19 +118,6 @@ const modulesReducer = (state = {}, action) => {
     case MODULE_UPDATE_ERROR:
       return {
         ...state,
-      }
-
-    case MODULE_ACTIVATE:
-      return {
-        ...state,
-        active: state.entities[action.module_id]
-      }
-
-
-    case MODULE_DEACTIVATE:
-      return {
-        ...state,
-        active: null
       }
 
     default: return state;

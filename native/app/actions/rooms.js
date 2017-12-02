@@ -1,10 +1,15 @@
 import _ from 'lodash'
 import socket from '../socket'
 
-// Action Types
+
+// TYPES
 const ROOMS_GET = 'ROOMS_GET'
 const ROOMS_GET_SUCCESS = 'ROOMS_GET_SUCCESS'
 const ROOMS_GET_ERROR = 'ROOMS_GET_ERROR'
+
+const ROOM_GET = 'ROOM_GET'
+const ROOM_GET_SUCCESS = 'ROOM_GET_SUCCESS'
+const ROOM_GET_ERROR = 'ROOM_GET_ERROR'
 
 const ROOM_POST = 'ROOM_POST'
 const ROOM_POST_SUCCESS = 'ROOM_POST_SUCCESS'
@@ -19,9 +24,9 @@ const ROOM_DELETE_SUCCESS = 'ROOM_DELETE_SUCCESS'
 const ROOM_DELETE_ERROR = 'ROOM_DELETE_ERROR'
 
 
-// Action Creators
+// CREATORS
 export const getRooms = () => {
-  return (dispatch, getState) => {
+  return (dispatch) => {
     dispatch(gettingRooms())
 
     return socket.get('/api/modulegroups')
@@ -29,14 +34,32 @@ export const getRooms = () => {
       .catch(error => dispatch(getRoomsError(error)))
   }
 }
-export const gettingRooms = () => {
+const gettingRooms = () => {
   return { type: ROOMS_GET }
 }
-export const getRoomsSuccess = (rooms) => {
+const getRoomsSuccess = (rooms) => {
   return { type: ROOMS_GET_SUCCESS, rooms }
 }
-export const getRoomsError = (error) => {
+const getRoomsError = (error) => {
   return { type: ROOMS_GET_ERROR, error }
+}
+export const getRoom = (id) => {
+  return (dispatch) => {
+    dispatch(gettingRoom())
+
+    return socket.get(`/api/modulegroups/${id}`)
+      .then(room => dispatch(getRoomSuccess(room)))
+      .catch(error => dispatch(getRoomError(error)))
+  }
+}
+const gettingRoom = () => {
+  return { type: ROOM_GET }
+}
+const getRoomSuccess = (room) => {
+  return { type: ROOM_GET_SUCCESS, room }
+}
+const getRoomError = (error) => {
+  return { type: ROOM_GET_ERROR, error }
 }
 
 export const postRoom = (room) => {
@@ -48,13 +71,13 @@ export const postRoom = (room) => {
       .catch(error => dispatch(postRoomError(error)))
   }
 }
-export const postingRoom = (room) => {
+const postingRoom = (room) => {
   return { type: ROOM_POST, room }
 }
-export const postRoomSuccess = (room) => {
+const postRoomSuccess = (room) => {
   return { type: ROOM_POST_SUCCESS, room }
 }
-export const postRoomError = (error) => {
+const postRoomError = (error) => {
   return { type: ROOM_POST_ERROR, error }
 }
 
@@ -67,13 +90,13 @@ export const putRoom = (room) => {
       .catch(error => dispatch(putRoomError(room)))
   }
 }
-export const puttingRoom = (room) => {
+const puttingRoom = (room) => {
   return { type: ROOM_PUT, room }
 }
-export const putRoomSuccess = (room) => {
+const putRoomSuccess = (room) => {
   return { type: ROOM_PUT_SUCCESS, room }
 }
-export const putRoomError = (error) => {
+const putRoomError = (error) => {
   return { type: ROOM_PUT_ERROR, error }
 }
 
@@ -86,18 +109,18 @@ export const deleteRoom = (room) => {
       .catch(error => dispatch(deleteRoomError(room)))
   }
 }
-export const deletingRoom = (room) => {
+const deletingRoom = (room) => {
   return { type: ROOM_DELETE, room }
 }
-export const deleteRoomSuccess = (room) => {
+const deleteRoomSuccess = (room) => {
   return { type: ROOM_DELETE_SUCCESS, room }
 }
-export const deleteRoomError = (error) => {
+const deleteRoomError = (error) => {
   return { type: ROOM_DELETE_ERROR, error }
 }
 
 
-// Reducers
+// REDUCERS
 const initialState = {
   entities: [],
 }
@@ -123,50 +146,17 @@ const roomsReducer = (state = initialState, action) => {
         ...state,
       }
 
-    case ROOM_POST_SUCCESS:
+    case ROOM_GET_SUCCESS:
       return {
         ...state,
         entities: {
           ...state.entities,
-          [action.room.id]: action.room
+          [action.room.id]: action.room,
         }
       }
 
-    case ROOM_POST_ERROR:
-      return {
-        ...state,
-      }
-
-    case ROOM_PUT:
-      return {
-        ...state,
-        entities: {
-          ...state.entities,
-          [action.room.id]: action.room
-        }
-      }
-
-    case ROOM_DELETE:
-      return {
-        ...state,
-      }
-
-    case ROOM_DELETE_SUCCESS:
-      return {
-        ...state,
-        entities: state.entities.filter((room) => {
-          room.id !== action.room.id
-        })
-      }
-
-    case ROOM_DELETE_ERROR:
-      return {
-        ...state,
-      }
-
-    default: return state;
+    default: return state
   }
 }
 
-
-export default roomsReducer;
+export default roomsReducer

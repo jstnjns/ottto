@@ -8505,6 +8505,114 @@
         "createdAt": "2017-12-01T07:52:22.721Z",
         "updatedAt": "2017-12-01T07:52:22.721Z",
         "id": 945
+      },
+      {
+        "module": 16,
+        "attribute": "color",
+        "previous": "#ff8000",
+        "value": "#ce84ff",
+        "createdAt": "2017-12-02T23:00:00.814Z",
+        "updatedAt": "2017-12-02T23:00:00.814Z",
+        "id": 946
+      },
+      {
+        "module": 16,
+        "attribute": "level",
+        "previous": "100",
+        "value": "67",
+        "createdAt": "2017-12-02T23:33:56.866Z",
+        "updatedAt": "2017-12-02T23:33:56.866Z",
+        "id": 947
+      },
+      {
+        "module": 16,
+        "attribute": "level",
+        "previous": "67",
+        "value": "95",
+        "createdAt": "2017-12-02T23:33:58.249Z",
+        "updatedAt": "2017-12-02T23:33:58.249Z",
+        "id": 948
+      },
+      {
+        "module": 16,
+        "attribute": "level",
+        "previous": "95",
+        "value": "97",
+        "createdAt": "2017-12-02T23:33:58.456Z",
+        "updatedAt": "2017-12-02T23:33:58.456Z",
+        "id": 949
+      },
+      {
+        "module": 16,
+        "attribute": "level",
+        "previous": "97",
+        "value": "100",
+        "createdAt": "2017-12-02T23:33:59.075Z",
+        "updatedAt": "2017-12-02T23:33:59.075Z",
+        "id": 950
+      },
+      {
+        "module": 16,
+        "attribute": "power",
+        "previous": "true",
+        "value": "false",
+        "createdAt": "2017-12-02T23:34:00.135Z",
+        "updatedAt": "2017-12-02T23:34:00.135Z",
+        "id": 951
+      },
+      {
+        "module": 16,
+        "attribute": "power",
+        "previous": "false",
+        "value": "true",
+        "createdAt": "2017-12-02T23:34:00.965Z",
+        "updatedAt": "2017-12-02T23:34:00.965Z",
+        "id": 952
+      },
+      {
+        "module": 16,
+        "attribute": "color",
+        "previous": "#ce84ff",
+        "value": "#ff825f",
+        "createdAt": "2017-12-02T23:34:01.725Z",
+        "updatedAt": "2017-12-02T23:34:01.725Z",
+        "id": 953
+      },
+      {
+        "module": 16,
+        "attribute": "color",
+        "previous": "#ff825f",
+        "value": "#eeff66",
+        "createdAt": "2017-12-02T23:34:02.306Z",
+        "updatedAt": "2017-12-02T23:34:02.306Z",
+        "id": 954
+      },
+      {
+        "module": 16,
+        "attribute": "color",
+        "previous": "#eeff66",
+        "value": "#84ff31",
+        "createdAt": "2017-12-02T23:34:02.655Z",
+        "updatedAt": "2017-12-02T23:34:02.655Z",
+        "id": 955
+      },
+      {
+        "module": 16,
+        "attribute": "color",
+        "previous": "#84ff31",
+        "value": "#6bc6ff",
+        "createdAt": "2017-12-02T23:47:10.453Z",
+        "updatedAt": "2017-12-02T23:47:10.453Z",
+        "id": 956
+      },
+      {
+        "module": 16,
+        "attribute": "color",
+        "previous": "#6bc6ff",
+        "value": "#ffa167",
+        "createdAt": "2017-12-02T23:47:12.235Z",
+        "updatedAt": "2017-12-02T23:47:12.235Z",
+        "id": 957
       }
     ],
     "modulegroups": [
@@ -8910,11 +9018,11 @@
         "group": 7,
         "id": 16,
         "createdAt": "2014-10-05T07:40:20.834Z",
-        "updatedAt": "2017-12-01T07:52:22.735Z",
+        "updatedAt": "2017-12-02T23:47:12.254Z",
         "values": {
           "power": true,
           "level": 100,
-          "color": "#ff8000"
+          "color": "#ffa167"
         },
         "chip": "8395441",
         "ip": "192.168.1.23"
@@ -9217,7 +9325,7 @@
   },
   "counters": {
     "moduleevents": {
-      "id": 945
+      "id": 957
     },
     "modulegroups": {
       "id": 7
