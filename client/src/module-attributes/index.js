@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Form } from 'semantic-ui-react'
 
 import BooleanAttribute from './boolean'
 import ColorAttribute from './color'
@@ -20,6 +19,8 @@ class Attribute extends Component {
         break
       case 'number':
         Contents = NumberAttribute
+        break
+      default:
         break
     }
 

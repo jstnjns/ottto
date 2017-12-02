@@ -4,7 +4,7 @@ import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 import { createLogger } from 'redux-logger'
-import { Router, browserHistory } from 'react-router'
+import { browserHistory } from 'react-router'
 
 import reducers from './app/app-actions'
 

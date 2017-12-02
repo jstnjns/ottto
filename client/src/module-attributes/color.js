@@ -19,7 +19,7 @@ class ColorAttribute extends Component {
   render() {
     let { tab } = this.state
 
-    if (tab == 'temperature') {
+    if (tab === 'temperature') {
       return this.renderTemperature()
     } else {
       return this.renderColor()
@@ -47,7 +47,7 @@ class ColorAttribute extends Component {
 
   renderTemperature() {
     let { attribute } = this.props
-    let { temperature, value } = this.state
+    let { temperature } = this.state
 
     return (
       <div>
@@ -76,7 +76,7 @@ class ColorAttribute extends Component {
   }
 
   rgbToHex(rgb){
-    let bin = rgb.red << 16 | rgb.green << 8 | rgb.blue
+    let bin = (rgb.red << 16) | (rgb.green << 8) | rgb.blue
 
     return ((h) => {
       return '#' + (new Array(7-h.length).join('0')+h)
