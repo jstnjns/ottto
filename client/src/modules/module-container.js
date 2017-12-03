@@ -17,17 +17,12 @@ class ModuleContainer extends Component {
 
     return (
       <Module module={module}
-        onAttributeChange={this.onAttributeChange.bind(this)}/>
+        onModuleChange={this.onModuleChange.bind(this)}/>
     )
   }
 
-  onAttributeChange(attribute) {
-    return (value) => {
-      let module = _.clone(this.props.module)
-      module.values[attribute.name] = value
-
-      this.props.updateModule(module)
-    }
+  onModuleChange(module) {
+    this.props.updateModule(module)
   }
 }
 

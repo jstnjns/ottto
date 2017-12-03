@@ -1,3 +1,5 @@
+import _ from 'lodash'
+
 import React, { Component } from 'react'
 import { Link } from 'react-router'
 
@@ -14,6 +16,10 @@ import Attribute from '../module-attributes'
 const styles = (theme) => ({
   backButton: {
     marginLeft: -20
+  },
+  attributeContainer: {
+    margin: 10,
+    padding: 10
   }
 })
 
@@ -40,13 +46,14 @@ class Module extends Component {
 
           {module.type.attributes.map((attribute, key) => {
             return (
-              <div key={key}
-                style={{ margin: 10, padding: 10 }}>
+              <div key={key} className={classes.attributeContainer}>
                 <Attribute
                   module={module}
                   attribute={attribute}
                   value={module.values[attribute.name]}
-                  onChange={this.onAttributeChange.bind(this)} />
+                  onChange={(value) => {
+                    return this.onAttributeChange.bind(this)(attribute.name, value)
+                  }} />
               </div>
             )
           })}
@@ -59,8 +66,13 @@ class Module extends Component {
     }
   }
 
-  onAttributeChange(attribute) {
-    this.props.onAttributeChange(attribute)
+  onAttributeChange(name, value) {
+    let module = _.clone(this.props.module)
+    module.values[name] = value
+
+    console.log(module)
+
+    this.props.onModuleChange(module)
   }
 }
 
