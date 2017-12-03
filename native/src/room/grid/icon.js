@@ -4,6 +4,8 @@ import { bindActionCreators } from 'redux'
 
 import { StyleSheet, TouchableHighlight, View, Text } from 'react-native'
 import LightIcon from './icons/light'
+import MotionIcon from './icons/motion'
+import DefaultIcon from './icons/default'
 
 
 class ModulesGridIcon extends Component {
@@ -39,22 +41,24 @@ class ModulesGridIcon extends Component {
   }
 
   renderIcon(module) {
-    if(module.type.name == 'Light') {
-      return (
-        <LightIcon module={module}
-          style={styles.gridItemIcon}
-          onPress={this.props.onPress.bind(this, module)} />
-      )
-    } else {
-      return (
-        <TouchableHighlight
-          onPress={this.props.onPress.bind(this, module)}
-          underlayColor='#FFFFFF'
-          style={styles.gridItemIcon}>
-          <View />
-        </TouchableHighlight>
-      )
+    let Icon
+
+    switch(module.type.name) {
+      case 'Light':
+        Icon = LightIcon
+        break
+      case 'Motion':
+        Icon = MotionIcon
+        break
+      default:
+        Icon = DefaultIcon
     }
+
+    return (
+      <Icon module={module}
+        style={styles.gridItemIcon}
+        onPress={this.props.onPress.bind(this, module)} />
+    )
   }
 }
 

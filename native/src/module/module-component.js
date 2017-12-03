@@ -63,24 +63,24 @@ class Module extends Component {
 
 
   renderModule(module) {
-    let Contents;
+    let Contents
 
     switch (this.props.module.type.name) {
       case 'Light':
-        Contents = Light;
-        break;
+        Contents = Light
+        break
       case 'Motion':
-        Contents = Motion;
-        break;
+        Contents = Motion
+        break
       case 'Thermometer':
-        Contents = Thermometer;
-        break;
+        Contents = Thermometer
+        break
       case 'Camera':
-        Contents = Camera;
-        break;
+        Contents = Camera
+        break
       default:
         Contents = View
-        break;
+        break
     }
 
     return (
