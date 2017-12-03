@@ -18,7 +18,6 @@ const MODULE_UPDATE_ERROR = 'MODULE_UPDATE_ERROR'
 // CREATORS
 export const syncModules = () => {
   return (dispatch, getState) => {
-    console.log('syncing...')
     socket.on('modules', (msg) => {
       switch(msg.verb) {
         case 'updated': dispatch(updateModuleSuccess(msg.data))

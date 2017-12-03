@@ -3,22 +3,14 @@ import TextField from 'material-ui/TextField'
 
 
 class NumberAttribute extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      value: props.value
-    }
-  }
-
   render() {
-    let { attribute } = this.props
+    let { attribute, value } = this.props
 
     return (
       <div>
         <TextField type="number"
           label={attribute.label}
-          value={this.state.value}
+          value={value}
           min={attribute.min}
           max={attribute.max}
           onChange={this.onChange.bind(this)} />
@@ -27,10 +19,7 @@ class NumberAttribute extends Component {
   }
 
   onChange(event) {
-    let value = event.target.value
-
-    this.setState({ value })
-    this.props.onChange(value)
+    this.props.onChange(event.target.value)
   }
 }
 

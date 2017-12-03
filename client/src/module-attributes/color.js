@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Button from 'material-ui/Button'
-import TextField from 'material-ui/TextField'
+import Input, { InputLabel } from 'material-ui/Input'
+import { FormControl } from 'material-ui/Form'
 
 import ct from 'color-temperature'
 
@@ -10,7 +11,6 @@ class ColorAttribute extends Component {
     super(props)
 
     this.state = {
-      value: props.value,
       temperature: 6500,
       tab: 'color',
     }
@@ -27,42 +27,55 @@ class ColorAttribute extends Component {
   }
 
   renderColor() {
-    let { attribute } = this.props
-    let { value } = this.state
+    let { attribute, value } = this.props
 
     return (
-      <div>
-        <TextField
+      <FormControl>
+        <InputLabel htmlFor="color">
+          Color
+        </InputLabel>
+
+        <Input id="color"
+          type="color"
           label={attribute.label}
           value={value}
           onChange={this.onChange.bind(this)} />
+
+        <br />
 
         <Button raised
           onClick={() => this.setState({ tab: 'temperature' })}>
           Temperature
         </Button>
-      </div>
+      </FormControl>
     )
   }
 
   renderTemperature() {
-    let { attribute } = this.props
+    let { attribute, value } = this.props
     let { temperature } = this.state
 
     return (
-      <div>
-        <TextField type="range"
+      <FormControl>
+        <InputLabel htmlFor="temperature">
+          Temperature
+        </InputLabel>
+
+        <Input id="temperature"
+          type="range"
           label={attribute.label}
           value={temperature}
           min="4500"
           max="8500"
           onChange={this.onTemperatureChange.bind(this)} />
 
+        <br/>
+
         <Button raised
           onClick={() => this.setState({ tab: 'color' })}>
           Color
         </Button>
-      </div>
+      </FormControl>
     )
   }
 
@@ -71,7 +84,7 @@ class ColorAttribute extends Component {
     let rgb = ct.colorTemperature2rgb(temperature)
     let value = this.rgbToHex(rgb)
 
-    this.setState({ temperature, value })
+    this.setState({ temperature })
     this.props.onChange(value)
   }
 
@@ -84,10 +97,7 @@ class ColorAttribute extends Component {
   }
 
   onChange(event) {
-    let value = event.target.value
-
-    this.setState({ value })
-    this.props.onChange(value)
+    this.props.onChange(event.target.value)
   }
 }
 
