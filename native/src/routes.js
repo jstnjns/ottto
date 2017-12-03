@@ -1,25 +1,24 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { addRoom } from './actions/rooms'
+import { addRoom } from 'actions/rooms-actions'
 
 import { StyleSheet } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
 
 import { Router, Scene, Tabs, Actions, Lightbox } from 'react-native-router-flux';
 
-import ScenesContainer from './containers/scenes';
-import RulesContainer from './containers/rules';
+import ScenesContainer from './scenes/scenes-container';
+import RulesContainer from './rules/rules-container';
 
-import RoomsContainer from './containers/rooms/index';
-import RoomsAddContainer from './containers/rooms/add';
-import RoomsDetailContainer from './containers/rooms/detail';
+import RoomsContainer from './rooms/rooms-container';
+import RoomsDetailContainer from './rooms/room-container';
+import RoomsAddContainer from './rooms/rooms-add-container';
 
-import ModulesContainer from './containers/modules/index';
-import ModulesOverlayContainer from './containers/modules/overlay';
+import ModulesContainer from './modules/modules-container';
+import ModulesOverlayContainer from './modules/module-container';
 
-import SettingsContainer from './containers/settings';
-
+import SettingsContainer from './settings/settings-container';
 
 
 class Routes extends Component {

@@ -5,6 +5,9 @@
   "plugins": [
     ["module-resolver", {
       "root": ["./src"],
+      "alias": {
+        "actions": "./app/actions",
+      },
       "extensions": [".js", ".ios.js", ".android.js"]
     }]
   ]

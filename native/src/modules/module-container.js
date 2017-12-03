@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { updateModule } from '../../actions/modules'
+import { updateModule } from 'actions/modules-actions'
 import { Actions } from 'react-native-router-flux';
 
 import { Animated, StyleSheet, Text, TouchableHighlight, View } from 'react-native'
