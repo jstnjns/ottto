@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux'
 import { addRoom } from 'actions/rooms-actions'
 
 import { StyleSheet } from 'react-native'
-import Icon from 'react-native-vector-icons/FontAwesome'
+import Icon from 'react-native-vector-icons/Ionicons'
 
 import { Router, Scene, Tabs, Actions, Lightbox } from 'react-native-router-flux';
 
@@ -33,20 +33,20 @@ class Routes extends Component {
               component={ScenesContainer}
               title="Scenes"
               icon={this.renderIcon}
-              iconName="picture-o"
+              iconName="ios-image"
             />
 
             <Scene key="rules"
               component={RulesContainer}
               title="Rules"
               icon={this.renderIcon}
-              iconName="sliders"
+              iconName="ios-options"
             />
 
             <Scene key="roomsScene"
               title="Rooms"
               icon={this.renderIcon}
-              iconName="home"
+              iconName="ios-home"
               initial={true}>
               <Scene key="rooms"
                 initial={true}
@@ -70,14 +70,14 @@ class Routes extends Component {
               component={ModulesContainer}
               title="Modules"
               icon={this.renderIcon}
-              iconName="th"
+              iconName="ios-cube"
             />
 
             <Scene key="settings"
               component={SettingsContainer}
               title="Settings"
               icon={this.renderIcon}
-              iconName="cog"
+              iconName="ios-settings"
             />
           </Tabs>
 
@@ -93,9 +93,16 @@ class Routes extends Component {
   }
 
   renderIcon(scene) {
+    const iconName = scene.focused
+      ? scene.iconName
+      : scene.iconName + '-outline'
+    const colorName = scene.focused
+      ? scene.activeTintColor
+      : scene.tintColor
+
     return (
-      <Icon name={scene.iconName} size={20}
-        color={scene.focused ? scene.activeTintColor : scene.tintColor} />
+      <Icon name={iconName} size={28}
+        color={colorName} />
     )
   }
 }

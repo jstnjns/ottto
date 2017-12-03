@@ -6,7 +6,6 @@ import { bindActionCreators } from 'redux'
 import { updateModule } from 'actions/modules-actions'
 
 import { StyleSheet, Text, View } from 'react-native'
-import Icon from 'react-native-vector-icons/FontAwesome'
 
 import Color from '../attributes/color'
 import Number from '../attributes/number'
