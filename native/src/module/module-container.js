@@ -7,10 +7,10 @@ import { Actions } from 'react-native-router-flux';
 import { Animated, StyleSheet, Text, TouchableHighlight, View } from 'react-native'
 import Modal from 'react-native-modalbox'
 
-import Light from 'components/modules/overlay/types/light'
-import Motion from 'components/modules/overlay/types/motion'
-import Thermometer from 'components/modules/overlay/types/thermometer'
-import Camera from 'components/modules/overlay/types/camera'
+import Light from './types/light'
+import Motion from './types/motion'
+import Thermometer from './types/thermometer'
+import Camera from './types/camera'
 
 
 class ModuleOverlay extends Component {

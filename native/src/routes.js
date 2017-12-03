@@ -12,11 +12,11 @@ import ScenesContainer from './scenes/scenes-container';
 import RulesContainer from './rules/rules-container';
 
 import RoomsContainer from './rooms/rooms-container';
-import RoomsDetailContainer from './rooms/room-container';
 import RoomsAddContainer from './rooms/rooms-add-container';
+import RoomContainer from './room/room-container';
 
 import ModulesContainer from './modules/modules-container';
-import ModulesOverlayContainer from './modules/module-container';
+import ModuleContainer from './module/module-container';
 
 import SettingsContainer from './settings/settings-container';
 
@@ -58,7 +58,7 @@ class Routes extends Component {
               />
 
               <Scene key="room"
-                component={RoomsDetailContainer}
+                component={RoomContainer}
                 navTransparent
                 title="Room"
                 rightTitle="Edit"
@@ -83,7 +83,7 @@ class Routes extends Component {
 
 
           <Scene key="showModule"
-            component={ModulesOverlayContainer} />
+            component={ModuleContainer} />
 
           <Scene key="addRoom"
             component={RoomsAddContainer} />

@@ -6,7 +6,7 @@ import { bindActionCreators } from 'redux'
 import { Actions } from 'react-native-router-flux';
 
 import { StyleSheet, View } from 'react-native'
-import ModulesGrid from 'components/modules/grid'
+import ModulesGrid from './modules-grid'
 
 
 class Room extends Component {
