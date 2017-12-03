@@ -1,25 +1,23 @@
 import React, { Component } from 'react'
-import { StyleSheet, TouchableHighlight, View } from 'react-native'
-// import Icon from 'react-native-vector-icons/Ionicons'
+import { StyleSheet, TouchableHighlight, Text, View } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
 
-class LightIcon extends Component {
+class MotionIcon extends Component {
   render() {
     const { module, style } = this.props
 
-    // const iconName = module.values.power ? 'ios-bulb' : 'ios-bulb-outline'
-    const iconName = module.values.power ? 'lightbulb-on' : 'lightbulb-outline'
-    const color = module.values.power ? module.values.color : '#AAAAAA'
+    const iconName = module.values.motion ? 'waves' : 'sleep'
 
     return (
       <TouchableHighlight key={module.id}
-        style={[style, styles.container, { backgroundColor: color }]}
+        style={[style, styles.container]}
         underlayColor='#FFFFFF'
         onPress={this.props.onPress.bind(this, module)}>
         <View style={styles.circle}>
-          <Icon style={styles.icon}
-            name={iconName} size={32} color={color} />
+          <Text style={styles.text}>
+            {module.values.temperature}&deg;
+          </Text>
         </View>
       </TouchableHighlight>
     )
@@ -32,6 +30,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: '#FFFFFF'
   },
   circle: {
     alignItems: 'center',
@@ -39,12 +38,15 @@ const styles = StyleSheet.create({
     width: 52,
     height: 52,
     borderRadius: 26,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#666',
   },
-  icon: {
-    marginTop: 5,
+  text: {
+    marginRight: -7,
+    fontSize: 24,
+    fontWeight: '500',
+    color: '#FFFFFF'
   },
 })
 
 
-export default LightIcon
+export default MotionIcon
