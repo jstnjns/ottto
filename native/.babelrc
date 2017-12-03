@@ -4,12 +4,7 @@
   ],
   "plugins": [
     ["module-resolver", {
-      "root": ["./app"],
-      "alias": {
-        "actions": "./app/actions",
-        "components": "./app/components",
-        "containers": "./app/containers"
-      },
+      "root": ["./src"],
       "extensions": [".js", ".ios.js", ".android.js"]
     }]
   ]
