@@ -5,16 +5,8 @@ import Switch from 'material-ui/Switch'
 
 
 class BooleanAttribute extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      value: props.value
-    }
-  }
-
   render() {
-    let { attribute } = this.props
+    let { attribute, value } = this.props
 
     return (
       <FormGroup>
@@ -22,7 +14,7 @@ class BooleanAttribute extends Component {
         <FormControlLabel
           control={
             <Switch
-              checked={this.state.value}
+              checked={value}
               onChange={this.onChange.bind(this)} />
           }
           label={attribute.options[1].label}
@@ -32,10 +24,7 @@ class BooleanAttribute extends Component {
   }
 
   onChange(event, checked) {
-    let value = checked
-
-    this.setState({ value })
-    this.props.onChange(value)
+    this.props.onChange(checked)
   }
 }
 
