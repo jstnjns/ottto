@@ -1,5 +1,5 @@
-import socket from '../socket'
 import _ from 'lodash'
+import socket from '../socket'
 
 // TYPES
 const MODULES_GET = 'MODULES_GET'
@@ -16,14 +16,19 @@ const MODULE_UPDATE_ERROR = 'MODULE_UPDATE_ERROR'
 
 
 // CREATORS
-export const getModules = () => {
+export const syncModules = () => {
   return (dispatch, getState) => {
+    console.log('syncing...')
     socket.on('modules', (msg) => {
       switch(msg.verb) {
         case 'updated': dispatch(updateModuleSuccess(msg.data))
       }
     })
+  }
+}
 
+export const getModules = () => {
+  return (dispatch, getState) => {
     return socket.get('/api/modules/')
       .then( modules => dispatch(getModulesSuccess(modules)) )
       .then( error => dispatch(getModuleError(error)) )

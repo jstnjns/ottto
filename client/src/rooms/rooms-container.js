@@ -8,6 +8,7 @@ import Toolbar from 'material-ui/Toolbar'
 import Typography from 'material-ui/Typography'
 
 import { getRooms } from './rooms-actions'
+import { getModules } from '../modules/modules-actions'
 import RoomsList from './rooms-list'
 
 
@@ -36,5 +37,5 @@ class Rooms extends Component {
 
 export default connect(
   (state) => ({ rooms: _.toArray(state.rooms.entities) }),
-  (dispatch) => bindActionCreators({ getRooms }, dispatch)
+  (dispatch) => bindActionCreators({ getRooms, getModules }, dispatch)
 )(Rooms)
