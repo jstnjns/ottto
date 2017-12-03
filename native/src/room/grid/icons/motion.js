@@ -8,15 +8,15 @@ class MotionIcon extends Component {
     const { module, style } = this.props
 
     const iconName = module.values.motion ? 'waves' : 'sleep'
-    const color = module.values.motion ? '#157EFB' : '#AAAAAA'
+    const color = module.values.motion ? '#157EFB' : '#CCC'
 
     return (
       <TouchableHighlight key={module.id}
         style={[style, styles.container, { backgroundColor: color }]}
-        underlayColor='#FFFFFF'
+        underlayColor='#FFF'
         onPress={this.props.onPress.bind(this, module)}>
         <Icon style={styles.icon}
-          name={iconName} size={28} color="#FFFFFF" />
+          name={iconName} size={28} color="#FFF" />
       </TouchableHighlight>
     )
   }

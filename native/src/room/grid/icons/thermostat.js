@@ -12,7 +12,7 @@ class MotionIcon extends Component {
     return (
       <TouchableHighlight key={module.id}
         style={[style, styles.container]}
-        underlayColor='#FFFFFF'
+        underlayColor='#FFF'
         onPress={this.props.onPress.bind(this, module)}>
         <View style={styles.circle}>
           <Text style={styles.text}>
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#FFFFFF'
+    backgroundColor: '#FFF'
   },
   circle: {
     alignItems: 'center',
@@ -38,13 +38,16 @@ const styles = StyleSheet.create({
     width: 52,
     height: 52,
     borderRadius: 26,
-    backgroundColor: '#666',
+    backgroundColor: '#333',
+    borderColor: '#666',
+    borderWidth: 4,
+    overflow: 'hidden',
   },
   text: {
     marginRight: -7,
     fontSize: 24,
     fontWeight: '500',
-    color: '#FFFFFF'
+    color: '#FFF'
   },
 })
 

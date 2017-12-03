@@ -10,16 +10,16 @@ class LightIcon extends Component {
 
     // const iconName = module.values.power ? 'ios-bulb' : 'ios-bulb-outline'
     const iconName = module.values.power ? 'lightbulb-on' : 'lightbulb-outline'
-    const color = module.values.power ? module.values.color : '#AAAAAA'
+    const color = module.values.power ? module.values.color : '#CCC'
 
     return (
       <TouchableHighlight key={module.id}
-        style={[style, styles.container, { backgroundColor: color }]}
-        underlayColor='#FFFFFF'
+        style={[style, styles.container]}
+        underlayColor='#FFF'
         onPress={this.props.onPress.bind(this, module)}>
-        <View style={styles.circle}>
+        <View style={[styles.circle, { backgroundColor: color }]}>
           <Icon style={styles.icon}
-            name={iconName} size={32} color={color} />
+            name={iconName} size={32} color="#FFF" />
         </View>
       </TouchableHighlight>
     )
@@ -39,7 +39,6 @@ const styles = StyleSheet.create({
     width: 52,
     height: 52,
     borderRadius: 26,
-    backgroundColor: '#FFFFFF',
   },
   icon: {
     marginTop: 5,
