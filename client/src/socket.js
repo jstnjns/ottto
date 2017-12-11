@@ -2,20 +2,25 @@ import socketIO from 'socket.io-client'
 import sailsIO from 'sails.io.js'
 import Promise from 'bluebird'
 
-const io = sailsIO(socketIO)
-// io.sails.url = 'http://ottto.local'
-io.sails.url = 'http://localhost:1337'
-io.sails.useCORSRouteToGetCookie = false
 
 class Socket {
+  constructor() {
+    this.io = sailsIO(socketIO)
+
+    // io.sails.url = 'http://ottto.local'
+    // io.sails.url = 'http://localhost:1337'
+    this.io.sails.url = 'http://192.168.1.2:1337'
+    this.io.sails.reconnection = true
+    this.io.sails.useCORSRouteToGetCookie = false
+  }
 
   promisified(method) {
     return (url, data) => {
       return new Promise( (resolve, reject) => {
         if(data === undefined) {
-          io.socket[method](url, resolve, reject)
+          this.io.socket[method](url, resolve, reject)
         } else {
-          io.socket[method](url, data, resolve, reject)
+          this.io.socket[method](url, data, resolve, reject)
         }
       })
     }
@@ -38,11 +43,11 @@ class Socket {
   }
 
   on(name, callback) {
-    io.socket.on(name, callback)
+    this.io.socket.on(name, callback)
   }
 
   off(name, callback) {
-    io.socket.off(name, callback)
+    this.io.socket.off(name, callback)
   }
 
 }
