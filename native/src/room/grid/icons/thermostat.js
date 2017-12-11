@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#FFF'
+    backgroundColor: '#E9E9E9'
   },
   circle: {
     alignItems: 'center',
@@ -38,16 +38,16 @@ const styles = StyleSheet.create({
     width: 52,
     height: 52,
     borderRadius: 26,
-    backgroundColor: '#333',
-    borderColor: '#666',
+    backgroundColor: '#F1F1F1',
+    borderColor: '#FFF',
     borderWidth: 4,
     overflow: 'hidden',
   },
   text: {
     marginRight: -7,
     fontSize: 24,
-    fontWeight: '500',
-    color: '#FFF'
+    fontWeight: '700',
+    color: '#FBB289'
   },
 })
 

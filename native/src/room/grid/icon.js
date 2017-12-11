@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux'
 
 import { StyleSheet, TouchableHighlight, View, Text } from 'react-native'
 import LightIcon from './icons/light'
+import DoorIcon from './icons/door'
 import MotionIcon from './icons/motion'
 import ThermostatIcon from './icons/thermostat'
 import DefaultIcon from './icons/default'
@@ -52,6 +53,9 @@ class ModulesGridIcon extends Component {
         break
       case 'Motion':
         Icon = MotionIcon
+        break
+      case 'Door':
+        Icon = DoorIcon
         break
       case 'Thermostat':
       case 'Thermometer':
