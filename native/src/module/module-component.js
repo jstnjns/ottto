@@ -5,6 +5,7 @@ import { Animated, StyleSheet, Text, TouchableHighlight, View } from 'react-nati
 import Modal from 'react-native-modalbox'
 
 import Light from './types/light'
+import Door from './types/door'
 import Motion from './types/motion'
 import Thermostat from './types/thermostat'
 import Camera from './types/camera'
@@ -68,6 +69,9 @@ class Module extends Component {
     switch (this.props.module.type.name) {
       case 'Light':
         Contents = Light
+        break
+      case 'Door':
+        Contents = Door
         break
       case 'Motion':
         Contents = Motion
