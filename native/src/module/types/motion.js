@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     borderRadius: 14,
   },
   active: {
-    backgroundColor: '#007AFF',
+    backgroundColor: '#F8AD85',
   },
   inactive: {
     backgroundColor: '#ccc',
