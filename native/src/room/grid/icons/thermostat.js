@@ -7,8 +7,6 @@ class MotionIcon extends Component {
   render() {
     const { module, style } = this.props
 
-    const iconName = module.values.motion ? 'waves' : 'sleep'
-
     return (
       <TouchableHighlight key={module.id}
         style={[style, styles.container]}
@@ -30,7 +28,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#E9E9E9'
   },
   circle: {
     alignItems: 'center',
@@ -38,9 +35,9 @@ const styles = StyleSheet.create({
     width: 52,
     height: 52,
     borderRadius: 26,
-    backgroundColor: '#F1F1F1',
-    borderColor: '#FFF',
-    borderWidth: 4,
+    // backgroundColor: '#F1F1F1',
+    borderColor: '#F1F1F1',
+    borderWidth: 5,
     overflow: 'hidden',
   },
   text: {

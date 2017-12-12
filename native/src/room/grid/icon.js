@@ -45,8 +45,6 @@ class ModulesGridIcon extends Component {
   renderIcon(module) {
     let Icon
 
-    console.log(module.type.name)
-
     switch(module.type.name) {
       case 'Light':
         Icon = LightIcon

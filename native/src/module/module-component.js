@@ -6,7 +6,7 @@ import Modal from 'react-native-modalbox'
 
 import Light from './types/light'
 import Motion from './types/motion'
-import Thermometer from './types/thermometer'
+import Thermostat from './types/thermostat'
 import Camera from './types/camera'
 
 
@@ -73,7 +73,8 @@ class Module extends Component {
         Contents = Motion
         break
       case 'Thermometer':
-        Contents = Thermometer
+      case 'Thermostat':
+        Contents = Thermostat
         break
       case 'Camera':
         Contents = Camera
