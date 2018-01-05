@@ -17,7 +17,7 @@
 
 struct otttoConfig {
   const char* name;
-  const char* host;
+	const char* type;
 };
 typedef struct otttoConfig otttoConfig;
 
@@ -37,7 +37,9 @@ class Ottto {
     otttoConfig _config;
     PubSubClient _client;
 
+		const char* _host;
     const char* _topic;
+
     const char* getTopic();
 
     std::function<void(char*, uint8_t*, unsigned int)> _subscribeCallback;

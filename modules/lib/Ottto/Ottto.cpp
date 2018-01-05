@@ -15,10 +15,12 @@ char topicBuffer[20];
 
 
 Ottto::Ottto(otttoConfig config) {
-  this->_config = config;
   this->_client = client;
+  this->_config = config;
+
+  this->_host = "192.168.1.2";
   this->_topic = this->getTopic();
-  
+
   // wifiManager.resetSettings(); // Uncomment to reset wifi settings
 }
 
@@ -33,7 +35,7 @@ const char* Ottto::getTopic() {
 
 void Ottto::begin() {
   wifiManager.autoConnect(this->_config.name);
-  this->_client.setServer(this->_config.host, 1883);
+  this->_client.setServer(this->_host, 1883);
 }
 
 

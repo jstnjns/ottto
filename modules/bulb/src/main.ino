@@ -6,8 +6,8 @@
 #define MY9291_DCKI_PIN 15
 
 otttoConfig config = {
-  .name = "lightbulb",
-  .host = "192.168.1.2"
+  .name = "AI Thinker Light Bulb",
+  .type = "ottto.light.rgb"
 };
 Ottto ottto(config);
 
