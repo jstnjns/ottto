@@ -1,5 +1,6 @@
 MqttService.on('clientConnected', function(client) {
-  console.log('Client connected:', client.id);
+  // console.log('MQTT client connected:', client.id);
+  console.log('mqtt client:', client)
 });
 
 
@@ -9,8 +10,11 @@ MqttService.subscribe('modules/+', function(topic, message, client) {
   idMatches = topic.match(/[0-9]+/)
   id = idMatches && idMatches[0]
 
-  if(!id) return;
-  if(!body.values) return;
+  if (!id || !body.values) return;
 
-  ModulesService.update(id, body);
+  Modules
+    .findOne({ chip: id })
+    .then(function(module) {
+      ModuleUpdateService.update(module.id, body);
+    });
 });

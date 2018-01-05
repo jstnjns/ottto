@@ -87,12 +87,13 @@ module.exports = {
         .populateAll()
         .then(function(module) {
           var simplified = _.pick(module, [ 'id', 'values' ]);
+          var topic = 'modules/' + module.chip
 
           if(req) {
-            console.log('Sending:', 'modules/' + id, simplified)
+            console.log('Sending:', topic, simplified)
             Modules.publishUpdate(id, simplified, req);
             MqttService.publish({
-              topic: 'modules/' + id,
+              topic: topic,
               payload: JSON.stringify(simplified),
               qos: 0,
               retain: true

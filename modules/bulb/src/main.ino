@@ -1,5 +1,4 @@
 #include "Ottto.h"
-
 #include "my9291.h"
 #include "RGBConverter.h"
 
@@ -8,8 +7,7 @@
 
 otttoConfig config = {
   .name = "lightbulb",
-  .topic = "modules/17",
-  .host = "10.10.0.1"
+  .host = "192.168.1.2"
 };
 Ottto ottto(config);
 

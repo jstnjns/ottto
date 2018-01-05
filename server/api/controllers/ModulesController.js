@@ -11,7 +11,7 @@ module.exports = {
 
     console.log('Receiving:', req.body);
 
-    ModulesService
+    ModuleUpdateService
       .update(req.param('id'), req.body, req)
       .catch(res.badRequest);
 
@@ -25,7 +25,7 @@ module.exports = {
 
   register: function(req, res) {
 
-    return ModulesRegistrationService
+    return ModuleRegistrationService
       .register(req.param('chip'), req.param('ip'))
       .then(res.ok)
       .catch(res.badRequest);
