@@ -6,7 +6,7 @@
 #define MY9291_DCKI_PIN 15
 
 otttoConfig config = {
-  .name = "AI Thinker Light Bulb",
+  .name = "Light Bulb",
   .type = "ottto.light.rgb"
 };
 Ottto ottto(config);
@@ -43,17 +43,22 @@ void setup() {
 
   setColor(color);
   setPower(power);
+  updateLight();
 
   ottto.begin();
   ottto.subscribe(receive);
 
   setColor("#00FFFF");
+  updateLight();
   delay(200);
   setColor("#FFFFFF");
+  updateLight();
   delay(200);
   setColor("#00FFFF");
+  updateLight();
   delay(200);
   setColor("#FFFFFF");
+  updateLight();
 }
 
 
@@ -76,37 +81,39 @@ void receive(char* topic, uint8_t* payload, unsigned int length) {
 void process(char* message) {
   StaticJsonBuffer<200> jsonBuffer;
   JsonObject& body = jsonBuffer.parseObject(message);
+  JsonObject& values = body["values"];
 
-  uint16_t levelValue = body["values"]["level"];
-  if (levelValue) {
+  if (values.containsKey("power")) {
+    bool powerValue = values["power"];
+    setPower(powerValue);
+  }
+
+  if (values.containsKey("level")) {
+    uint16_t levelValue = values["level"];
     setLevel(levelValue);
   }
 
-  const char* colorValue = body["values"]["color"];
-  if (colorValue) {
+  if (values.containsKey("color")) {
+    const char* colorValue = values["color"];
     setColor(colorValue);
   }
 
-  bool powerValue = body["values"]["power"];
-  setPower(powerValue);
+  updateLight();
 }
 
 
 void setLevel(uint16_t levelValue) {
-  level = levelValue;
-  updateLight();
+  level = map(levelValue, 0, 100, 0, 255);
 }
 
 
 void setColor(String colorValue) {
   color = colorValue;
-  updateLight();
 }
 
 
 void setPower(bool powerValue) {
   power = powerValue;
-  updateLight();
 }
 
 
