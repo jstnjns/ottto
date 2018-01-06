@@ -89,9 +89,9 @@ module.exports = {
           var simplified = _.pick(module, [ 'id', 'values' ]);
           var topic = 'modules/' + module.chip
 
+          Modules.publishUpdate(id, simplified, req);
+
           if(req) {
-            console.log('Sending:', topic, simplified)
-            Modules.publishUpdate(id, simplified, req);
             MqttService.publish({
               topic: topic,
               payload: JSON.stringify(simplified),

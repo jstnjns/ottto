@@ -93,7 +93,7 @@ module.exports = {
 
     props.values[action.attribute] = action.arguments[0];
 
-    return ModulesService
+    return ModuleUpdateService
       .update(action.module, props);
   }
 
