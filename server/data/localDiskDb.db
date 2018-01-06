@@ -102,8 +102,8 @@
         "attributes": [
           {
             "$$hashKey": "object:62",
-            "name": "state",
-            "label": "State",
+            "name": "contact",
+            "label": "Contact",
             "type": "boolean",
             "options": {
               "0": {
@@ -115,7 +115,8 @@
               }
             }
           }
-        ]
+        ],
+        "name": "Door"
       }
     ],
     "modules": [
