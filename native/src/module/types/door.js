@@ -5,14 +5,14 @@ import { StyleSheet, Text, View } from 'react-native'
 class Motion extends Component {
   render() {
     const style = this.props.module.values.contact
-      ? styles.active
-      : styles.inactive
+      ? styles.closed
+      : styles.open
 
     return (
       <View style={styles.container}>
         <View style={[ styles.indicator, style ]}>
           <Text style={styles.text}>
-            {this.props.module.values.contact ? 'Open' : 'Closed'}
+            {this.props.module.values.contact ? 'Closed' : 'Open'}
           </Text>
         </View>
       </View>
@@ -32,10 +32,10 @@ const styles = StyleSheet.create({
     height: 200,
     borderRadius: 14,
   },
-  active: {
+  open: {
     backgroundColor: '#EE5B5E',
   },
-  inactive: {
+  closed: {
     backgroundColor: '#ccc',
   },
   text: {

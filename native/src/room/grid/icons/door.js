@@ -27,8 +27,8 @@ class DoorIcon extends Component {
     const { module, style } = this.props
 
     const Icon = module.values.contact
-      ? DoorOpenIcon
-      : DoorClosedIcon
+      ? DoorClosedIcon
+      : DoorOpenIcon
 
     return (
       <TouchableHighlight key={module.id}
