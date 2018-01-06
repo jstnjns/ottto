@@ -29,7 +29,7 @@
     ],
     "moduletypes": [
       {
-        "name": "Light Bulb (RGB)",
+        "name": "Light",
         "null": "",
         "createdAt": "2018-01-06T03:35:38.146Z",
         "updatedAt": "2018-01-06T03:51:20.247Z",
@@ -71,7 +71,7 @@
         ]
       },
       {
-        "name": "Motion Sensor",
+        "name": "Motion",
         "null": "",
         "createdAt": "2018-01-06T03:35:44.443Z",
         "updatedAt": "2018-01-06T06:00:26.655Z",
@@ -95,7 +95,6 @@
         ]
       },
       {
-        "name": "Door Sensor",
         "null": "",
         "createdAt": "2018-01-06T03:35:56.432Z",
         "updatedAt": "2018-01-06T03:47:05.231Z",
