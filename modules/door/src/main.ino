@@ -1,98 +1,48 @@
-#include <ESP8266WiFi.h>
-#include <ESP8266WebServer.h>
-#include <ESP8266HTTPClient.h>
-#include <ArduinoJson.h>
+#include "Ottto.h"
 
-const int doorPin = 16;
-bool doorState = HIGH;
+const int contactPin = 16;
+bool contactState = HIGH;
 
-const char* ssid = "...";
-const char* password = "...";
+otttoConfig config = {
+  .name = "Door Sensor",
+  .type = "ottto.switch.door"
+};
+Ottto ottto(config);
 
-const char* host = "localhost";
-const int port = 1337;
-const char* url = "/api/modules/23";
-
-ESP8266WebServer server(80);
 
 void setup() {
-  pinMode(doorPin, INPUT);
+  pinMode(contactPin, INPUT);
 
-  Serial.begin(115200);
-  WiFi.begin(ssid, password);
-
-  while (WiFi.status() != WL_CONNECTED) {
-    delay(500);
-    Serial.print(".");
-  }
-
-  server.on("/", respond);
-  server.begin();
-
-  Serial.println("");
-  Serial.print("Connected to: ");
-  Serial.println(ssid);
-  Serial.print("IP address: ");
-  Serial.println(WiFi.localIP());
-  Serial.print("Mac address: ");
-  Serial.println(WiFi.macAddress());
-  Serial.print("Chip: ");
-  Serial.print(ESP.getChipId());
+  ottto.begin();
 }
+
 
 void loop() {
-  // server.handleClient();
-  handleMotion();
-}
+  ottto.loop();
 
-void handleMotion() {
-  bool doorValue = digitalRead(doorPin);
-
-  bool highToLow = doorValue == HIGH && doorState == LOW;
-  bool lowToHigh = doorValue == LOW && doorState == HIGH;
+  bool contactValue = digitalRead(contactPin);
+  bool highToLow = contactValue == HIGH && contactState == LOW;
+  bool lowToHigh = contactValue == LOW && contactState == HIGH;
 
   if (highToLow || lowToHigh) {
-    doorState = doorValue;
-    request();
+    contactState = contactValue;
+    ottto.publish(payload());
   }
 
-  delay(100);
+  yield();
 }
 
-void request() {
-  HTTPClient http;
 
-  String body = "values[status]=";
-  body += getMotion();
-
-  http.begin("http://10.0.0.6:1337/api/modules/23");
-  http.addHeader("Content-Type", "application/x-www-form-urlencoded");
-  http.POST(body);
-  http.writeToStream(&Serial);
-  http.end();
-}
-
-void respond() {
-  get();
-}
-
-void get() {
-  output();
-}
-
-void output() {
+char* payload() {
   StaticJsonBuffer<200> jsonBuffer;
   JsonObject& json = jsonBuffer.createObject();
+  JsonObject& values = json.createNestedObject("values");
 
-  json["status"] = getMotion();
+  bool contact = digitalRead(contactPin);
+  values["contact"] = contact;
 
-  String body;
-  json.prettyPrintTo(body);
-  json.prettyPrintTo(Serial);
-  server.send(200, "application/json; charset=utf-8", body);
-}
+  char buffer[json.measureLength() + 1];
+  json.printTo(buffer, sizeof(buffer));
 
-String getMotion() {
-  String doorValue = digitalRead(doorPin) ? "false" : "true";
-  return doorValue;
+  return buffer;
 }
