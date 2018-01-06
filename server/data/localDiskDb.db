@@ -5,7 +5,7 @@
       {
         "name": "Living Room",
         "createdAt": "2018-01-06T03:34:00.289Z",
-        "updatedAt": "2018-01-06T03:51:20.249Z",
+        "updatedAt": "2018-01-06T08:38:49.916Z",
         "id": 1
       },
       {
@@ -32,7 +32,7 @@
         "name": "Light",
         "null": "",
         "createdAt": "2018-01-06T03:35:38.146Z",
-        "updatedAt": "2018-01-06T03:51:20.247Z",
+        "updatedAt": "2018-01-06T08:38:49.915Z",
         "id": 1,
         "attributes": [
           {
@@ -97,7 +97,7 @@
       {
         "null": "",
         "createdAt": "2018-01-06T03:35:56.432Z",
-        "updatedAt": "2018-01-06T03:47:05.231Z",
+        "updatedAt": "2018-01-06T08:37:58.052Z",
         "id": 3,
         "attributes": [
           {
@@ -126,9 +126,13 @@
         "group": 1,
         "chip": "107867",
         "createdAt": "2018-01-06T03:49:39.103Z",
-        "updatedAt": "2018-01-06T03:51:20.264Z",
+        "updatedAt": "2018-01-06T08:38:49.938Z",
         "id": 1,
-        "values": {}
+        "values": {
+          "power": true,
+          "color": "#ffffff",
+          "level": "100"
+        }
       },
       {
         "name": "Motion",
@@ -145,9 +149,11 @@
         "type": 3,
         "group": 1,
         "createdAt": "2018-01-06T03:50:53.564Z",
-        "updatedAt": "2018-01-06T03:50:53.564Z",
+        "updatedAt": "2018-01-06T08:37:58.066Z",
         "id": 3,
-        "values": {}
+        "values": {
+          "contact": true
+        }
       }
     ],
     "ruleconditions": [],
