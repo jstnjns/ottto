@@ -34,6 +34,8 @@ const char* Ottto::getTopic() {
 
 
 void Ottto::begin() {
+  Serial.begin(115200);
+
   wifiManager.autoConnect(this->_config.name);
   this->_client.setServer(this->_host, 1883);
 }
@@ -41,16 +43,6 @@ void Ottto::begin() {
 
 void Ottto::subscribe(MQTT_CALLBACK_SIGNATURE) {
   this->_client.setCallback(callback);
-}
-
-
-void Ottto::publish(char* payload) {
-  Serial.print("Sending: ");
-  Serial.print(this->_topic);
-  Serial.print(": ");
-  Serial.println(payload);
-
-  this->_client.publish(this->_topic, payload, true);
 }
 
 
@@ -79,3 +71,21 @@ void Ottto::loop() {
 
   this->_client.loop();
 }
+
+
+void Ottto::publish(char* payload) {
+  Serial.print("Sending: ");
+  Serial.print(this->_topic);
+  Serial.print(": ");
+  Serial.println(payload);
+
+  this->_client.publish(this->_topic, payload, true);
+}
+
+
+// TODO abstract JSON creation with callbacks
+// Store payload builder callback
+// Create base JSON object
+// Call payload builder with JSON object
+// Turn returned JSON into char array
+// Have client publish
