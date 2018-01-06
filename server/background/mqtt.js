@@ -1,6 +1,13 @@
-MqttService.on('clientConnected', function(client) {
-  console.log('Connected:', client.id);
-});
+MqttService
+  .on('clientConnected', function(client) {
+    console.log('Connected:', client.id);
+  })
+  .on('subscribed', function(topic) {
+    console.log('Subscribed:', topic);
+  })
+  .on('clientDisconnected', function(client) {
+    console.log('Disconnected:', client.id);
+  });
 
 
 MqttService.subscribe('modules/+', function(topic, message, client) {
