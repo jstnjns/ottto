@@ -1,9 +1,155 @@
 {
   "data": {
     "moduleevents": [],
-    "modulegroups": [],
-    "moduletypes": [],
-    "modules": [],
+    "modulegroups": [
+      {
+        "name": "Living Room",
+        "createdAt": "2018-01-06T03:34:00.289Z",
+        "updatedAt": "2018-01-06T03:51:20.249Z",
+        "id": 1
+      },
+      {
+        "name": "Hallway",
+        "createdAt": "2018-01-06T03:34:23.566Z",
+        "updatedAt": "2018-01-06T03:34:23.566Z",
+        "id": 2
+      },
+      {
+        "name": "Kitchen",
+        "createdAt": "2018-01-06T03:34:26.803Z",
+        "updatedAt": "2018-01-06T03:34:26.803Z",
+        "id": 3
+      },
+      {
+        "name": "Bedroom",
+        "createdAt": "2018-01-06T03:34:30.357Z",
+        "updatedAt": "2018-01-06T03:34:30.357Z",
+        "id": 4
+      }
+    ],
+    "moduletypes": [
+      {
+        "name": "Light Bulb (RGB)",
+        "null": "",
+        "createdAt": "2018-01-06T03:35:38.146Z",
+        "updatedAt": "2018-01-06T03:51:20.247Z",
+        "id": 1,
+        "attributes": [
+          {
+            "$$hashKey": "object:23",
+            "name": "power",
+            "label": "Power",
+            "type": "boolean",
+            "options": {
+              "0": {
+                "label": "Off"
+              },
+              "1": {
+                "value": true,
+                "label": "On"
+              }
+            },
+            "default": true
+          },
+          {
+            "$$hashKey": "object:20",
+            "name": "color",
+            "label": "Color",
+            "type": "color"
+          },
+          {
+            "$$hashKey": "object:32",
+            "name": "level",
+            "label": "Level",
+            "type": "number",
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "default": 100,
+            "metric": "%"
+          }
+        ]
+      },
+      {
+        "name": "Motion Sensor",
+        "null": "",
+        "createdAt": "2018-01-06T03:35:44.443Z",
+        "updatedAt": "2018-01-06T06:00:26.655Z",
+        "id": 2,
+        "attributes": [
+          {
+            "$$hashKey": "object:48",
+            "name": "motion",
+            "label": "Motion",
+            "type": "boolean",
+            "options": {
+              "0": {
+                "label": "Still"
+              },
+              "1": {
+                "value": true,
+                "label": "Active"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "Door Sensor",
+        "null": "",
+        "createdAt": "2018-01-06T03:35:56.432Z",
+        "updatedAt": "2018-01-06T03:47:05.231Z",
+        "id": 3,
+        "attributes": [
+          {
+            "$$hashKey": "object:62",
+            "name": "state",
+            "label": "State",
+            "type": "boolean",
+            "options": {
+              "0": {
+                "label": "Open"
+              },
+              "1": {
+                "value": true,
+                "label": "Closed"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "modules": [
+      {
+        "name": "Main Light",
+        "type": 1,
+        "group": 1,
+        "chip": "107867",
+        "createdAt": "2018-01-06T03:49:39.103Z",
+        "updatedAt": "2018-01-06T03:51:20.264Z",
+        "id": 1,
+        "values": {}
+      },
+      {
+        "name": "Motion",
+        "type": 2,
+        "group": 1,
+        "chip": "1501039",
+        "createdAt": "2018-01-06T03:50:23.768Z",
+        "updatedAt": "2018-01-06T03:50:23.768Z",
+        "id": 2,
+        "values": {}
+      },
+      {
+        "name": "Front Door",
+        "type": 3,
+        "group": 1,
+        "createdAt": "2018-01-06T03:50:53.564Z",
+        "updatedAt": "2018-01-06T03:50:53.564Z",
+        "id": 3,
+        "values": {}
+      }
+    ],
     "ruleconditions": [],
     "rules": []
   },
@@ -184,9 +330,15 @@
   },
   "counters": {
     "moduleevents": {},
-    "modulegroups": {},
-    "moduletypes": {},
-    "modules": {},
+    "modulegroups": {
+      "id": 4
+    },
+    "moduletypes": {
+      "id": 3
+    },
+    "modules": {
+      "id": 3
+    },
     "ruleconditions": {},
     "rules": {}
   }
