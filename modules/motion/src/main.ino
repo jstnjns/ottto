@@ -1,38 +1,19 @@
 #include "Ottto.h"
 
+const int motionPin = 16;
+bool motionState = LOW;
 
 otttoConfig config = {
-  .name = "motionsensor",
-  .topic = "modules/9",
-  .host = "10.10.0.1"
+  .name = "Motion Sensor",
+  .type = "ottto.motion"
 };
 Ottto ottto(config);
 
-const int motionPin = D0;
-bool motionState = LOW;
-
 
 void setup() {
-  Serial.begin(115200);
-
   pinMode(motionPin, INPUT);
 
   ottto.begin();
-  ottto.subscribe(receive);
-}
-
-
-void receive(char* topic, uint8_t* payload, unsigned int length) {
-  char message[length + 1];
-  for (int i = 0; i < length; i++) {
-    message[i] = (char)payload[i];
-  }
-  message[length] = '\0';
-
-  Serial.print("Received: ");
-  Serial.print(config.topic);
-  Serial.print(": ");
-  Serial.println(message);
 }
 
 
