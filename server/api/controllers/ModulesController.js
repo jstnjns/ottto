@@ -9,7 +9,7 @@ module.exports = {
 
   update: function(req, res) {
 
-    console.log('Receiving:', req.body);
+    console.log('Receiving:', req.param('id'), req.body);
 
     ModuleUpdateService
       .update(req.param('id'), req.body, req)
