@@ -7,7 +7,7 @@
 
 otttoConfig config = {
   .name = "Light Bulb",
-  .type = "ottto.light.rgb"
+  .type = "ottto.light.bulb"
 };
 Ottto ottto(config);
 
