@@ -2,9 +2,14 @@ import React, { Component } from 'react'
 import { Router, Route, IndexRoute } from 'react-router'
 
 import AppContainer from './app/app-container'
+
 import RoomsContainer from './rooms/rooms-container'
 import RoomContainer from './rooms/room-container'
+
+import RulesContainer from './rules/rules-container'
+
 import ModuleContainer from './modules/module-container'
+
 import SettingsContainer from './settings/settings-container'
 
 class Routes extends Component {
@@ -19,6 +24,7 @@ class Routes extends Component {
 
           <Route path="modules/:id" component={ModuleContainer} />
 
+          <Route path="rules" component={RulesContainer} />
           <Route path="settings" component={SettingsContainer} />
         </Route>
       </Router>
