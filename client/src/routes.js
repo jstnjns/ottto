@@ -7,6 +7,7 @@ import RoomsContainer from './rooms/rooms-container'
 import RoomContainer from './rooms/room-container'
 
 import RulesContainer from './rules/rules-container'
+import RuleContainer from './rules/rule-container'
 
 import ModuleContainer from './modules/module-container'
 
@@ -25,6 +26,8 @@ class Routes extends Component {
           <Route path="modules/:id" component={ModuleContainer} />
 
           <Route path="rules" component={RulesContainer} />
+          <Route path="rules/:id" component={RuleContainer} />
+
           <Route path="settings" component={SettingsContainer} />
         </Route>
       </Router>

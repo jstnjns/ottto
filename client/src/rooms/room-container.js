@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { getRoom } from './rooms-actions'
 
+import { getRoom } from './rooms-actions'
 import Room from './room-component'
 
 

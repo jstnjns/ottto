@@ -44,6 +44,24 @@ const getRulesError = (error) => {
   return { type: RULES_GET_ERROR, error }
 }
 
+export const getRule = (id) => {
+  return (dispatch) => {
+    dispatch(gettingRule())
+
+    return socket.get(`/api/rules/${id}`)
+      .then(rule => dispatch(getRuleSuccess(rule)))
+      .catch(error => dispatch(getRuleError(error)))
+  }
+}
+const gettingRule = () => {
+  return { type: RULE_GET }
+}
+const getRuleSuccess = (rule) => {
+  return { type: RULE_GET_SUCCESS, rule }
+}
+const getRuleError = (error) => {
+  return { type: RULE_GET_ERROR, error }
+}
 
 // REDUCERS
 const initialState = {
