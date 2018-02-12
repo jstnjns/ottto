@@ -35,7 +35,7 @@ class Module extends Component {
             <Toolbar>
               <IconButton className={classes.backButton}
                 component={Link} to={`/rooms/${module.group.id}`}
-                color="contrast">
+                color="inherit">
                 <ChevronLeft />
               </IconButton>
               <Typography type="title" color="inherit">

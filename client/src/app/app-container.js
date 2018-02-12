@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 
 import { Link } from 'react-router'
 import Paper from 'material-ui/Paper'
-import BottomNavigation, { BottomNavigationButton } from 'material-ui/BottomNavigation'
+import BottomNavigation, { BottomNavigationAction } from 'material-ui/BottomNavigation'
 
 import { syncModules } from '../modules/modules-actions'
 
@@ -24,30 +24,30 @@ class App extends Component {
         <Paper>
           <BottomNavigation showLabels value={2}
             style={{ position: 'fixed', left: 0, right: 0, bottom: 0 }}>
-            <BottomNavigationButton
+            <BottomNavigationAction
               component={Link} to="/users"
               label="Users">
-            </BottomNavigationButton>
+            </BottomNavigationAction>
 
-            <BottomNavigationButton
+            <BottomNavigationAction
               component={Link} to="/rules"
               label="Rules">
-            </BottomNavigationButton>
+            </BottomNavigationAction>
 
-            <BottomNavigationButton
+            <BottomNavigationAction
               component={Link} to="/"
               label="Rooms">
-            </BottomNavigationButton>
+            </BottomNavigationAction>
 
-            <BottomNavigationButton
+            <BottomNavigationAction
               component={Link} to="/scenes"
               label="Scenes">
-            </BottomNavigationButton>
+            </BottomNavigationAction>
 
-            <BottomNavigationButton
+            <BottomNavigationAction
               component={Link} to="/settings"
               label="Settings">
-            </BottomNavigationButton>
+            </BottomNavigationAction>
           </BottomNavigation>
         </Paper>
 

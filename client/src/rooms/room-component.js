@@ -29,7 +29,7 @@ class Room extends Component {
             <Toolbar>
               <IconButton className={classes.backButton}
                 component={Link} to="/"
-                color="contrast">
+                color="inherit">
                 <ChevronLeft />
               </IconButton>
               <Typography type="title" color="inherit">
