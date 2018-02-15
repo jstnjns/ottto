@@ -1,38 +1,20 @@
-import React, { Component } from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import React from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { reduxForm } from 'redux-form'
 import { Actions } from 'react-native-router-flux'
-import Modal from 'react-native-modalbox'
+import { postRoom } from 'actions/rooms-actions'
 
-class RoomsAdd extends Component {
-  componentDidMount() {
-    this.refs.modal.open()
-  }
-
-  render() {
-    return (
-      <Modal ref="modal"
-        position={'center'}
-        onClosed={this.onClose}
-        style={styles.modal}>
-        <Text>Add Room</Text>
-      </Modal>
-    )
-  }
-
-  onClose() {
-    Actions.pop()
-  }
-}
+import RoomsAdd from './rooms-add-component'
 
 
-const styles = StyleSheet.create({
-  modal: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: 300,
-    width: 300,
-  }
-})
-
-
-export default RoomsAdd
+export default connect(
+  (state) => ({ }),
+  (dispatch) => bindActionCreators({ postRoom }, dispatch)
+)(reduxForm({
+  form: 'roomsAdd',
+  onSubmit: (values, dispatch) => (
+    dispatch(postRoom(values))
+      .then(() => Actions.pop())
+  ),
+})(RoomsAdd))

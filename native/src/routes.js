@@ -73,6 +73,11 @@ class Routes extends Component {
                 onRight={() => { Actions.addRoom({ test: 'yep' }) }}
               />
 
+              <Scene key="addRoom"
+                component={RoomsAddContainer}
+                navTransparent
+              />
+
               <Scene key="room"
                 component={RoomContainer}
                 navTransparent
@@ -110,9 +115,6 @@ class Routes extends Component {
 
           <Scene key="showModule"
             component={ModuleContainer} />
-
-          <Scene key="addRoom"
-            component={RoomsAddContainer} />
         </Lightbox>
       </Router>
     )

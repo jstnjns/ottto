@@ -1,11 +1,12 @@
 import { combineReducers } from 'redux';
+import { reducer as form } from 'redux-form';
 
-
-import roomsReducer from 'actions/rooms-actions';
-import modulesReducer from 'actions/modules-actions';
+import rooms from 'actions/rooms-actions';
+import modules from 'actions/modules-actions';
 
 
 export default combineReducers({
-  rooms: roomsReducer,
-  modules: modulesReducer,
+  form,
+  rooms,
+  modules,
 });
