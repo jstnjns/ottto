@@ -129,7 +129,7 @@
         "updatedAt": "2018-01-06T08:38:49.938Z",
         "id": 1,
         "values": {
-          "power": true,
+          "power": false,
           "color": "#ffffff",
           "level": "100"
         }
