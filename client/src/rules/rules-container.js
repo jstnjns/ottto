@@ -17,6 +17,8 @@ class RulesContainer extends Component {
   }
 
   render() {
+    let { rules } = this.props;
+
     return (
       <div>
         <AppBar position="static">
@@ -27,7 +29,7 @@ class RulesContainer extends Component {
           </Toolbar>
         </AppBar>
 
-        <RulesList rules={this.props.rules} />
+        <RulesList rules={rules} />
       </div>
     )
   }
