@@ -28,8 +28,8 @@ module.exports = {
       enum: ['==', '!=', '>', '<', '> x <']
     },
 
-    arguments: {
-      type: 'array',
+    value: {
+      type: 'string',
       required: true
     }
 
