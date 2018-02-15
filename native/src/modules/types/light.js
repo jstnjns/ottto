@@ -3,7 +3,7 @@ import _ from 'lodash'
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { updateModule } from 'actions/modules-actions'
+import { updateModule } from 'modules/modules-actions'
 
 import { StyleSheet, Text, View } from 'react-native'
 

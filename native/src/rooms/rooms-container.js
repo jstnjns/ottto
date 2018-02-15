@@ -3,10 +3,10 @@ import _ from 'lodash'
 import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { getRooms } from 'actions/rooms-actions'
-import { getModules } from 'actions/modules-actions'
 
-import Rooms from './rooms-component'
+import Rooms from 'rooms/rooms-component'
+import { getRooms } from 'rooms/rooms-actions'
+import { getModules } from 'modules/modules-actions'
 
 
 export default connect(

@@ -1,24 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { addRoom } from 'actions/rooms-actions'
-
 import { StyleSheet } from 'react-native'
 import { Svg, Path } from 'react-native-svg'
-import Icon from 'react-native-vector-icons/Ionicons'
-
 import { Router, Scene, Tabs, Actions, Lightbox } from 'react-native-router-flux';
 
-import UsersContainer from './users/users-container';
-import RulesContainer from './rules/rules-container';
-import ScenesContainer from './scenes/scenes-container';
-import SettingsContainer from './settings/settings-container';
+import { addRoom } from 'rooms/rooms-actions'
 
-import RoomsContainer from './rooms/rooms-container';
-import RoomsAddContainer from './rooms/add-container';
-import RoomContainer from './rooms/room-container';
+import UsersContainer from 'users/users-container';
+import RulesContainer from 'rules/rules-container';
+import ScenesContainer from 'scenes/scenes-container';
+import SettingsContainer from 'settings/settings-container';
 
-import ModuleContainer from './modules/module-container';
+import RoomsContainer from 'rooms/rooms-container';
+import RoomsAddContainer from 'rooms/add-container';
+import RoomContainer from 'rooms/room-container';
+
+import ModuleContainer from 'modules/module-container';
 
 
 class Routes extends Component {
@@ -117,20 +115,6 @@ class Routes extends Component {
             component={ModuleContainer} />
         </Lightbox>
       </Router>
-    )
-  }
-
-  renderIcon(scene) {
-    const iconName = scene.focused
-      ? scene.iconName
-      : scene.iconName + '-outline'
-    const colorName = scene.focused
-      ? scene.activeTintColor
-      : scene.tintColor
-
-    return (
-      <Icon name={iconName} size={28}
-        color={colorName} />
     )
   }
 }

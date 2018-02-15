@@ -1,9 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { updateModule } from 'actions/modules-actions'
 
-import Module from './module-component'
+import Module from 'modules/module-component'
+import { updateModule } from 'modules/modules-actions'
 
 
 export default connect(

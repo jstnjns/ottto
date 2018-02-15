@@ -3,9 +3,9 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { reduxForm } from 'redux-form'
 import { Actions } from 'react-native-router-flux'
-import { postRoom } from 'actions/rooms-actions'
 
-import RoomsAdd from './add-component'
+import RoomsAdd from 'rooms/add-component'
+import { postRoom } from 'rooms/rooms-actions'
 
 
 export default connect(

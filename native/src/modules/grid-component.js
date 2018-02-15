@@ -3,10 +3,10 @@ import _ from 'lodash'
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { getModule, activateModule } from 'actions/modules-actions'
-
 import { ScrollView, StyleSheet, Text, TouchableHighlight, View } from 'react-native'
-import ModulesGridIcon from './grid/icon'
+
+import ModulesGridIcon from 'modules/grid/icon'
+import { getModule, activateModule } from 'modules/modules-actions'
 
 
 class ModulesGrid extends Component {
