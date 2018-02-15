@@ -156,8 +156,39 @@
         }
       }
     ],
-    "ruleconditions": [],
-    "rules": []
+    "ruleconditions": [
+      {
+        "rule": 1,
+        "module": 2,
+        "attribute": "motion",
+        "operator": "==",
+        "arguments": [
+          true
+        ],
+        "createdAt": "2018-02-15T09:44:26.641Z",
+        "updatedAt": "2018-02-15T09:48:16.245Z",
+        "id": 1
+      }
+    ],
+    "rules": [
+      {
+        "name": "Automatic Living Room Lights",
+        "operator": "&&",
+        "actions": [
+          {
+            "module": 1,
+            "attribute": "power",
+            "value": true,
+            "arguments": {
+              "0": true
+            }
+          }
+        ],
+        "createdAt": "2018-02-15T09:40:17.465Z",
+        "updatedAt": "2018-02-15T09:48:16.243Z",
+        "id": 1
+      }
+    ]
   },
   "schema": {
     "moduleevents": {
@@ -335,7 +366,9 @@
     }
   },
   "counters": {
-    "moduleevents": {},
+    "moduleevents": {
+      "id": 4
+    },
     "modulegroups": {
       "id": 4
     },
@@ -345,7 +378,11 @@
     "modules": {
       "id": 3
     },
-    "ruleconditions": {},
-    "rules": {}
+    "ruleconditions": {
+      "id": 1
+    },
+    "rules": {
+      "id": 1
+    }
   }
 }
