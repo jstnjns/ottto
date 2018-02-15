@@ -5,7 +5,7 @@ import { reduxForm } from 'redux-form'
 import { Actions } from 'react-native-router-flux'
 import { postRoom } from 'actions/rooms-actions'
 
-import RoomsAdd from './rooms-add-component'
+import RoomsAdd from './add-component'
 
 
 export default connect(

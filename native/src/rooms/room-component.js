@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { StyleSheet, View } from 'react-native'
 import { Actions } from 'react-native-router-flux';
 
-import ModulesGrid from '../modules/modules-grid-component'
+import ModulesGrid from '../modules/grid-component'
 
 
 class Room extends Component {
