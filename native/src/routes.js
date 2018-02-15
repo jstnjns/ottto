@@ -9,17 +9,16 @@ import Icon from 'react-native-vector-icons/Ionicons'
 
 import { Router, Scene, Tabs, Actions, Lightbox } from 'react-native-router-flux';
 
-import ScenesContainer from './scenes/scenes-container';
+import UsersContainer from './users/users-container';
 import RulesContainer from './rules/rules-container';
+import ScenesContainer from './scenes/scenes-container';
+import SettingsContainer from './settings/settings-container';
 
 import RoomsContainer from './rooms/rooms-container';
 import RoomsAddContainer from './rooms/rooms-add-container';
 import RoomContainer from './room/room-container';
 
-import ModulesContainer from './modules/modules-container';
 import ModuleContainer from './module/module-container';
-
-import SettingsContainer from './settings/settings-container';
 
 
 class Routes extends Component {
@@ -31,9 +30,9 @@ class Routes extends Component {
             tabBarStyle={styles.tabBar}
             showLabel={false}
             activeTintColor={'#157EFB'}>
-            <Scene key="modules"
-              component={ModulesContainer}
-              title="Modules"
+            <Scene key="users"
+              component={UsersContainer}
+              title="Users"
               icon={(scene) => {
                 return (
                   <Svg width="32" height="32">
