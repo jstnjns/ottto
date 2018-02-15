@@ -25,8 +25,8 @@ export const getModules = () => {
     })
 
     return socket.get('/api/modules/')
-      .then( modules => dispatch(getModulesSuccess(modules)) )
-      .then( error => dispatch(getModuleError(error)) )
+      .then((modules) => dispatch(getModulesSuccess(modules)))
+      .catch((error) => dispatch(getModuleError(error)))
   }
 }
 export const getModulesSuccess = (modules) => {
@@ -40,8 +40,8 @@ export const getModulesError = (error) => {
 export const getModule = (id) => {
   return (dispatch, getState) => {
     return socket.get('/api/modules/' + id)
-      .then( module => dispatch(getModuleSuccess(module)) )
-      .catch( error => dispatch(getModuleError(error)) )
+      .then((module) => dispatch(getModuleSuccess(module)))
+      .catch((error) => dispatch(getModuleError(error)))
   }
 }
 export const getModuleSuccess = (module) => {
@@ -56,8 +56,8 @@ export const updateModule = (module) => {
     dispatch(updatingModule(module))
 
     socket.put('/api/modules/' + module.id, module)
-      .then(module => dispatch(updateModuleSuccess(module)))
-      .catch(error => dispatch(updateModuleError(error)))
+      .then((module) => dispatch(updateModuleSuccess(module)))
+      .catch((error) => dispatch(updateModuleError(error)))
   }
 }
 const updatingModule = (module) => {
@@ -97,11 +97,6 @@ const modulesReducer = (state = initialState, action) => {
         }
       }
 
-    case MODULE_GET_ERROR:
-      return {
-        ...state,
-      }
-
     case MODULE_UPDATE:
     case MODULE_UPDATE_SUCCESS:
       return {
@@ -113,11 +108,6 @@ const modulesReducer = (state = initialState, action) => {
             ...action.module
           }
         }
-      }
-
-    case MODULE_UPDATE_ERROR:
-      return {
-        ...state,
       }
 
     default: return state;

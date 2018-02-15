@@ -30,8 +30,8 @@ export const getRooms = () => {
     dispatch(gettingRooms())
 
     return socket.get('/api/modulegroups')
-      .then(rooms => dispatch(getRoomsSuccess(rooms)))
-      .catch(error => dispatch(getRoomsError(error)))
+      .then((rooms) => dispatch(getRoomsSuccess(rooms)))
+      .catch((error) => dispatch(getRoomsError(error)))
   }
 }
 const gettingRooms = () => {
@@ -48,8 +48,8 @@ export const getRoom = (id) => {
     dispatch(gettingRoom())
 
     return socket.get(`/api/modulegroups/${id}`)
-      .then(room => dispatch(getRoomSuccess(room)))
-      .catch(error => dispatch(getRoomError(error)))
+      .then((room) => dispatch(getRoomSuccess(room)))
+      .catch((error) => dispatch(getRoomError(error)))
   }
 }
 const gettingRoom = () => {
@@ -67,8 +67,8 @@ export const postRoom = (room) => {
     dispatch(postingRoom(room))
 
     return socket.post('/api/modulegroups', room)
-      .then(room => dispatch(postRoomSuccess(room)))
-      .catch(error => dispatch(postRoomError(error)))
+      .then((room) => dispatch(postRoomSuccess(room)))
+      .catch((error) => dispatch(postRoomError(error)))
   }
 }
 const postingRoom = (room) => {
@@ -86,8 +86,8 @@ export const putRoom = (room) => {
     dispatch(puttingRoom(room))
 
     return socket.put('/api/modulegroups/' + room.id, room)
-      .then(room => dispatch(putRoomSuccess(room)))
-      .catch(error => dispatch(putRoomError(room)))
+      .then((room) => dispatch(putRoomSuccess(room)))
+      .catch((error) => dispatch(putRoomError(room)))
   }
 }
 const puttingRoom = (room) => {
@@ -105,8 +105,8 @@ export const deleteRoom = (room) => {
     dispatch(deletingRoom(room))
 
     return socket.delete('/api/modulegroups/' + room.id)
-      .then(room => dispatch(deleteRoomSuccess(room)))
-      .catch(error => dispatch(deleteRoomError(room)))
+      .then((room) => dispatch(deleteRoomSuccess(room)))
+      .catch((error) => dispatch(deleteRoomError(room)))
   }
 }
 const deletingRoom = (room) => {

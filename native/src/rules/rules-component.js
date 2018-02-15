@@ -1,28 +1,25 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react';
 import { FlatList, TouchableHighlight, Text, View, StyleSheet } from 'react-native'
-import { Actions } from 'react-native-router-flux'
 
-
-class Rooms extends Component {
-  componentWillMount() {
-    this.props.getRooms()
-    this.props.getModules()
+class Rules extends PureComponent {
+  componentDidMount() {
+    this.props.getRules()
   }
 
   render() {
     return (
       <FlatList style={styles.container}
         contentContainerStyle={styles.list}
-        data={this.props.rooms}
-        renderItem={this.renderRoom.bind(this)}
+        data={this.props.rules}
+        renderItem={this.renderRule.bind(this)}
         keyExtractor={(item, index) => index}/>
     )
   }
 
-  renderRoom({ item }) {
+  renderRule({ item }) {
     return (
       <TouchableHighlight
-        onPress={this.roomPress.bind(this, item)}
+        onPress={this.rulePress.bind(this, item)}
         underlayColor='#eee'>
         <View>
           <View style={styles.listTextContainer}>
@@ -34,12 +31,10 @@ class Rooms extends Component {
     )
   }
 
+  rulePress(rule) {
 
-  roomPress(room) {
-    Actions.room({ title: room.name, room })
   }
 }
-
 
 const styles = StyleSheet.create({
   container: {
@@ -77,12 +72,6 @@ const styles = StyleSheet.create({
     marginLeft: 15,
     backgroundColor: '#EEEEEE',
   },
-  emptyContainer: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-})
+});
 
-
-export default Rooms
+export default Rules;
