@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-import Module from 'modules/module-component'
+import Module from 'modules/overlay-component'
 import { updateModule } from 'modules/modules-actions'
 
 
