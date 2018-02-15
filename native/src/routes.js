@@ -16,7 +16,7 @@ import SettingsContainer from './settings/settings-container';
 
 import RoomsContainer from './rooms/rooms-container';
 import RoomsAddContainer from './rooms/rooms-add-container';
-import RoomContainer from './room/room-container';
+import RoomContainer from './rooms/room-container';
 
 import ModuleContainer from './module/module-container';
 

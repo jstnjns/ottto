@@ -2,13 +2,13 @@ import React, { Component } from 'react'
 import { StyleSheet, View } from 'react-native'
 import { Actions } from 'react-native-router-flux';
 
-import ModulesGrid from './modules-grid'
+import ModulesGrid from '../modules/modules-grid-component'
 
 
 class Room extends Component {
   render() {
     let { modules } = this.props
-    
+
     return (
       <View style={styles.container}>
         <ModulesGrid modules={modules}
