@@ -18,7 +18,7 @@ import RoomsContainer from './rooms/rooms-container';
 import RoomsAddContainer from './rooms/add-container';
 import RoomContainer from './rooms/room-container';
 
-import ModuleContainer from './module/module-container';
+import ModuleContainer from './modules/module-container';
 
 
 class Routes extends Component {
