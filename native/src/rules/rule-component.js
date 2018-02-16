@@ -1,0 +1,124 @@
+import React, { Component } from 'react'
+import { TouchableHighlight, View, Text, StyleSheet } from 'react-native'
+
+const OPERATOR_MAP = {
+  '==': 'is',
+  '!=': 'is not',
+  '<': 'less than',
+  '<=': 'less than or equal to',
+  '>': 'greater than',
+  '>=': 'greater than or equal to',
+}
+
+
+class Rule extends Component {
+  render() {
+    const { rule } = this.props;
+
+    return (
+      <View style={styles.container}>
+        <View style={styles.listContainer}>
+          <View style={styles.listHeaderContainer}>
+            <Text style={styles.listHeader}>
+              Conditions
+            </Text>
+          </View>
+
+          <View style={styles.list}>
+            {rule.conditions.map(this.renderCondition)}
+          </View>
+        </View>
+
+        <View style={styles.listContainer}>
+          <View style={styles.listHeaderContainer}>
+            <Text style={styles.listHeader}>
+              Actions
+            </Text>
+          </View>
+
+          <View style={styles.list}>
+            {rule.actions.map(this.renderAction)}
+          </View>
+        </View>
+      </View>
+    )
+  }
+
+  renderCondition(condition, i) {
+    return (
+      <TouchableHighlight key={i}
+        underlayColor='#eee'>
+        <View>
+          <View style={styles.listItem}>
+            <Text style={styles.listItemText}>
+              {condition.module.name}
+              {condition.attribute}
+              {OPERATOR_MAP[condition.operator]}
+              {condition.value}
+            </Text>
+          </View>
+          <View style={styles.listSeparator}></View>
+        </View>
+      </TouchableHighlight>
+    )
+  }
+
+  renderAction(action, i) {
+    return (
+      <TouchableHighlight key={i}
+        underlayColor='#eee'>
+        <View>
+          <View style={styles.listItem}>
+            <Text style={styles.listItemText}>
+              {action.module.name}
+              {action.attribute}
+              {action.value}
+            </Text>
+          </View>
+          <View style={styles.listSeparator}></View>
+        </View>
+      </TouchableHighlight>
+    )
+  }
+}
+
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    backgroundColor: '#F9F9F9',
+  },
+  listContainer: {
+    marginBottom: 20,
+  },
+  listHeaderContainer: {
+    padding: 15,
+    paddingBottom: 5,
+    borderBottomWidth: 1,
+    borderBottomColor: '#DDDDDD',
+  },
+  listHeader: {
+    color: '#9B9B9B',
+  },
+  listHeader: {
+    color: '#9B9B9B',
+  },
+  listItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 15,
+  },
+  listItemText: {
+    flex: 1,
+    fontSize: 17,
+  },
+  listSeparator: {
+    height: 1,
+    marginLeft: 15,
+    backgroundColor: '#DDDDDD',
+  },
+})
+
+
+export default Rule

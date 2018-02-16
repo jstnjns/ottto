@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
   listSeparator: {
     height: 1,
     marginLeft: 15,
-    backgroundColor: '#EEEEEE',
+    backgroundColor: '#DDDDDD',
   },
   emptyContainer: {
     flex: 1,

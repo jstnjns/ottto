@@ -8,13 +8,17 @@ import { Router, Scene, Tabs, Actions, Lightbox } from 'react-native-router-flux
 import { addRoom } from 'rooms/rooms-actions'
 
 import UsersContainer from 'users/users-container';
+
 import RulesContainer from 'rules/rules-container';
-import ScenesContainer from 'scenes/scenes-container';
-import SettingsContainer from 'settings/settings-container';
+import RuleContainer from 'rules/rule-container';
 
 import RoomsContainer from 'rooms/rooms-container';
 import RoomsAddContainer from 'rooms/add-container';
 import RoomContainer from 'rooms/room-container';
+
+import ScenesContainer from 'scenes/scenes-container';
+
+import SettingsContainer from 'settings/settings-container';
 
 import ModuleOverlay from 'modules/overlay-container';
 
@@ -40,20 +44,29 @@ class Routes extends Component {
               }}
             />
 
-            <Scene key="rules"
-              component={RulesContainer}
-              title="Rules"
+            <Scene key="rulesScene"
               icon={(scene) => {
                 return (
                   <Svg width="32" height="32">
                     <Path fill={scene.focused ? '#666' : '#DDD'} d="M26,28 L6,28 C4.895,28 4,27.105 4,26 L4,14 C4,12.895 4.895,12 6,12 L26,12 C27.105,12 28,12.895 28,14 L28,26 C28,27.105 27.105,28 26,28 Z M6,10 C5.44771525,10 5,9.55228475 5,9 C5,8.44771525 5.44771525,8 6,8 L26,8 C26.5522847,8 27,8.44771525 27,9 C27,9.55228475 26.5522847,10 26,10 L6,10 Z M7,6 C6.44771525,6 6,5.55228475 6,5 C6,4.44771525 6.44771525,4 7,4 L25,4 C25.5522847,4 26,4.44771525 26,5 C26,5.55228475 25.5522847,6 25,6 L7,6 Z"></Path>
                   </Svg>
                 )
-              }}
-            />
+              }}>
+              <Scene key="rules"
+                initial={true}
+                component={RulesContainer}
+                navTransparent
+                title="Rules"
+              />
+
+              <Scene key="rule"
+                component={RuleContainer}
+                navTransparent
+                title="Rule"
+              />
+            </Scene>
 
             <Scene key="roomsScene"
-              title="Rooms"
               icon={(scene) => {
                 return (
                   <Svg width="32" height="32">
