@@ -164,8 +164,18 @@
         "operator": "==",
         "value": "true",
         "createdAt": "2018-02-15T09:44:26.641Z",
-        "updatedAt": "2018-02-15T09:48:16.245Z",
+        "updatedAt": "2018-02-16T10:09:03.496Z",
         "id": 1
+      },
+      {
+        "rule": 1,
+        "module": 1,
+        "attribute": "power",
+        "operator": "==",
+        "value": "false",
+        "createdAt": "2018-02-15T09:44:26.641Z",
+        "updatedAt": "2018-02-16T10:09:03.496Z",
+        "id": 2
       }
     ],
     "rules": [
@@ -176,11 +186,11 @@
           {
             "module": 1,
             "attribute": "power",
-            "value": "true"
+            "value": "true",
           }
         ],
         "createdAt": "2018-02-15T09:40:17.465Z",
-        "updatedAt": "2018-02-15T09:48:16.243Z",
+        "updatedAt": "2018-02-16T10:09:03.421Z",
         "id": 1
       }
     ]
@@ -374,7 +384,7 @@
       "id": 3
     },
     "ruleconditions": {
-      "id": 1
+      "id": 2
     },
     "rules": {
       "id": 1
