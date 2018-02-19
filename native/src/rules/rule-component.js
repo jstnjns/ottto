@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { TouchableHighlight, View, Text, StyleSheet } from 'react-native'
+import { Button, TouchableHighlight, View, Text, StyleSheet } from 'react-native'
 
 const OPERATOR_MAP = {
   '==': 'is',
@@ -20,34 +20,45 @@ class Rule extends Component {
         <View style={styles.listContainer}>
           <View style={styles.listHeaderContainer}>
             <Text style={styles.listHeader}>
-              Conditions
+              If...
             </Text>
           </View>
 
           <View style={styles.list}>
             {rule.conditions.map(this.renderCondition)}
           </View>
+
+          <Button style={styles.addButton}
+            title="Add Condition"
+            onPress={() => {}} />
         </View>
 
         <View style={styles.listContainer}>
           <View style={styles.listHeaderContainer}>
             <Text style={styles.listHeader}>
-              Actions
+              Then...
             </Text>
           </View>
 
           <View style={styles.list}>
             {rule.actions.map(this.renderAction)}
           </View>
+
+          <Button style={styles.addButton}
+            title="Add Action"
+            onPress={() => {}} />
         </View>
       </View>
     )
   }
 
-  renderCondition(condition, i) {
+  renderCondition = (condition, i) => {
+    const { onConditionPress } = this.props;
+
     return (
       <TouchableHighlight key={i}
-        underlayColor='#eee'>
+        underlayColor='#eee'
+        onPress={onConditionPress}>
         <View>
           <View style={styles.listItem}>
             <Text style={styles.listItemText}>
@@ -63,10 +74,13 @@ class Rule extends Component {
     )
   }
 
-  renderAction(action, i) {
+  renderAction = (action, i) => {
+    const { onActionPress } = this.props;
+
     return (
       <TouchableHighlight key={i}
-        underlayColor='#eee'>
+        underlayColor='#eee'
+        onPress={onActionPress}>
         <View>
           <View style={styles.listItem}>
             <Text style={styles.listItemText}>
@@ -118,6 +132,13 @@ const styles = StyleSheet.create({
     marginLeft: 15,
     backgroundColor: '#DDDDDD',
   },
+  addButton: {
+    margin: 15,
+    width: 15,
+    height: 15,
+    backgroundColor: '#333333',
+    borderRadius: 8,
+  }
 })
 
 

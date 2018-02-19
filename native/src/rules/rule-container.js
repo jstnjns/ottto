@@ -2,8 +2,7 @@ import _ from 'lodash'
 
 import React from 'react'
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
-import { Actions } from 'react-native-router-flux';
+import { Actions } from 'react-native-router-flux'
 
 import Rule from 'rules/rule-component'
 
@@ -24,5 +23,12 @@ export default connect(
     }
   }),
   // mapDispatchToProps
-  (dispatch) => ({ })
+  (dispatch) => ({
+    onConditionPress: (condition) => {
+      Actions.condition(condition)
+    },
+    onActionPress: (action) => {
+      Actions.action(action)
+    },
+  })
 )(Rule)
