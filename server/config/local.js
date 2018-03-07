@@ -29,9 +29,9 @@
 
 var interfaces = require('os').networkInterfaces(),
     ethernet = interfaces.eth0 || interfaces.en0,
-    ip = ethernet
-      .find(function(interface) { return interface.family == 'IPv4'; })
-      .address;
+    match = ethernet || []
+      .find(function(interface) { return interface.family == 'IPv4'; }),
+    ip = match && match.address || 'localhost';
 
 module.exports = {
 
@@ -41,7 +41,6 @@ module.exports = {
   },
 
   host: ip,
-  // host: 'localhost',
   port: 1337,
 
   /***************************************************************************

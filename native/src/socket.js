@@ -7,9 +7,10 @@ class Socket {
   constructor() {
     this.io = sailsIO(socketIO)
 
-    // io.sails.url = 'http://ottto.local'
-    // io.sails.url = 'http://localhost:1337'
-    this.io.sails.url = 'http://192.168.1.2:1337'
+    // this.io.sails.url = 'http://ottto.local'
+    this.io.sails.url = 'http://localhost:1337'
+    // this.io.sails.url = 'http://192.168.1.2:1337'
+    // this.io.sails.url = 'http://10.2.1.191:1337'
     this.io.sails.reconnection = true
     this.io.sails.useCORSRouteToGetCookie = false
   }
