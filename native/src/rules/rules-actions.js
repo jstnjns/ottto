@@ -42,7 +42,7 @@ const rulesReducer = (state = initialState, action) => {
         entities: {
           ...state.entities,
           ..._.keyBy(action.rules, 'id'),
-        }
+        },
       }
 
     default: return state

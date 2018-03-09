@@ -4,6 +4,7 @@ import { SectionList, TouchableHighlight, Text, View, StyleSheet } from 'react-n
 class Rules extends PureComponent {
   componentDidMount() {
     this.props.getRules()
+    this.props.getConditions()
   }
 
   render() {

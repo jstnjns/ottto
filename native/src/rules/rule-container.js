@@ -25,10 +25,10 @@ export default connect(
   // mapDispatchToProps
   (dispatch) => ({
     onConditionPress: (condition) => {
-      Actions.condition(condition)
+      Actions.condition({ condition })
     },
     onActionPress: (action) => {
-      Actions.action(action)
+      Actions.action({ action })
     },
   })
 )(Rule)

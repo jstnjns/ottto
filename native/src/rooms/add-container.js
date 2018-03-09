@@ -8,13 +8,16 @@ import RoomsAdd from 'rooms/add-component'
 import { postRoom } from 'rooms/rooms-actions'
 
 
-export default connect(
-  (state) => ({ }),
-  (dispatch) => bindActionCreators({ postRoom }, dispatch)
-)(reduxForm({
+const RoomsAddForm = reduxForm({
   form: 'roomsAdd',
   onSubmit: (values, dispatch) => (
     dispatch(postRoom(values))
       .then(() => Actions.pop())
   ),
-})(RoomsAdd))
+})(RoomsAdd)
+
+
+export default connect(
+  (state) => ({ }),
+  (dispatch) => ({ })
+)(RoomsAddForm)

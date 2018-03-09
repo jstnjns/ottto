@@ -6,6 +6,7 @@ import { Actions } from 'react-native-router-flux'
 
 import Rules from 'rules/rules-component'
 import { getRules } from 'rules/rules-actions'
+import { getConditions } from 'conditions/conditions-actions'
 
 
 export default connect(
@@ -16,6 +17,7 @@ export default connect(
   // mapDispatchToProps
   (dispatch) => ({
     getRules: () => dispatch(getRules()),
+    getConditions: () => dispatch(getConditions()),
     onRulePress: (rule) => (
       Actions.rule({
         title: rule.name,

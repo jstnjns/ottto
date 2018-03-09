@@ -11,7 +11,7 @@ import UsersContainer from 'users/users-container';
 
 import RulesContainer from 'rules/rules-container';
 import RuleContainer from 'rules/rule-container';
-import ConditionContainer from 'rules/condition-container';
+import ConditionContainer from 'conditions/condition-container';
 import ActionContainer from 'rules/action-container';
 
 import RoomsContainer from 'rooms/rooms-container';
@@ -71,6 +71,7 @@ class Routes extends Component {
                 component={ConditionContainer}
                 navTransparent
                 title="Condition"
+                backTitle="Cancel"
               />
 
               <Scene key="action"

@@ -58,7 +58,7 @@ class Rule extends Component {
     return (
       <TouchableHighlight key={i}
         underlayColor='#eee'
-        onPress={onConditionPress}>
+        onPress={() => onConditionPress(condition)}>
         <View>
           <View style={styles.listItem}>
             <Text style={styles.listItemText}>
@@ -80,7 +80,7 @@ class Rule extends Component {
     return (
       <TouchableHighlight key={i}
         underlayColor='#eee'
-        onPress={onActionPress}>
+        onPress={() => onActionPress(action)}>
         <View>
           <View style={styles.listItem}>
             <Text style={styles.listItemText}>
