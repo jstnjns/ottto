@@ -10,9 +10,8 @@ import { updateCondition } from 'conditions/conditions-actions'
 
 const ConditionForm = reduxForm({
   form: 'condition',
-  onSubmit: (condition, dispatch) => (
-    console.log('onSubmit', condition) ||
-    dispatch(updateCondition(condition))
+  onSubmit: (values, dispatch) => (
+    dispatch(updateCondition(values))
       .then(() => Actions.pop())
   ),
 })(Condition)
@@ -21,7 +20,7 @@ const selector = formValueSelector('condition')
 
 export default connect(
   // mapStateToProps
-  (state, props) => {
+  (state, { condition }) => {
 
     const moduleId = selector(state, 'module')
     const attributeName = selector(state, 'attribute')
@@ -49,11 +48,12 @@ export default connect(
       operator,
 
       initialValues: {
-        module: props.condition.module.id,
-        attribute: props.condition.attribute,
-        operator: props.condition.operator,
-        value: props.condition.value,
-        rule: props.condition.rule,
+        id: condition.id,
+        module: condition.module.id,
+        attribute: condition.attribute,
+        operator: condition.operator,
+        value: condition.value,
+        rule: condition.rule,
       },
     }
   },

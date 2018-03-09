@@ -13,8 +13,8 @@ export default connect(
     rule: {
       ...rule,
       conditions: rule.conditions.map((condition) => ({
-        ...condition,
-        module: _.find(state.modules.entities, { id: condition.module })
+        ...state.conditions.entities[condition.id],
+        module: state.modules.entities[condition.module]
       })),
       actions: rule.actions.map((action) => ({
         ...action,

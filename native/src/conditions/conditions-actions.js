@@ -1,5 +1,8 @@
 import _ from 'lodash'
+import { normalize } from 'normalizr'
+
 import socket from '../socket'
+import { conditions } from '../schemas'
 
 
 // TYPES
@@ -17,7 +20,7 @@ export const getConditions = () => {
   return (dispatch) => {
     dispatch(gettingConditions())
 
-    return socket.get('/api/conditions')
+    return socket.get('/api/ruleconditions')
       .then((conditions) => dispatch(getConditionsSuccess(conditions)))
       .catch((error) => dispatch(getConditionsError(error)))
   }
@@ -27,26 +30,29 @@ const gettingConditions = () => {
   return { type: CONDITIONS_GET }
 }
 
-const getConditionsSuccess = (conditions) => {
-  return { type: CONDITIONS_GET_SUCCESS, conditions }
+const getConditionsSuccess = (response) => {
+  return {
+    type: CONDITIONS_GET_SUCCESS,
+    ...normalize(response, conditions),
+  }
 }
 
 const getConditionsError = (error) => {
   return { type: CONDITIONS_GET_ERROR, error }
 }
 
-export const updateCondition = (params) => {
+export const updateCondition = (condition) => {
   return (dispatch) => {
-    dispatch(updatingCondition())
+    dispatch(updatingCondition(condition))
 
-    return socket.put(`/api/conditions/${condition.rule}`, params)
-      .then((condition) => dispatch(updateConditionSuccess(condition)))
+    return socket.put(`/api/conditions/${condition.id}`, condition)
+      .then(() => dispatch(updateConditionSuccess(condition)))
       .catch((error) => dispatch(updateConditionError(error)))
   }
 }
 
-const updatingCondition = () => {
-  return { type: CONDITION_UPDATE }
+const updatingCondition = (params) => {
+  return { type: CONDITION_UPDATE, params }
 }
 
 const updateConditionSuccess = (condition) => {
@@ -65,13 +71,22 @@ const initialState = {
 
 const conditionsReducer = (state = initialState, action) => {
   switch(action.type) {
-    case CONDITIONS_GET:
+    case CONDITIONS_GET_SUCCESS:
       return {
         ...state,
         entities: {
           ...state.entities,
-          ..._.keyBy(action.conditions, 'id'),
+          ...action.entities.conditions,
         },
+      }
+
+    case CONDITION_UPDATE_SUCCESS:
+      return {
+        ...state,
+        entities: {
+          ...state.entities,
+          [action.condition.id]: action.condition
+        }
       }
 
     default: return state
