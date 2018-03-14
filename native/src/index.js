@@ -1,18 +1,20 @@
 import React, { Component } from 'react'
-import Routes from './routes'
-
 import { applyMiddleware, createStore } from 'redux'
 import { Provider } from 'react-redux'
 import createLogger from 'redux-logger'
 import thunk from 'redux-thunk'
+
+import Routes from './routes'
 import reducers from './reducers'
+
 
 const logger = createLogger()
 const middleware = applyMiddleware(thunk, logger)
+
 const store = createStore(reducers, middleware)
 
 
-class App extends Component {
+export default class App extends Component {
   render() {
     return (
       <Provider store={store}>
@@ -21,6 +23,3 @@ class App extends Component {
     )
   }
 }
-
-
-export default App

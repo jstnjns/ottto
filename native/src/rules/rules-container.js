@@ -12,7 +12,7 @@ import { getConditions } from 'conditions/conditions-actions'
 export default connect(
   // mapStateToProps
   (state) => ({
-    rules: _.toArray(state.rules.entities)
+    rules: state.entities.rules,
   }),
   // mapDispatchToProps
   (dispatch) => ({

@@ -1,19 +1,22 @@
-import React, { Component } from 'react'
+import _ from 'lodash'
+import React, { PureComponent } from 'react'
 import { FlatList, TouchableHighlight, Text, View, StyleSheet } from 'react-native'
 import { Actions } from 'react-native-router-flux'
 
 
-class Rooms extends Component {
+class Rooms extends PureComponent {
   componentWillMount() {
     this.props.getRooms()
     this.props.getModules()
   }
 
   render() {
+    const { rooms } = this.props
+
     return (
       <FlatList style={styles.container}
         contentContainerStyle={styles.list}
-        data={this.props.rooms}
+        data={_.toArray(rooms)}
         renderItem={this.renderRoom.bind(this)}
         keyExtractor={(item, index) => index}/>
     )
@@ -36,7 +39,10 @@ class Rooms extends Component {
 
 
   roomPress(room) {
-    Actions.room({ title: room.name, room })
+    Actions.room({
+      title: room.name,
+      room,
+    })
   }
 }
 

@@ -1,16 +1,21 @@
 import React, { Component } from 'react'
 import { StyleSheet, View } from 'react-native'
 
-import ModulesGrid from '../modules/grid-component'
+import ModulesGrid from 'modules/grid-component'
 
 
 class Room extends Component {
   render() {
-    const { modules, onModulePress } = this.props
+    const {
+      room,
+      onModulePress,
+    } = this.props
+
+    console.log('room', room)
 
     return (
       <View style={styles.container}>
-        <ModulesGrid modules={modules}
+        <ModulesGrid modules={room.modules}
           onModulePress={onModulePress}/>
       </View>
     )

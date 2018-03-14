@@ -1,5 +1,8 @@
 import _ from 'lodash'
+import { normalize } from 'normalizr'
+
 import socket from '../socket'
+import { roomsSchema } from '../schemas'
 
 
 // TYPES
@@ -31,14 +34,16 @@ export const getRooms = () => {
 
     return socket.get('/api/modulegroups')
       .then((rooms) => dispatch(getRoomsSuccess(rooms)))
-      .catch((error) => dispatch(getRoomsError(error)))
   }
 }
 const gettingRooms = () => {
   return { type: ROOMS_GET }
 }
-const getRoomsSuccess = (rooms) => {
-  return { type: ROOMS_GET_SUCCESS, rooms }
+const getRoomsSuccess = (response) => {
+  return {
+    type: ROOMS_GET_SUCCESS,
+    ...normalize(response, roomsSchema)
+  }
 }
 const getRoomsError = (error) => {
   return { type: ROOMS_GET_ERROR, error }
@@ -120,43 +125,15 @@ const deleteRoomError = (error) => {
 }
 
 
-// REDUCERS
-const initialState = {
-  entities: [],
-}
-
-const roomsReducer = (state = initialState, action) => {
-  switch(action.type) {
-    case ROOMS_GET:
-      return {
-        ...state,
-      }
-
-    case ROOMS_GET_SUCCESS:
-      return {
-        ...state,
-        entities: {
-          ...state.entities,
-          ..._.keyBy(action.rooms, 'id'),
-        }
-      }
-
-    case ROOMS_GET_ERROR:
-      return {
-        ...state,
-      }
-
-    case ROOM_GET_SUCCESS:
-      return {
-        ...state,
-        entities: {
-          ...state.entities,
-          [action.room.id]: action.room,
-        }
-      }
-
-    default: return state
-  }
-}
-
-export default roomsReducer
+// // REDUCERS
+// const initialState = {
+//   entities: [],
+// }
+//
+// const roomsReducer = (state = initialState, action) => {
+//   switch(action.type) {
+//     default: return state
+//   }
+// }
+//
+// export default roomsReducer

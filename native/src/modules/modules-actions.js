@@ -1,5 +1,8 @@
-import socket from '../socket'
 import _ from 'lodash'
+import { normalize } from 'normalizr'
+
+import socket from '../socket'
+import { moduleSchema, modulesSchema } from '../schemas'
 
 // TYPES
 const MODULES_GET = 'MODULES_GET'
@@ -29,8 +32,11 @@ export const getModules = () => {
       .catch((error) => dispatch(getModuleError(error)))
   }
 }
-export const getModulesSuccess = (modules) => {
-  return { type: MODULES_GET_SUCCESS, modules }
+export const getModulesSuccess = (response) => {
+  return {
+    type: MODULES_GET_SUCCESS,
+    ...normalize(response, modulesSchema),
+  }
 }
 export const getModulesError = (error) => {
   return { type: MODULES_GET_ERROR, error }
@@ -61,58 +67,32 @@ export const updateModule = (module) => {
   }
 }
 const updatingModule = (module) => {
-  return { type: MODULE_UPDATE, module }
+  return {
+    type: MODULE_UPDATE,
+    ...normalize(module, moduleSchema),
+  }
 }
 const updateModuleSuccess = (module) => {
-  return { type: MODULE_UPDATE_SUCCESS, module }
+  return {
+    type: MODULE_UPDATE_SUCCESS,
+    ...normalize(module, moduleSchema),
+  }
 }
 const updateModuleError = (error) => {
   return { type: MODULE_UPDATE_ERROR, error }
 }
 
 
-// REDUCERS
-const initialState = {
-  entities: {},
-  active: null
-}
-
-const modulesReducer = (state = initialState, action) => {
-  switch(action.type) {
-    case MODULES_GET_SUCCESS:
-      return {
-        ...state,
-        entities: {
-          ...state.entities,
-          ..._.keyBy(action.modules, 'id'),
-        }
-      }
-
-    case MODULE_GET_SUCCESS:
-      return {
-        ...state,
-        entities: {
-          ...state.entities,
-          [action.module.id]: action.module
-        }
-      }
-
-    case MODULE_UPDATE:
-    case MODULE_UPDATE_SUCCESS:
-      return {
-        ...state,
-        entities: {
-          ...state.entities,
-          [action.module.id]: {
-            ...state.entities[action.module.id],
-            ...action.module
-          }
-        }
-      }
-
-    default: return state;
-  }
-}
-
-
-export default modulesReducer;
+// // REDUCERS
+// const initialState = {
+//   entities: {},
+// }
+//
+// const modulesReducer = (state = initialState, action) => {
+//   switch(action.type) {
+//     default: return state;
+//   }
+// }
+//
+//
+// export default modulesReducer;

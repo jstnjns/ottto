@@ -10,6 +10,8 @@ import { getModules } from 'modules/modules-actions'
 
 
 export default connect(
-  (state) => ({ rooms: _.toArray(state.rooms.entities) }),
+  (state) => ({
+    rooms: state.entities.rooms,
+  }),
   (dispatch) => bindActionCreators({ getRooms, getModules }, dispatch)
 )(Rooms)

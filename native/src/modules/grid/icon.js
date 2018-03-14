@@ -12,7 +12,7 @@ import DefaultIcon from './icons/default'
 
 class ModulesGridIcon extends Component {
   render() {
-    let { module } = this.props;
+    const { module } = this.props;
 
     if(module) {
       return (
@@ -108,8 +108,4 @@ const styles = StyleSheet.create({
 })
 
 
-export default connect(
-  (state, props) => ({
-    module: props.module ? state.modules.entities[props.module.id] : null
-  })
-)(ModulesGridIcon)
+export default ModulesGridIcon

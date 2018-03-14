@@ -16,17 +16,17 @@ class ModulesGrid extends Component {
       return { ...module, icon: true }
     })
     const blanks = _.fill(Array(count - modules.length), undefined)
-    const items = _.concat(modules, blanks)
+    const items = [...modules, ...blanks]
 
     return (
       <View style={styles.content}>
-        {items.map(this.renderModule.bind(this))}
+        {items.map(this.renderModule)}
       </View>
     )
   }
 
 
-  renderModule(module, index) {
+  renderModule = (module, index) => {
     return (
       <ModulesGridIcon key={index}
         module={module}

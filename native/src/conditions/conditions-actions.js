@@ -2,7 +2,7 @@ import _ from 'lodash'
 import { normalize } from 'normalizr'
 
 import socket from '../socket'
-import { conditions } from '../schemas'
+import { conditionSchema, conditionsSchema } from '../schemas'
 
 
 // TYPES
@@ -33,7 +33,7 @@ const gettingConditions = () => {
 const getConditionsSuccess = (response) => {
   return {
     type: CONDITIONS_GET_SUCCESS,
-    ...normalize(response, conditions),
+    ...normalize(response, conditionsSchema),
   }
 }
 
@@ -45,7 +45,7 @@ export const updateCondition = (condition) => {
   return (dispatch) => {
     dispatch(updatingCondition(condition))
 
-    return socket.put(`/api/conditions/${condition.id}`, condition)
+    return socket.put(`/api/ruleconditions/${condition.id}`, condition)
       .then(() => dispatch(updateConditionSuccess(condition)))
       .catch((error) => dispatch(updateConditionError(error)))
   }
@@ -56,7 +56,10 @@ const updatingCondition = (params) => {
 }
 
 const updateConditionSuccess = (condition) => {
-  return { type: CONDITION_UPDATE_SUCCESS, condition }
+  return {
+    type: CONDITION_UPDATE_SUCCESS,
+    ...normalize(condition, conditionSchema),
+  }
 }
 
 const updateConditionError = (error) => {
@@ -64,33 +67,15 @@ const updateConditionError = (error) => {
 }
 
 
-// REDUCERS
-const initialState = {
-  entities: [],
-}
-
-const conditionsReducer = (state = initialState, action) => {
-  switch(action.type) {
-    case CONDITIONS_GET_SUCCESS:
-      return {
-        ...state,
-        entities: {
-          ...state.entities,
-          ...action.entities.conditions,
-        },
-      }
-
-    case CONDITION_UPDATE_SUCCESS:
-      return {
-        ...state,
-        entities: {
-          ...state.entities,
-          [action.condition.id]: action.condition
-        }
-      }
-
-    default: return state
-  }
-}
-
-export default conditionsReducer
+// // REDUCERS
+// const initialState = {
+//   entities: [],
+// }
+//
+// const conditionsReducer = (state = initialState, action) => {
+//   switch(action.type) {
+//     default: return state
+//   }
+// }
+//
+// export default conditionsReducer

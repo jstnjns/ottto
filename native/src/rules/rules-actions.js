@@ -1,5 +1,8 @@
 import _ from 'lodash'
+import { normalize } from 'normalizr'
+
 import socket from '../socket'
+import { rulesSchema } from '../schemas'
 
 
 // TYPES
@@ -21,32 +24,26 @@ export const getRules = () => {
 const gettingRules = () => {
   return { type: RULES_GET }
 }
-const getRulesSuccess = (rules) => {
-  return { type: RULES_GET_SUCCESS, rules }
+const getRulesSuccess = (response) => {
+  return {
+    type: RULES_GET_SUCCESS,
+    ...normalize(response, rulesSchema),
+  }
 }
 const getRulesError = (error) => {
   return { type: RULES_GET_ERROR, error }
 }
 
 
-// REDUCERS
-const initialState = {
-  entities: [],
-}
-
-const rulesReducer = (state = initialState, action) => {
-  switch(action.type) {
-    case RULES_GET_SUCCESS:
-      return {
-        ...state,
-        entities: {
-          ...state.entities,
-          ..._.keyBy(action.rules, 'id'),
-        },
-      }
-
-    default: return state
-  }
-}
-
-export default rulesReducer
+// // REDUCERS
+// const initialState = {
+//   entities: {},
+// }
+//
+// const rulesReducer = (state = initialState, action) => {
+//   switch(action.type) {
+//     default: return state
+//   }
+// }
+//
+// export default rulesReducer

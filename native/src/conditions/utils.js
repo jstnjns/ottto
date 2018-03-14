@@ -1,7 +1,7 @@
 export const mapModulesOptions = (modules = []) => (
   modules.map((module) => ({
     value: module.id,
-    label: `${module.group.name} ${module.name}`,
+    label: module.name,
   }))
 )
 

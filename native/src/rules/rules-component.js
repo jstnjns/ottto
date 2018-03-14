@@ -8,11 +8,13 @@ class Rules extends PureComponent {
   }
 
   render() {
+    const { rules } = this.props
+
     return (
       <SectionList style={styles.container}
         contentContainerStyle={styles.list}
         sections={[
-          { data: this.props.rules, title: 'Active' }
+          { data: _.toArray(rules), title: 'Active' }
         ]}
         renderSectionHeader={this.renderHeader.bind(this)}
         renderItem={this.renderRule.bind(this)}

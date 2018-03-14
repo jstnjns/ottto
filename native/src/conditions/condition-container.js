@@ -1,4 +1,5 @@
 import _ from 'lodash'
+import { denormalize } from 'normalizr'
 
 import React from 'react'
 import { connect } from 'react-redux'
@@ -7,6 +8,7 @@ import { Actions } from 'react-native-router-flux'
 
 import Condition from 'conditions/condition-component'
 import { updateCondition } from 'conditions/conditions-actions'
+import { moduleSchema } from '../schemas'
 
 const ConditionForm = reduxForm({
   form: 'condition',
@@ -26,16 +28,16 @@ export default connect(
     const attributeName = selector(state, 'attribute')
     const operatorValue = selector(state, 'operator')
 
-    const modules = _.toArray(state.modules.entities)
+    const modules = _.toArray(state.entities.modules)
     let module
     let attribute
     let operator
 
     if (moduleId) {
-      module = state.modules.entities[moduleId]
+      module = denormalize(state.entities.modules[moduleId], moduleSchema, state.entities)
     }
-    if (attributeName && module) {
-      attribute = _.find(module.type.attributes, { name: attributeName }) || module.type.attributes[0]
+    if (attributeName) {
+      attribute = _.find(module.type.attributes, { name: attributeName })
     }
     if (operatorValue) {
       operator = operatorValue
