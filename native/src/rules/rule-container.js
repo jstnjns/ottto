@@ -15,12 +15,12 @@ export default connect(
     rule: denormalize(rule, ruleSchema, state.entities)
   }),
   // mapDispatchToProps
-  (dispatch) => ({
+  (dispatch, { rule }) => ({
     onConditionPress: (condition) => {
-      Actions.condition({ condition })
+      Actions.condition({ condition, rule })
     },
     onActionPress: (action) => {
-      Actions.action({ action })
+      Actions.action({ action, rule })
     },
   })
 )(Rule)

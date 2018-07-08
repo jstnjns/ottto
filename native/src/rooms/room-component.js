@@ -11,8 +11,6 @@ class Room extends Component {
       onModulePress,
     } = this.props
 
-    console.log('room', room)
-
     return (
       <View style={styles.container}>
         <ModulesGrid modules={room.modules}

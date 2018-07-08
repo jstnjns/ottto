@@ -13,7 +13,11 @@ const OPERATOR_MAP = {
 
 class Rule extends Component {
   render() {
-    const { rule } = this.props;
+    const {
+      rule,
+      onConditionPress,
+      onActionPress,
+    } = this.props;
 
     return (
       <View style={styles.container}>
@@ -30,7 +34,7 @@ class Rule extends Component {
 
           <Button style={styles.addButton}
             title="Add Condition"
-            onPress={() => {}} />
+            onPress={() => onConditionPress()} />
         </View>
 
         <View style={styles.listContainer}>
@@ -46,7 +50,7 @@ class Rule extends Component {
 
           <Button style={styles.addButton}
             title="Add Action"
-            onPress={() => {}} />
+            onPress={() => onActionPress()} />
         </View>
       </View>
     )

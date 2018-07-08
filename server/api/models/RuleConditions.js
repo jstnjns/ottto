@@ -10,7 +10,8 @@ module.exports = {
   attributes: {
 
     rule: {
-      model: 'Rules'
+      model: 'Rules',
+      required: true
     },
 
     module: {
@@ -25,7 +26,8 @@ module.exports = {
 
     operator: {
       type: 'string',
-      enum: ['==', '!=', '>', '<', '> x <']
+      enum: ['==', '!=', '>', '<', '> x <'],
+      required: true
     },
 
     value: {

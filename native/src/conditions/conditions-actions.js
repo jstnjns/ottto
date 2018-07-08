@@ -14,6 +14,10 @@ const CONDITION_UPDATE = 'CONDITION_UPDATE'
 const CONDITION_UPDATE_SUCCESS = 'CONDITION_UPDATE_SUCCESS'
 const CONDITION_UPDATE_ERROR = 'CONDITION_UPDATE_ERROR'
 
+const CONDITION_CREATE = 'CONDITION_CREATE'
+const CONDITION_CREATE_SUCCESS = 'CONDITION_CREATE_SUCCESS'
+const CONDITION_CREATE_ERROR = 'CONDITION_CREATE_ERROR'
+
 
 // CREATORS
 export const getConditions = () => {
@@ -22,7 +26,7 @@ export const getConditions = () => {
 
     return socket.get('/api/ruleconditions')
       .then((conditions) => dispatch(getConditionsSuccess(conditions)))
-      .catch((error) => dispatch(getConditionsError(error)))
+      // .catch((error) => dispatch(getConditionsError(error)))
   }
 }
 
@@ -41,13 +45,21 @@ const getConditionsError = (error) => {
   return { type: CONDITIONS_GET_ERROR, error }
 }
 
-export const updateCondition = (condition) => {
+export const saveCondition = (condition) => {
+  const action = condition.id
+    ? updateCondition
+    : createCondition;
+
+  return action(condition);
+}
+
+const updateCondition = (condition) => {
   return (dispatch) => {
     dispatch(updatingCondition(condition))
 
     return socket.put(`/api/ruleconditions/${condition.id}`, condition)
-      .then(() => dispatch(updateConditionSuccess(condition)))
-      .catch((error) => dispatch(updateConditionError(error)))
+      .then((response) => dispatch(updateConditionSuccess(response)))
+      // .catch((error) => dispatch(updateConditionError(error)))
   }
 }
 
@@ -66,16 +78,27 @@ const updateConditionError = (error) => {
   return { type: CONDITION_UPDATE_ERROR, error }
 }
 
+const createCondition = (params) => {
+  return (dispatch) => {
+    dispatch(creatingCondition(params))
 
-// // REDUCERS
-// const initialState = {
-//   entities: [],
-// }
-//
-// const conditionsReducer = (state = initialState, action) => {
-//   switch(action.type) {
-//     default: return state
-//   }
-// }
-//
-// export default conditionsReducer
+    return socket.post(`/api/ruleconditions/`, params)
+      .then((response) => dispatch(createConditionSuccess(response)))
+      // .catch((error) => dispatch(createConditionError(error)))
+  }
+}
+
+const creatingCondition = (params) => {
+  return { type: CONDITION_CREATE, params }
+}
+
+const createConditionSuccess = (condition) => {
+  return {
+    type: CONDITION_CREATE_SUCCESS,
+    ...normalize(condition, conditionSchema),
+  }
+}
+
+const createConditionError = (error) => {
+  return { type: CONDITION_CREATE_ERROR, error }
+}

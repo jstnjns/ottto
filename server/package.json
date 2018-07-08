@@ -23,6 +23,6 @@
   },
   "scripts": {
     "start": "./node_modules/.bin/sails lift",
-    "dev": "npm install && nodemon app.js --debug"
+    "dev": "nodemon app.js --debug"
   }
 }
