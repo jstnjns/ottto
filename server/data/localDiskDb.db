@@ -205,7 +205,7 @@
         "id": 3
       }
     ],
-    "rules": [
+    "rule": [
       {
         "name": "Automatic Living Room Lights",
         "operator": "&&",
@@ -333,7 +333,7 @@
     "ruleconditions": {
       "rule": {
         "type": "integer",
-        "model": "rules",
+        "model": "rule",
         "foreignKey": true,
         "alias": "rule"
       },
@@ -372,7 +372,7 @@
         "type": "datetime"
       }
     },
-    "rules": {
+    "rule": {
       "name": {
         "type": "string"
       },
@@ -413,7 +413,7 @@
     "ruleconditions": {
       "id": 3
     },
-    "rules": {
+    "rule": {
       "id": 1
     }
   }
