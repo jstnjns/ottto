@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "bluebird": "3.5.0",
-    "lodash": "4.17.3",
+    "lodash": "^4.17.11",
     "normalizr": "^3.2.4",
     "react": "^16.0.0",
     "react-native": "^0.50.2",
