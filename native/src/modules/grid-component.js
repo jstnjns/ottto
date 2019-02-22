@@ -5,8 +5,8 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { ScrollView, StyleSheet, Text, TouchableHighlight, View } from 'react-native'
 
-import ModulesGridIcon from 'modules/grid/icon'
-import { getModule, activateModule } from 'modules/modules-actions'
+import ModulesGridIcon from './grid/icon'
+import { getModule, activateModule } from './modules-actions'
 
 
 class ModulesGrid extends Component {

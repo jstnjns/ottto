@@ -5,24 +5,24 @@ import { StyleSheet } from 'react-native'
 import { Svg, Path } from 'react-native-svg'
 import { Router, Scene, Tabs, Actions, Lightbox } from 'react-native-router-flux';
 
-import { addRoom } from 'rooms/rooms-actions'
+import { addRoom } from './rooms/rooms-actions'
 
-import UsersContainer from 'users/users-container';
+import UsersContainer from './users/users-container';
 
-import RulesContainer from 'rules/rules-container';
-import RuleContainer from 'rules/rule-container';
-import ConditionContainer from 'conditions/condition-container';
-import ActionContainer from 'rules/action-container';
+import RulesContainer from './rules/rules-container';
+import RuleContainer from './rules/rule-container';
+import ActionContainer from './rules/action-container';
+import ConditionContainer from './conditions/condition-container';
 
-import RoomsContainer from 'rooms/rooms-container';
-import RoomsAddContainer from 'rooms/add-container';
-import RoomContainer from 'rooms/room-container';
+import RoomsContainer from './rooms/rooms-container';
+import RoomsAddContainer from './rooms/add-container';
+import RoomContainer from './rooms/room-container';
 
-import ScenesContainer from 'scenes/scenes-container';
+import ScenesContainer from './scenes/scenes-container';
 
-import SettingsContainer from 'settings/settings-container';
+import SettingsContainer from './settings/settings-container';
 
-import ModuleOverlay from 'modules/overlay-container';
+import ModuleOverlay from './modules/overlay-container';
 
 
 class Routes extends Component {

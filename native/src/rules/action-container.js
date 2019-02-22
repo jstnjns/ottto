@@ -4,7 +4,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Actions } from 'react-native-router-flux'
 
-import Action from 'rules/action-component'
+import Action from './action-component'
 
 
 export default connect(

@@ -3,8 +3,8 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { denormalize } from 'normalizr'
 
-import Module from 'modules/overlay-component'
-import { updateModule } from 'modules/modules-actions'
+import Module from './overlay-component'
+import { updateModule } from './modules-actions'
 import { moduleSchema } from '../schemas'
 
 

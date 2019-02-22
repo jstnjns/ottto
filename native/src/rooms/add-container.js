@@ -4,8 +4,8 @@ import { bindActionCreators } from 'redux'
 import { reduxForm } from 'redux-form'
 import { Actions } from 'react-native-router-flux'
 
-import RoomsAdd from 'rooms/add-component'
-import { postRoom } from 'rooms/rooms-actions'
+import RoomsAdd from './add-component'
+import { postRoom } from './rooms-actions'
 
 
 const RoomsAddForm = reduxForm({

@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import { Text, View, StyleSheet } from 'react-native'
 import { Field } from 'redux-form'
 
-import { TextInputField, Button } from 'common/forms'
+import { TextInputField, Button } from '../common/forms'
 
 
 

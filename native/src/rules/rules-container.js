@@ -4,9 +4,9 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Actions } from 'react-native-router-flux'
 
-import Rules from 'rules/rules-component'
-import { getRules } from 'rules/rules-actions'
-import { getConditions } from 'conditions/conditions-actions'
+import Rules from './rules-component'
+import { getRules } from './rules-actions'
+import { getConditions } from '../conditions/conditions-actions'
 
 
 export default connect(

@@ -1,11 +1,10 @@
 import _ from 'lodash'
-
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { updateModule } from 'modules/modules-actions'
-
 import { StyleSheet, Text, View } from 'react-native'
+
+// import { updateModule } from '../modules-actions'
 
 import Color from '../attributes/color'
 import Number from '../attributes/number'
@@ -81,5 +80,5 @@ const styles = StyleSheet.create({
 
 export default connect(
   (state) => ({ }),
-  (dispatch) => bindActionCreators({ updateModule }, dispatch)
+  // (dispatch) => bindActionCreators({ updateModule }, dispatch)
 )(Light)

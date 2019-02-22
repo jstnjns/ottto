@@ -1,24 +1,23 @@
 {
-  "name": "Ottto",
-  "version": "0.0.1",
-  "private": true,
+  "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "haul": "haul start --platform ios",
-    "react": "react-native run-ios"
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "eject": "expo eject"
   },
   "dependencies": {
     "bluebird": "3.5.0",
+    "expo": "^32.0.0",
     "lodash": "^4.17.11",
     "normalizr": "^3.2.4",
-    "react": "^16.0.0",
-    "react-native": "^0.50.2",
+    "react": "16.5.0",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
     "react-native-blur": "^3.2.0",
     "react-native-dial": "^1.0.12",
     "react-native-modalbox": "^1.4.2",
     "react-native-router-flux": "^4.0.0-beta.27",
     "react-native-sortable-grid": "1.3.4",
-    "react-native-svg": "^6.0.1-rc.1",
-    "react-native-vector-icons": "^4.4.2",
     "react-native-video": "2.0.0",
     "react-redux": "5.0.6",
     "redux": "3.6.0",
@@ -31,10 +30,7 @@
     "tinycolor2": "1.4.1"
   },
   "devDependencies": {
-    "babel-cli": "6.22.2",
-    "babel-plugin-module-resolver": "2.7.0",
-    "babel-plugin-transform-decorators-legacy": "1.3.4",
-    "babel-preset-latest": "6.22.0",
-    "haul": "^1.0.0-beta.10"
-  }
+    "babel-preset-expo": "^5.0.0"
+  },
+  "private": true
 }

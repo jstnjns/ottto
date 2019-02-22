@@ -6,8 +6,8 @@ import { connect } from 'react-redux'
 import { reduxForm, formValueSelector, change } from 'redux-form'
 import { Actions } from 'react-native-router-flux'
 
-import Condition from 'conditions/condition-component'
-import { saveCondition } from 'conditions/conditions-actions'
+import Condition from './condition-component'
+import { saveCondition } from './conditions-actions'
 import { moduleSchema } from '../schemas'
 
 

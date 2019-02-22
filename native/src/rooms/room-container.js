@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { Actions } from 'react-native-router-flux';
 
-import Room from 'rooms/room-component'
+import Room from './room-component'
 import { roomSchema } from '../schemas'
 
 

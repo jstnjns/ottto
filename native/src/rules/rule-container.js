@@ -5,7 +5,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Actions } from 'react-native-router-flux'
 
-import Rule from 'rules/rule-component'
+import Rule from './rule-component'
 import { ruleSchema } from '../schemas'
 
 
