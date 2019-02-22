@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 
-import { FormGroup, FormLabel, FormControlLabel } from 'material-ui/Form'
-import Switch from 'material-ui/Switch'
+import FormGroup from '@material-ui/core/FormGroup'
+import FormLabel from '@material-ui/core/FormLabel'
+import FormControlLabel from '@material-ui/core/FormControlLabel'
+import Switch from '@material-ui/core/Switch'
 
 
 class BooleanAttribute extends Component {

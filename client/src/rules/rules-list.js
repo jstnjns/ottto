@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router'
-import List, { ListItem, ListItemText } from 'material-ui/List';
+import { Link } from 'react-router-dom'
+import List, { ListItem, ListItemText } from '@material-ui/core/List';
 
 
 class RulesList extends Component {

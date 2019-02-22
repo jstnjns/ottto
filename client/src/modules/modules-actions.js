@@ -2,11 +2,11 @@ import _ from 'lodash'
 import socket from '../socket'
 
 // TYPES
-const MODULES_GET = 'MODULES_GET'
+// const MODULES_GET = 'MODULES_GET'
 const MODULES_GET_SUCCESS = 'MODULES_GET_SUCCESS'
 const MODULES_GET_ERROR = 'MODULES_GET_ERROR'
 
-const MODULE_GET = 'MODULE_GET'
+// const MODULE_GET = 'MODULE_GET'
 const MODULE_GET_SUCCESS = 'MODULE_GET_SUCCESS'
 const MODULE_GET_ERROR = 'MODULE_GET_ERROR'
 
@@ -19,8 +19,8 @@ const MODULE_UPDATE_ERROR = 'MODULE_UPDATE_ERROR'
 export const syncModules = () => {
   return (dispatch, getState) => {
     socket.on('modules', (msg) => {
-      switch(msg.verb) {
-        case 'updated': dispatch(updateModuleSuccess(msg.data))
+      if (msg.verb === 'updated') {
+        dispatch(updateModuleSuccess(msg.data))
       }
     })
   }

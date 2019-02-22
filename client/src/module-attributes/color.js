@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import Button from 'material-ui/Button'
-import Input, { InputLabel } from 'material-ui/Input'
-import { FormControl } from 'material-ui/Form'
+import Button from '@material-ui/core/Button'
+import Input, { InputLabel } from '@material-ui/core/Input'
+import FormControl from '@material-ui/core/FormControl'
 
 import ct from 'color-temperature'
 
@@ -52,7 +52,7 @@ class ColorAttribute extends Component {
   }
 
   renderTemperature() {
-    let { attribute, value } = this.props
+    let { attribute } = this.props
     let { temperature } = this.state
 
     return (

@@ -1,11 +1,9 @@
-import _ from 'lodash'
-
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
-import Module from 'modules/module-component'
-import { getModule, updateModule } from 'modules/modules-actions'
+import Module from './module-component'
+import { getModule, updateModule } from './modules-actions'
 
 class ModuleContainer extends Component {
   componentWillMount() {

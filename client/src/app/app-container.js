@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
-import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
-import { Link } from 'react-router'
-import Paper from 'material-ui/Paper'
-import BottomNavigation, { BottomNavigationAction } from 'material-ui/BottomNavigation'
+import { Link } from 'react-router-dom'
+import Paper from '@material-ui/core/Paper'
+import BottomNavigation from '@material-ui/core/BottomNavigation'
+import BottomNavigationAction from '@material-ui/core/BottomNavigationAction'
 
 import { syncModules } from '../modules/modules-actions'
 
-import styles from './app.css'
+import './app.css'
 
 
 class App extends Component {
@@ -17,8 +17,6 @@ class App extends Component {
   }
 
   render() {
-    let { children } = this.props
-
     return (
       <div>
         <Paper>
@@ -55,13 +53,13 @@ class App extends Component {
           </BottomNavigation>
         </Paper>
 
-        {children}
+        {this.props.children}
       </div>
     )
   }
 }
 
 export default connect(
-  (state) => (state),
-  (dispatch) => bindActionCreators({ syncModules }, dispatch)
+  null,
+  (dispatch) => ({ syncModules })
 )(App)

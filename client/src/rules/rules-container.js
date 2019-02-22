@@ -1,17 +1,17 @@
 import _ from 'lodash'
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
-import AppBar from 'material-ui/AppBar'
-import Toolbar from 'material-ui/Toolbar'
-import Typography from 'material-ui/Typography'
+import AppBar from '@material-ui/core/AppBar'
+import Toolbar from '@material-ui/core/Toolbar'
+import Typography from '@material-ui/core/Typography'
 
 import { getRules } from './rules-actions'
 import RulesList from './rules-list'
 
 
-class RulesContainer extends Component {
+class RulesContainer extends PureComponent {
   componentWillMount() {
     this.props.getRules()
   }
