@@ -18,7 +18,7 @@ class Rooms extends PureComponent {
         contentContainerStyle={styles.list}
         data={_.toArray(rooms)}
         renderItem={this.renderRoom.bind(this)}
-        keyExtractor={(item, index) => index}/>
+        keyExtractor={(item, index) => String(index)}/>
     )
   }
 
