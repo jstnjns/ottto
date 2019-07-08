@@ -27,6 +27,30 @@ export default {
             )
           )
     },
+    attributes: {
+      type: '[Attribute]',
+      resolver: (parent, args, { Attribute, Value }) =>
+        Attribute
+          .find({ type: parent.type })
+          .then((attributes) =>
+            Promise.all(
+              attributes.map((attribute) =>
+                Value.findOne({
+                  attribute: attribute._id,
+                  module: parent._id,
+                })
+                .then((value) => ({
+                  _id: attribute._id,
+                  key: attribute.key,
+                  name: attribute.name,
+                  primative: attribute.primative,
+                  default: attribute.default,
+                  value,
+                }))
+              )
+            )
+          )
+    },
   },
 
   'Type': {
@@ -41,6 +65,7 @@ export default {
     primative: 'String!', // enum [boolean, number, color]
     default: 'String!',
     type: 'Type!',
+    value: 'Value',
   },
 
   'Value': {
