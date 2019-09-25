@@ -1,80 +1,62 @@
-import _ from 'lodash'
-
-import React, { Component } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 
-import { withStyles } from '@material-ui/core/styles';
+import Container from '@material-ui/core/Container'
+import Box from '@material-ui/core/Box'
+import Grid from '@material-ui/core/Grid'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import IconButton from '@material-ui/core/IconButton'
 import Typography from '@material-ui/core/Typography'
-import ChevronLeft from '@material-ui/icons/ChevronLeft'
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
+import Card from '@material-ui/core/Card'
+import CardContent from '@material-ui/core/CardContent'
 
-import Attribute from '../module-attributes'
-
-
-const styles = (theme) => ({
-  backButton: {
-    marginLeft: -20
-  },
-  attributeContainer: {
-    margin: 10,
-    padding: 10
-  }
-})
+import Attribute from '../attributes'
 
 
-class Module extends Component {
-  render() {
-    let { classes, module } = this.props
+export default ({ module, onChange }) =>
+  <div className='module'>
+    <AppBar position='static'>
+      <Container>
+        <Toolbar>
+          <IconButton
+            edge='start'
+            color='inherit'
+            component={Link}
+            to={`/rooms/${module.group._id}`}
+          >
+             <ChevronLeftIcon />
+          </IconButton>
 
-    if (module) {
-      return (
-        <div className="module">
-          <AppBar position="static">
-            <Toolbar>
-              <IconButton className={classes.backButton}
-                component={Link} to={`/rooms/${module.group.id}`}
-                color="inherit">
-                <ChevronLeft />
-              </IconButton>
-              <Typography type="title" color="inherit">
-                {module.name}
-              </Typography>
-            </Toolbar>
-          </AppBar>
+          <Typography
+            variant='h6'
+            color='inherit'
+          >
+            {module.name}
+            {' '}
+            ({module.type.name})
+          </Typography>
+        </Toolbar>
+      </Container>
+    </AppBar>
 
-          {module.type.attributes.map((attribute, key) => {
-            return (
-              <div key={key} className={classes.attributeContainer}>
-                <Attribute
-                  module={module}
-                  attribute={attribute}
-                  value={module.values[attribute.name]}
-                  onChange={(value) => {
-                    return this.onAttributeChange.bind(this)(attribute.name, value)
-                  }} />
-              </div>
-            )
-          })}
-        </div>
-      )
-    } else {
-      return (
-        <h1>Loading...</h1>
-      )
-    }
-  }
-
-  onAttributeChange(name, value) {
-    let module = _.clone(this.props.module)
-    module.values[name] = value
-
-    console.log(module)
-
-    this.props.onModuleChange(module)
-  }
-}
-
-
-export default withStyles(styles)(Module)
+    <Container>
+      <Box my={2}>
+        <Grid container spacing={2} alignItems="stretch">
+          {module.attributes.map((attribute) =>
+            <Grid item xs={3} key={attribute._id}>
+              <Card style={{ height: '100%' }}>
+                <CardContent>
+                  <Attribute
+                    module={module}
+                    attribute={attribute}
+                  />
+                </CardContent>
+              </Card>
+            </Grid>
+          )}
+        </Grid>
+      </Box>
+    </Container>
+  </div>

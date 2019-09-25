@@ -107,7 +107,7 @@ const generateResolvers = (attributes, model) => ({
       model,
       (Model, _, { _id, input }) =>
         Model.findOneAndUpdate(
-          { _id: _id || Types.ObjectId() },
+          { _id: _id },
           input,
           { new: true, upsert: true }
         ),

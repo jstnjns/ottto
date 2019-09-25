@@ -1,25 +1,40 @@
-import React, { Component } from 'react'
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
+import React from 'react'
 
-import { getRoom } from './rooms-actions'
+import { Query } from 'react-apollo'
+import { gql } from 'apollo-boost'
+
 import Room from './room-component'
 
 
-class RoomContainer extends Component {
-  componentWillMount() {
-    this.props.getRoom(this.props.params.id)
+const query = gql`
+  query Group($_id: ID!){
+    group(_id:$_id) {
+      name
+      modules {
+        _id
+        name
+        type {
+          _id
+          name
+        }
+      }
+    }
   }
+`
 
-  render() {
-    return (
-      <Room room={this.props.room} />
-    )
-  }
-}
-
-
-export default connect(
-  (state, props) => ({ room: state.rooms.entities[props.params.id] }),
-  (dispatch) => bindActionCreators({ getRoom }, dispatch)
-)(RoomContainer)
+export default ({ match: { params: { _id }}}) =>
+  <Query query={query} variables={{ _id }}>
+    {({ loading, error, data }) =>
+      <div>
+        {loading &&
+          <p>Loading...</p>
+        }
+        {error &&
+          <p>Error :(</p>
+        }
+        {data && data.group &&
+          <Room room={data.group} />
+        }
+      </div>
+    }
+  </Query>

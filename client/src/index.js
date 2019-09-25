@@ -1,22 +1,19 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { createStore, applyMiddleware } from 'redux'
-import { Provider } from 'react-redux'
-import thunk from 'redux-thunk'
-import { createLogger } from 'redux-logger'
-
-import reducers from './app/app-actions'
+import ApolloClient from 'apollo-boost'
+import { ApolloProvider } from 'react-apollo'
 
 import Routes from './routes'
 
-const logger = createLogger()
-const middleware = applyMiddleware(thunk, logger)
-const store = createStore(reducers, middleware)
+
+const client = new ApolloClient({
+  uri: '//localhost:4000/graphql'
+})
 
 
 ReactDOM.render(
-  <Provider store={store}>
+  <ApolloProvider client={client}>
     <Routes />
-  </Provider>,
+  </ApolloProvider>,
   document.getElementById('root')
 )

@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import List, { ListItem, ListItemText } from '@material-ui/core/List';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText'
 
 
 class RulesList extends Component {
@@ -12,10 +14,14 @@ class RulesList extends Component {
     )
   }
 
-  renderRule(rule, key) {
+  renderRule(rule) {
     return (
-      <ListItem key={key} button
-        component={Link} to={`/rules/${rule.id}`}>
+      <ListItem
+        key={rule._id}
+        component={Link}
+        to={`/rules/${rule._id}`}
+        button
+      >
         <ListItemText primary={rule.name} />
       </ListItem>
     )

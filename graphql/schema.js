@@ -45,6 +45,10 @@ export default {
                   name: attribute.name,
                   primative: attribute.primative,
                   default: attribute.default,
+                  min: attribute.min,
+                  max: attribute.max,
+                  step: attribute.step,
+                  measurement: attribute.measurement,
                   value,
                 }))
               )
@@ -65,6 +69,10 @@ export default {
     primative: 'String!', // enum [boolean, number, color]
     default: 'String!',
     type: 'Type!',
+    measurement: 'String', // enum [%, #],
+    min: 'String',
+    max: 'String',
+    step: 'String',
     value: 'Value',
   },
 

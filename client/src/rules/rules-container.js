@@ -1,25 +1,28 @@
-import _ from 'lodash'
-import React, { PureComponent } from 'react'
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
+import React from 'react'
+
+import { Query } from 'react-apollo'
+import { gql } from 'apollo-boost'
 
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 
-import { getRules } from './rules-actions'
 import RulesList from './rules-list'
 
 
-class RulesContainer extends PureComponent {
-  componentWillMount() {
-    this.props.getRules()
+const query = gql`
+  {
+    rules {
+      _id
+      name
+    }
   }
+`
 
-  render() {
-    let { rules } = this.props;
 
-    return (
+export default () =>
+  <Query query={query}>
+    {({ loading, error, data }) =>
       <div>
         <AppBar position="static">
           <Toolbar>
@@ -29,14 +32,16 @@ class RulesContainer extends PureComponent {
           </Toolbar>
         </AppBar>
 
-        <RulesList rules={rules} />
+        {loading &&
+          <p>Loading...</p>
+        }
+        {error &&
+          <p>Error :(</p>
+        }
+
+        {data.rules &&
+          <RulesList rules={data.rules} />
+        }
       </div>
-    )
-  }
-}
-
-
-export default connect(
-  (state) => ({ rules: _.toArray(state.rules.entities) }),
-  (dispatch) => bindActionCreators({ getRules }, dispatch)
-)(RulesContainer)
+    }
+  </Query>

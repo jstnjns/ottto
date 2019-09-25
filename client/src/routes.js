@@ -14,17 +14,19 @@ export default class Routes extends PureComponent {
   render() {
     return (
       <BrowserRouter>
+        <AppContainer>
           <Switch>
             <Route path="/" exact component={RoomsContainer} />
-            <Route path="/rooms/:id" component={RoomContainer} />
+            <Route path="/rooms/:_id" component={RoomContainer} />
 
-            <Route path="/modules/:id" component={ModuleContainer} />
+            <Route path="/modules/:_id" component={ModuleContainer} />
 
             <Route path="/rules" component={RulesContainer} />
-            <Route path="/rules/:id" component={RuleContainer} />
+            <Route path="/rules/:_id" component={RuleContainer} />
 
             <Route path="/settings" component={SettingsContainer} />
           </Switch>
+        </AppContainer>
       </BrowserRouter>
     )
   }

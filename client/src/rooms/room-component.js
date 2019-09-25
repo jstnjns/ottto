@@ -1,53 +1,64 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 
-import ModulesList from '../modules/modules-list'
-
-import { withStyles } from '@material-ui/core/styles'
+import Container from '@material-ui/core/Container'
+import Box from '@material-ui/core/Box'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import IconButton from '@material-ui/core/IconButton'
 import Typography from '@material-ui/core/Typography'
-import ChevronLeft from '@material-ui/icons/ChevronLeft'
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
+import Grid from '@material-ui/core/Grid';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
 
 
-const styles = (theme) => ({
-  backButton: {
-    marginLeft: -20
-  }
-})
+export default ({ room }) =>
+  <div className="room">
+    <AppBar position="static">
+      <Container>
+        <Toolbar>
+          <IconButton
+            edge="start"
+            color="inherit"
+            component={Link}
+            to="/"
+          >
+            <ChevronLeftIcon />
+          </IconButton>
 
+          <Typography
+            variant="h6"
+            color="inherit"
+          >
+            {room.name}
+          </Typography>
+        </Toolbar>
+      </Container>
+    </AppBar>
 
-class Room extends Component {
-  render() {
-    let { classes, room } = this.props
-
-    if (room) {
-      return (
-        <div className="room">
-          <AppBar position="static">
-            <Toolbar>
-              <IconButton className={classes.backButton}
-                component={Link} to="/"
-                color="inherit">
-                <ChevronLeft />
-              </IconButton>
-              <Typography type="title" color="inherit">
-                {room.name}
-              </Typography>
-            </Toolbar>
-          </AppBar>
-
-          <ModulesList modules={room.modules} />
-        </div>
-      )
-    } else {
-      return (
-        <h1>Loading...</h1>
-      )
-    }
-  }
-}
-
-
-export default withStyles(styles)(Room)
+    <Container>
+      <Box my={2}>
+        <Grid container spacing={2}>
+          {room.modules.map((module) =>
+            <Grid
+              item
+              xs={3}
+              key={module._id}
+            >
+              <Card>
+                <CardContent>
+                  <Typography
+                    component={Link}
+                    to={`/modules/${module._id}`}
+                  >
+                    {module.name}
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          )}
+        </Grid>
+      </Box>
+    </Container>
+  </div>

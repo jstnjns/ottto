@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
-import { withStyles } from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import IconButton from '@material-ui/core/IconButton'
@@ -9,23 +8,16 @@ import Typography from '@material-ui/core/Typography'
 import ChevronLeft from '@material-ui/icons/ChevronLeft'
 
 
-const styles = (theme) => ({
-  backButton: {
-    marginLeft: -20
-  }
-})
-
-
-class Rule extends Component {
+export default class Rule extends Component {
   render() {
-    let { classes, rule } = this.props
+    let { rule } = this.props
 
     if (rule) {
       return (
         <div className="rule">
           <AppBar position="static">
             <Toolbar>
-              <IconButton className={classes.backButton}
+              <IconButton
                 component={Link} to="/rules"
                 color="inherit">
                 <ChevronLeft />
@@ -44,6 +36,3 @@ class Rule extends Component {
     }
   }
 }
-
-
-export default withStyles(styles)(Rule)
